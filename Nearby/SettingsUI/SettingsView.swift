@@ -10,6 +10,8 @@ struct SettingsView: View {
     @State private var showPicker = false
     @State private var askPassword = false
     @State private var loginStatus = SMAppService.mainApp.status
+    /// Not observable, so re-read on appear and whenever the user comes back from System Settings.
+    @State private var axTrusted = UnlockService.isTrusted
 
     var body: some View {
         Form {
@@ -147,11 +149,15 @@ struct SettingsView: View {
                 Text("Unlock when I come back")
                 Text("Types your login password after 3 s back in range. Needs Accessibility.")
             }
-            if settings.autoUnlock, !UnlockService.isTrusted {
+            if settings.autoUnlock, !axTrusted {
                 Button("Grant Accessibility in System Settings…") { UnlockService.requestTrust() }
             }
         } header: {
             Text("While nearby")
+                .onAppear { axTrusted = UnlockService.isTrusted }
+                .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+                    axTrusted = UnlockService.isTrusted
+                }
         } footer: {
             Label("Off by default — a relayed Bluetooth signal could fake “near”. Locking is always safe.",
                   systemImage: "exclamationmark.triangle")
