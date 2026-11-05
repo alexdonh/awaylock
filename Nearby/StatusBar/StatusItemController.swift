@@ -160,18 +160,18 @@ struct MenuHeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if settings.deviceUUID == nil {
-                row(Icon(name: "antenna.off", size: 20), title: "No device chosen",
-                    detail: "Choose one in Settings…", color: .secondary)
+                row(Icon(name: "antenna.off", size: 20), title: Text("No device chosen"),
+                    detail: Text("Choose one in Settings…"), color: .secondary)
             } else if let until = model.pausedUntil {
-                row(Image(systemName: "pause").font(.system(size: 17)), title: "Paused",
-                    detail: "Resumes at \(until.formatted(date: .omitted, time: .shortened)) · won’t lock", color: .secondary)
+                row(Image(systemName: "pause").font(.system(size: 17)), title: Text("Paused"),
+                    detail: Text("Resumes at \(until.formatted(date: .omitted, time: .shortened)) · won’t lock"), color: .secondary)
             } else if model.bluetoothOff {
-                row(Icon(name: "antenna.off", size: 20), title: settings.deviceName,
-                    detail: "Bluetooth is off", color: .secondary)
+                row(Icon(name: "antenna.off", size: 20), title: Text(settings.deviceName),
+                    detail: Text("Bluetooth is off"), color: .secondary)
             } else if case .leaving = model.state, let left = model.remaining {
                 HStack(spacing: 10) {
                     tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
-                    titles(settings.deviceName, "Away · \(dbm)", .orange)
+                    titles(Text(settings.deviceName), Text("Away · \(dbm)"), .orange)
                     Spacer()
                     Text("\(left) s").font(.system(size: 20, weight: .semibold)).monospacedDigit().foregroundStyle(.orange)
                 }
@@ -190,7 +190,7 @@ struct MenuHeaderView: View {
             } else {
                 HStack(spacing: 10) {
                     tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
-                    titles(settings.deviceName, statusLine, statusColor)
+                    titles(Text(settings.deviceName), Text(statusLine), statusColor)
                 }
                 SignalBar(rssi: model.rssi, lockRSSI: settings.lockRSSI)
             }
@@ -208,7 +208,7 @@ struct MenuHeaderView: View {
 
     private var dbm: String { model.rssi.map { "\(Int($0.rounded())) dBm" } ?? "— dBm" }
 
-    private var statusLine: String {
+    private var statusLine: LocalizedStringKey {
         switch model.state {
         case .near(armed: false): "Not seen near yet · \(dbm)"
         case .locked(byApp: true): "Locked by Nearby"
@@ -222,7 +222,7 @@ struct MenuHeaderView: View {
         model.state == .near(armed: true) ? .green : .secondary
     }
 
-    private func row(_ icon: some View, title: String, detail: String, color: Color) -> some View {
+    private func row(_ icon: some View, title: Text, detail: Text, color: Color) -> some View {
         HStack(spacing: 10) {
             tile(icon)
             titles(title, detail, color)
@@ -236,10 +236,11 @@ struct MenuHeaderView: View {
             .accessibilityHidden(true)
     }
 
-    private func titles(_ title: String, _ detail: String, _ color: Color) -> some View {
+    /// Takes Text so callers choose: a literal is localized, a device name is shown as is.
+    private func titles(_ title: Text, _ detail: Text, _ color: Color) -> some View {
         VStack(alignment: .leading, spacing: 1) {
-            Text(title).font(.system(size: 13, weight: .semibold))
-            Text(detail).font(.system(size: 12, weight: .medium)).foregroundStyle(color)
+            title.font(.system(size: 13, weight: .semibold))
+            detail.font(.system(size: 12, weight: .medium)).foregroundStyle(color)
         }
     }
 }
@@ -263,6 +264,6 @@ struct SignalBar: View {
         }
         .frame(height: 4)
         .accessibilityElement()
-        .accessibilityLabel("Signal \(rssi.map { "\(Int($0)) dBm" } ?? "unknown"), locks below \(Int(lockRSSI)) dBm")
+        .accessibilityLabel("Signal \(rssi.map { "\(Int($0)) dBm" } ?? String(localized: "unknown")), locks below \(Int(lockRSSI)) dBm")
     }
 }

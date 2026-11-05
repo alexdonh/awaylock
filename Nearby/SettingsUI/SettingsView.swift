@@ -38,7 +38,7 @@ struct SettingsView: View {
                isPresented: Binding(get: { model.untrackableName != nil }, set: { if !$0 { model.untrackableName = nil } })) {
             Button("OK") {}
         } message: {
-            Text("\(model.untrackableName ?? "It") stopped advertising or changed its address. Nearby kept your previous choice.")
+            Text("\(model.untrackableName ?? "") stopped advertising or changed its address. Nearby kept your previous choice.")
         }
     }
 
@@ -53,7 +53,7 @@ struct SettingsView: View {
                     .background(.tint.opacity(0.12), in: .rect(cornerRadius: 16))
                     .accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(settings.deviceUUID == nil ? "No device chosen" : settings.deviceName)
+                    (settings.deviceUUID == nil ? Text("No device chosen") : Text(settings.deviceName))
                         .font(.system(size: 17, weight: .semibold))
                     HStack(spacing: 8) {
                         Circle().fill(statusColor).frame(width: 8, height: 8).accessibilityHidden(true)
@@ -61,22 +61,23 @@ struct SettingsView: View {
                     }
                 }
                 Spacer()
-                Button(settings.deviceUUID == nil ? "Choose…" : "Change…") { showPicker = true }
+                Button(settings.deviceUUID == nil ? LocalizedStringKey("Choose…") : LocalizedStringKey("Change…")) { showPicker = true }
                     .controlSize(.large)
             }
             .padding(.vertical, 6)
         }
     }
 
-    private var statusText: String {
+    // LocalizedStringKey, not String: a String handed to Text is shown verbatim, untranslated.
+    private var statusText: LocalizedStringKey {
         guard settings.deviceUUID != nil else { return "Pick the device you carry" }
         if model.pausedUntil != nil { return "Paused" }
         if model.bluetoothOff { return "Bluetooth is off" }
-        let dbm = model.rssi.map { " · \(Int($0.rounded())) dBm" } ?? ""
+        let dbm = model.rssi.map { "\(Int($0.rounded())) dBm" } ?? "— dBm"
         return switch model.state {
-        case .near(armed: true): "Near\(dbm) · Mac stays unlocked"
-        case .near(armed: false): "Not seen near yet\(dbm)"
-        case .leaving: "Away\(dbm) · locking in \(model.remaining ?? 0) s"
+        case .near(armed: true): "Near · \(dbm) · Mac stays unlocked"
+        case .near(armed: false): "Not seen near yet · \(dbm)"
+        case .leaving: "Away · \(dbm) · locking in \(model.remaining ?? 0) s"
         case .locked: "Locked"
         case .unknown: "Checking…"
         case .idle: "Off"
@@ -217,11 +218,12 @@ struct SettingsView: View {
         }
     }
 
-    private var lastCheckedText: String {
+    private var lastCheckedText: LocalizedStringKey {
         guard updater.isConfigured else { return "Updates aren’t set up in this build" }
         guard let date = updater.lastChecked else { return "Never checked" }
         let when = date.formatted(.relative(presentation: .named))
-        return updater.availableVersion.map { "Last checked \(when) · \($0) available" } ?? "Last checked \(when) · You’re up to date"
+        if let version = updater.availableVersion { return "Last checked \(when) · \(version) available" }
+        return "Last checked \(when) · You’re up to date"
     }
 }
 
