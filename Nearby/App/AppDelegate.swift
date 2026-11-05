@@ -61,11 +61,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             w.title = title
             w.styleMask = [.titled, .closable, .fullSizeContentView]
             w.isReleasedWhenClosed = false
+            // Follow the user to the current Space instead of staying on the one it was opened on.
+            w.collectionBehavior.insert(.moveToActiveSpace)
             w.center()
             windows[key] = w
             return w
         }()
+        // activate() is only a request on macOS 14+ and can be declined while another app is
+        // frontmost; orderFrontRegardless() still brings the window above that app's windows.
         NSApp.activate()
         window.makeKeyAndOrderFront(nil)
+        window.orderFrontRegardless()
     }
 }
