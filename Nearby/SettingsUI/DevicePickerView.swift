@@ -136,10 +136,11 @@ private struct DeviceRow: View {
                     .labelStyle(.titleAndIcon)
                     .imageScale(.small)
                     .foregroundStyle(.white)
-                    .frame(width: 76, height: 28)
+                    .padding(.horizontal, 10)
+                    .frame(minWidth: 76, minHeight: 28)
                     .background(.tint, in: .capsule)
             } else {
-                Button(action: use) { Text("Use").frame(width: 52) }
+                Button(action: use) { Text("Use").frame(minWidth: 52) }
                     .buttonBorderShape(.capsule)
             }
         }
