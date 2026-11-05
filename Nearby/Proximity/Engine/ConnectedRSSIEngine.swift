@@ -2,12 +2,19 @@ import CoreBluetooth
 
 /// Connect once, then `readRSSI()` per sample. A pending `connect` waits in the
 /// Bluetooth controller at no CPU cost, so "wait for the phone to come back" is free.
+///
+/// iOS drops an idle connection from an unpaired Mac about every 67 s and accepts the
+/// reconnect within ~1.3 s (M0 spike, macOS 27.2). A disconnect therefore only
+/// counts as lost once it has lasted `reconnectGrace`, checked on the next sample.
 @BluetoothActor
 final class ConnectedRSSIEngine: NSObject, ProximityEngine {
     private var central: CBCentralManager?
     private var peripheral: CBPeripheral?
     private var target: UUID?
     private var continuation: AsyncStream<ProximityReading>.Continuation?
+    private var disconnectedAt: ContinuousClock.Instant?
+    private var lostSent = false
+    static let reconnectGrace: Duration = .seconds(3)
 
     nonisolated override init() { super.init() }
 
@@ -31,8 +38,13 @@ final class ConnectedRSSIEngine: NSObject, ProximityEngine {
     func setCadence(_ cadence: Cadence) {}
 
     func sample() {
-        guard let peripheral, peripheral.state == .connected else { return }
-        peripheral.readRSSI()
+        guard let peripheral else { return }
+        if peripheral.state == .connected {
+            peripheral.readRSSI()
+        } else if let since = disconnectedAt, !lostSent, ContinuousClock.now - since >= Self.reconnectGrace {
+            lostSent = true
+            continuation?.yield(.lost)
+        }
     }
 
     func stop() {
@@ -40,6 +52,8 @@ final class ConnectedRSSIEngine: NSObject, ProximityEngine {
         central?.stopScan()
         peripheral = nil
         target = nil
+        disconnectedAt = nil
+        lostSent = false
         continuation?.finish()
         continuation = nil
     }
@@ -82,19 +96,21 @@ extension ConnectedRSSIEngine: @preconcurrency CBCentralManagerDelegate, @precon
 
     func centralManager(_ manager: CBCentralManager, didConnect p: CBPeripheral) {
         Log.bluetooth.debug("connected")
+        disconnectedAt = nil
+        lostSent = false
         p.readRSSI()
     }
 
     func centralManager(_ manager: CBCentralManager, didDisconnectPeripheral p: CBPeripheral, error: Error?) {
         guard p.identifier == target else { return }
         Log.bluetooth.debug("disconnected: \(error?.localizedDescription ?? "-")")
-        continuation?.yield(.lost)
+        disconnectedAt = disconnectedAt ?? .now
         manager.connect(p)
     }
 
     func centralManager(_ manager: CBCentralManager, didFailToConnect p: CBPeripheral, error: Error?) {
         guard p.identifier == target else { return }
-        continuation?.yield(.lost)
+        disconnectedAt = disconnectedAt ?? .now
         manager.connect(p)
     }
 
