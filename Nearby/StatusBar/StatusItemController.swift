@@ -80,8 +80,11 @@ final class StatusItemController: NSObject, NSMenuDelegate {
 
     private func apply(_ icon: IconState) {
         guard let button = item.button else { return }
-        let image = NSImage(systemSymbolName: icon.symbol, accessibilityDescription: icon.label)
+        // Design glyphs from Icons/ (template assets), drawn at the design's 17 pt.
+        let image = NSImage(named: icon.symbol)
+        image?.size = NSSize(width: 17, height: 17)
         image?.isTemplate = true
+        image?.accessibilityDescription = icon.label
         button.image = image
         button.setAccessibilityLabel(icon.label)
         badge.isHidden = !icon.badge
@@ -126,7 +129,7 @@ private nonisolated struct IconState: Equatable, Sendable {
     @MainActor
     init(model: ProximityModel, settings: AppSettings, updateAvailable: Bool) {
         badge = updateAvailable
-        let off = "antenna.radiowaves.left.and.right.slash"
+        let off = "antenna.off"
         if settings.deviceUUID == nil {
             (symbol, label) = (off, String(localized: "Nearby: no device chosen"))
         } else if model.pausedUntil != nil {
@@ -136,7 +139,7 @@ private nonisolated struct IconState: Equatable, Sendable {
         } else {
             switch model.state {
             case .leaving:
-                (symbol, label) = ("lock.open.trianglebadge.exclamationmark", String(localized: "Nearby: device leaving, locking soon"))
+                (symbol, label) = ("lock.leaving", String(localized: "Nearby: device leaving, locking soon"))
             case .locked(byApp: true):
                 (symbol, label) = ("lock", String(localized: "Nearby: locked"))
             case .idle:
@@ -157,17 +160,17 @@ struct MenuHeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if settings.deviceUUID == nil {
-                row(symbol: "antenna.radiowaves.left.and.right.slash", title: "No device chosen",
+                row(Icon(name: "antenna.off", size: 20), title: "No device chosen",
                     detail: "Choose one in Settings…", color: .secondary)
             } else if let until = model.pausedUntil {
-                row(symbol: "pause", title: "Paused",
+                row(Image(systemName: "pause").font(.system(size: 17)), title: "Paused",
                     detail: "Resumes at \(until.formatted(date: .omitted, time: .shortened)) · won’t lock", color: .secondary)
             } else if model.bluetoothOff {
-                row(symbol: "antenna.radiowaves.left.and.right.slash", title: settings.deviceName,
+                row(Icon(name: "antenna.off", size: 20), title: settings.deviceName,
                     detail: "Bluetooth is off", color: .secondary)
             } else if case .leaving = model.state, let left = model.remaining {
                 HStack(spacing: 10) {
-                    tile(deviceSymbol(for: settings.deviceName))
+                    tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
                     titles(settings.deviceName, "Away · \(dbm)", .orange)
                     Spacer()
                     Text("\(left) s").font(.system(size: 20, weight: .semibold)).monospacedDigit().foregroundStyle(.orange)
@@ -186,7 +189,7 @@ struct MenuHeaderView: View {
                     .font(.system(size: 12)).foregroundStyle(.secondary)
             } else {
                 HStack(spacing: 10) {
-                    tile(deviceSymbol(for: settings.deviceName))
+                    tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
                     titles(settings.deviceName, statusLine, statusColor)
                 }
                 SignalBar(rssi: model.rssi, lockRSSI: settings.lockRSSI)
@@ -219,16 +222,15 @@ struct MenuHeaderView: View {
         model.state == .near(armed: true) ? .green : .secondary
     }
 
-    private func row(symbol: String, title: String, detail: String, color: Color) -> some View {
+    private func row(_ icon: some View, title: String, detail: String, color: Color) -> some View {
         HStack(spacing: 10) {
-            tile(symbol)
+            tile(icon)
             titles(title, detail, color)
         }
     }
 
-    private func tile(_ symbol: String) -> some View {
-        Image(systemName: symbol)
-            .font(.system(size: 17))
+    private func tile(_ icon: some View) -> some View {
+        icon
             .frame(width: 34, height: 34)
             .background(.quaternary, in: .rect(cornerRadius: 10))
             .accessibilityHidden(true)

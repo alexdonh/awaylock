@@ -73,7 +73,7 @@ private struct DeviceRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            Image(systemName: deviceSymbol(for: device.name))
+            Icon(name: deviceIcon(for: device.name), size: 20)
                 .font(.system(size: 20))
                 .frame(width: 40, height: 40)
                 .background(.quaternary, in: .rect(cornerRadius: 11))

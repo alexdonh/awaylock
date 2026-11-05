@@ -56,14 +56,14 @@ final class AppSettings {
     }
 }
 
-/// SF Symbol for a device, from its advertised name.
-nonisolated func deviceSymbol(for name: String) -> String {
+/// Design glyph (asset name in Icons/) for a device, from its advertised name.
+nonisolated func deviceIcon(for name: String) -> String {
     let n = name.lowercased()
-    if n.contains("watch") { return "applewatch" }
-    if n.contains("iphone") { return "iphone" }
-    if n.contains("airpods") { return "airpods" }
-    if n.contains("ipad") { return "ipad" }
-    return "dot.radiowaves.left.and.right"
+    if n.contains("watch") { return "device.watch" }
+    if n.contains("iphone") || n.contains("ipad") { return "device.phone" }
+    if n.contains("airpods") || n.contains("buds") { return "device.earbuds" }
+    if n.contains("band") { return "device.band" }
+    return "antenna"
 }
 
 /// Signal as 0…1 across the slider range, for bars and needles.
