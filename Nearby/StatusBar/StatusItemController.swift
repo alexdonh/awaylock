@@ -1,0 +1,255 @@
+import AppKit
+import Observation
+import SwiftUI
+
+/// Status item + menu. Actions never read `NSApp.currentEvent` (VoiceOver-safe).
+final class StatusItemController: NSObject, NSMenuDelegate {
+    private let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    private let model: ProximityModel
+    private let settings: AppSettings
+    private let controller: ProximityController
+    private let updater: UpdaterController
+    private let openSettings: () -> Void
+    private let openAbout: () -> Void
+
+    private let header = NSMenuItem()
+    private let hosting: NSHostingView<MenuHeaderView>
+    private let pauseItem = NSMenuItem()
+    private let updateItem = NSMenuItem()
+    private let badge = NSView()
+
+    init(model: ProximityModel, settings: AppSettings, controller: ProximityController, updater: UpdaterController,
+         openSettings: @escaping () -> Void, openAbout: @escaping () -> Void) {
+        self.model = model
+        self.settings = settings
+        self.controller = controller
+        self.updater = updater
+        self.openSettings = openSettings
+        self.openAbout = openAbout
+        hosting = NSHostingView(rootView: MenuHeaderView(model: model, settings: settings))
+        super.init()
+        buildMenu()
+        buildBadge()
+        Task { [weak self, model, settings, updater] in
+            let icons = Observations { IconState(model: model, settings: settings, updateAvailable: updater.availableVersion != nil) }
+            for await icon in icons { self?.apply(icon) }
+        }
+    }
+
+    private func buildMenu() {
+        let menu = NSMenu()
+        menu.delegate = self
+        menu.autoenablesItems = false
+        hosting.frame.size = NSSize(width: 300, height: hosting.fittingSize.height)
+        header.view = hosting
+        menu.addItem(header)
+        menu.addItem(.separator())
+
+        pauseItem.target = self
+        pauseItem.action = #selector(togglePause)
+        menu.addItem(pauseItem)
+        let lock = NSMenuItem(title: String(localized: "Lock Now"), action: #selector(lockNow), keyEquivalent: "q")
+        lock.keyEquivalentModifierMask = [.control, .command]
+        lock.target = self
+        menu.addItem(lock)
+        menu.addItem(.separator())
+
+        menu.addItem(item(String(localized: "About Nearby"), #selector(showAbout)))
+        updateItem.target = self
+        updateItem.action = #selector(checkForUpdates)
+        menu.addItem(updateItem)
+        menu.addItem(item(String(localized: "Settings…"), #selector(showSettings), key: ","))
+        menu.addItem(item(String(localized: "Quit Nearby"), #selector(NSApplication.terminate(_:)), key: "q", target: NSApp))
+        self.item.menu = menu
+    }
+
+    private func item(_ title: String, _ action: Selector, key: String = "", target: AnyObject? = nil) -> NSMenuItem {
+        let i = NSMenuItem(title: title, action: action, keyEquivalent: key)
+        i.target = target ?? self
+        return i
+    }
+
+    private func buildBadge() {
+        guard let button = item.button else { return }
+        badge.wantsLayer = true
+        badge.layer?.backgroundColor = NSColor.systemOrange.cgColor
+        badge.layer?.cornerRadius = 3.5
+        badge.isHidden = true
+        button.addSubview(badge)
+    }
+
+    private func apply(_ icon: IconState) {
+        guard let button = item.button else { return }
+        let image = NSImage(systemSymbolName: icon.symbol, accessibilityDescription: icon.label)
+        image?.isTemplate = true
+        button.image = image
+        button.setAccessibilityLabel(icon.label)
+        badge.isHidden = !icon.badge
+        let b = button.bounds   // laid out by now; top-right corner (button isn't flipped)
+        badge.frame = NSRect(x: b.maxX - 9, y: b.maxY - 9, width: 7, height: 7)
+    }
+
+    // MARK: NSMenuDelegate
+
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        pauseItem.title = model.pausedUntil == nil ? String(localized: "Pause for 1 Hour") : String(localized: "Resume")
+        pauseItem.isEnabled = settings.deviceUUID != nil
+        if let version = updater.availableVersion {
+            updateItem.title = String(localized: "Update Available: Nearby \(version)…")
+            updateItem.image = NSImage(systemSymbolName: "circle.fill", accessibilityDescription: nil)?
+                .withSymbolConfiguration(.init(pointSize: 7, weight: .regular).applying(.init(paletteColors: [.systemOrange])))
+        } else {
+            updateItem.title = String(localized: "Check for Updates…")
+            updateItem.image = nil
+        }
+        updateItem.isEnabled = updater.isConfigured
+        hosting.frame.size.height = hosting.fittingSize.height
+    }
+
+    // MARK: actions
+
+    @objc private func togglePause() {
+        model.pausedUntil == nil ? controller.pause() : controller.resume()
+    }
+
+    @objc private func lockNow() { controller.lockNow() }
+    @objc private func showAbout() { openAbout() }
+    @objc private func showSettings() { openSettings() }
+    @objc private func checkForUpdates() { updater.checkForUpdates() }
+}
+
+private nonisolated struct IconState: Equatable, Sendable {
+    var symbol: String
+    var label: String
+    var badge: Bool
+
+    @MainActor
+    init(model: ProximityModel, settings: AppSettings, updateAvailable: Bool) {
+        badge = updateAvailable
+        let off = "antenna.radiowaves.left.and.right.slash"
+        if settings.deviceUUID == nil {
+            (symbol, label) = (off, String(localized: "Nearby: no device chosen"))
+        } else if model.pausedUntil != nil {
+            (symbol, label) = (off, String(localized: "Nearby: paused"))
+        } else if model.bluetoothOff {
+            (symbol, label) = (off, String(localized: "Nearby: Bluetooth is off"))
+        } else {
+            switch model.state {
+            case .leaving:
+                (symbol, label) = ("lock.open.trianglebadge.exclamationmark", String(localized: "Nearby: device leaving, locking soon"))
+            case .locked(byApp: true):
+                (symbol, label) = ("lock", String(localized: "Nearby: locked"))
+            case .idle:
+                (symbol, label) = (off, String(localized: "Nearby: off"))
+            default:
+                (symbol, label) = ("lock.open", String(localized: "Nearby: device near"))
+            }
+        }
+    }
+}
+
+// MARK: - Menu header
+
+struct MenuHeaderView: View {
+    let model: ProximityModel
+    let settings: AppSettings
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            if settings.deviceUUID == nil {
+                row(symbol: "antenna.radiowaves.left.and.right.slash", title: "No device chosen",
+                    detail: "Choose one in Settings…", color: .secondary)
+            } else if let until = model.pausedUntil {
+                row(symbol: "pause", title: "Paused",
+                    detail: "Resumes at \(until.formatted(date: .omitted, time: .shortened)) · won’t lock", color: .secondary)
+            } else if model.bluetoothOff {
+                row(symbol: "antenna.radiowaves.left.and.right.slash", title: settings.deviceName,
+                    detail: "Bluetooth is off", color: .secondary)
+            } else if case .leaving = model.state, let left = model.remaining {
+                HStack(spacing: 10) {
+                    tile(deviceSymbol(for: settings.deviceName))
+                    titles(settings.deviceName, "Away · \(dbm)", .orange)
+                    Spacer()
+                    Text("\(left) s").font(.system(size: 20, weight: .semibold)).monospacedDigit().foregroundStyle(.orange)
+                }
+                ProgressView(value: Double(left), total: Double(max(1, settings.awaySeconds)))
+                    .tint(.orange)
+                Text("Locking in \(left) seconds. Come back to cancel.")
+                    .font(.system(size: 12)).foregroundStyle(.secondary)
+            } else {
+                HStack(spacing: 10) {
+                    tile(deviceSymbol(for: settings.deviceName))
+                    titles(settings.deviceName, statusLine, statusColor)
+                }
+                SignalBar(rssi: model.rssi, lockRSSI: settings.lockRSSI)
+            }
+            if model.lockFailed {
+                Label("Couldn’t lock. Turn on “Require password immediately” in Lock Screen settings.",
+                      systemImage: "exclamationmark.triangle")
+                    .font(.system(size: 11)).foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .frame(width: 300, alignment: .leading)
+    }
+
+    private var dbm: String { model.rssi.map { "\(Int($0.rounded())) dBm" } ?? "— dBm" }
+
+    private var statusLine: String {
+        switch model.state {
+        case .near(armed: false): "Not seen near yet · \(dbm)"
+        case .locked(byApp: true): "Locked by Nearby"
+        case .locked(byApp: false): "Locked"
+        case .unknown: "Checking…"
+        default: "Near · \(dbm)"
+        }
+    }
+
+    private var statusColor: Color {
+        model.state == .near(armed: true) ? .green : .secondary
+    }
+
+    private func row(symbol: String, title: String, detail: String, color: Color) -> some View {
+        HStack(spacing: 10) {
+            tile(symbol)
+            titles(title, detail, color)
+        }
+    }
+
+    private func tile(_ symbol: String) -> some View {
+        Image(systemName: symbol)
+            .font(.system(size: 17))
+            .frame(width: 34, height: 34)
+            .background(.quaternary, in: .rect(cornerRadius: 10))
+            .accessibilityHidden(true)
+    }
+
+    private func titles(_ title: String, _ detail: String, _ color: Color) -> some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text(title).font(.system(size: 13, weight: .semibold))
+            Text(detail).font(.system(size: 12, weight: .medium)).foregroundStyle(color)
+        }
+    }
+}
+
+/// Live signal with the lock threshold marked.
+struct SignalBar: View {
+    let rssi: Double?
+    let lockRSSI: Double
+
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .leading) {
+                Capsule().fill(.quaternary)
+                Capsule().fill(.green).frame(width: geo.size.width * signalFraction(rssi ?? -100))
+                Rectangle().fill(.secondary).frame(width: 2, height: 10)
+                    .offset(x: geo.size.width * signalFraction(lockRSSI) - 1)
+            }
+        }
+        .frame(height: 4)
+        .accessibilityElement()
+        .accessibilityLabel("Signal \(rssi.map { "\(Int($0)) dBm" } ?? "unknown"), locks below \(Int(lockRSSI)) dBm")
+    }
+}
