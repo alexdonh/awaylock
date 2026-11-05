@@ -17,36 +17,71 @@ struct DevicePickerView: View {
         snapshot.rotating + snapshot.devices.count - devices.count
     }
 
+    private static let rowHeight = 62.0
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Choose your key").font(.title2.weight(.semibold))
+        VStack(spacing: 0) {
+            VStack(spacing: 8) {
+                Icon(name: "antenna", size: 32)
+                    .foregroundStyle(.tint)
+                    .frame(width: 64, height: 64)
+                    .background(Color.accentSoft, in: .rect(cornerRadius: 20))
+                    .accessibilityHidden(true)
+                Text("Choose your key")
+                    .font(.system(size: 22, weight: .bold))
+                    .padding(.top, 6)
                 Text("Keep this device with you. When it walks away, your Mac locks.")
+                    .font(.system(size: 13))
                     .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 420)
             }
-            HStack(spacing: 8) {
-                Text("Nearby devices").font(.headline)
-                ProgressView().controlSize(.small)
-                Text("Scanning").font(.caption).foregroundStyle(.secondary)
-            }
-            List(devices) { device in
-                DeviceRow(device: device,
-                          inUse: device.id == (selection ?? settings.deviceUUID)) { selection = device.id }
-            }
-            .listStyle(.inset)
-            .frame(minHeight: 260)
-            .overlay {
-                if devices.isEmpty {
-                    ContentUnavailableView("Listening…", systemImage: "dot.radiowaves.left.and.right",
-                                           description: Text("Devices show up after they’ve been heard for 10 seconds."))
+            .padding(.top, 30)
+            .padding(.horizontal, 32)
+
+            VStack(alignment: .leading, spacing: 8) {
+                HStack {
+                    Text("Nearby devices").font(.system(size: 13, weight: .semibold))
+                    Spacer()
+                    HStack(spacing: 6) {
+                        Circle().fill(.tint).frame(width: 6, height: 6)
+                        Text("Scanning")
+                    }
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+                }
+                .padding(.horizontal, 6)
+
+                ScrollView {
+                    Card(dividerInset: 68) {
+                        if devices.isEmpty {
+                            Text("Listening… Devices show up after they’ve been heard for 10 seconds.")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .frame(maxWidth: .infinity, minHeight: Self.rowHeight)
+                        }
+                        ForEach(devices) { device in
+                            DeviceRow(device: device,
+                                      inUse: device.id == (selection ?? settings.deviceUUID)) { selection = device.id }
+                        }
+                    }
+                }
+                .scrollBounceBehavior(.basedOnSize)
+                // Grow with the list up to five rows, then scroll.
+                .frame(height: Double(min(max(devices.count, 1), 5)) * (Self.rowHeight + 1))
+
+                if hiddenCount > 0 {
+                    Text("\(hiddenCount) devices hidden because their Bluetooth address keeps changing.")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal, 6)
+                        .padding(.top, 2)
                 }
             }
-            if hiddenCount > 0 {
-                Label("\(hiddenCount) devices hidden because their Bluetooth address keeps changing.",
-                      systemImage: "info.circle")
-                    .font(.caption).foregroundStyle(.secondary)
-            }
-            HStack {
+            .padding(.horizontal, 24)
+            .padding(.top, 24)
+
+            HStack(spacing: 10) {
                 Spacer()
                 Button("Cancel", role: .cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
@@ -55,10 +90,15 @@ struct DevicePickerView: View {
                     dismiss()
                 }
                 .keyboardShortcut(.defaultAction)
+                .buttonStyle(.borderedProminent)
             }
+            .controlSize(.large)
+            .buttonBorderShape(.capsule)
+            .padding(.top, 36)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 20)
         }
-        .padding(24)
-        .frame(width: 560, height: 560)
+        .frame(width: 600)
         .task {
             let scanner = DeviceScanner()
             for await next in await scanner.scan() { snapshot = next }
@@ -72,38 +112,45 @@ private struct DeviceRow: View {
     let use: () -> Void
 
     var body: some View {
-        HStack(spacing: 14) {
-            Icon(name: deviceIcon(for: device.name), size: 20)
-                .font(.system(size: 20))
-                .frame(width: 40, height: 40)
-                .background(.quaternary, in: .rect(cornerRadius: 11))
+        HStack(spacing: 12) {
+            Icon(name: deviceIcon(for: device.name), size: 22)
+                .frame(width: 38, height: 38)
+                .background(.primary.opacity(inUse ? 0.12 : 0.08), in: .rect(cornerRadius: 11))
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 2) {
-                HStack(spacing: 6) {
-                    Text(device.name).font(.system(size: 14, weight: .semibold))
-                    if device.isApple, device.name.localizedCaseInsensitiveContains("watch") {
-                        Text("Recommended")
-                            .font(.caption2.weight(.semibold))
-                            .padding(.horizontal, 6).padding(.vertical, 1)
-                            .background(.tint.opacity(0.15), in: .capsule)
-                            .foregroundStyle(.tint)
-                    }
-                }
-                Text(Self.tag(for: device)).font(.caption).foregroundStyle(.secondary)
+                Text(device.name).font(.system(size: 13, weight: .semibold))
+                Text(Self.tag(for: device))
+                    .font(.system(size: 12))
+                    .foregroundStyle(Self.isWarning(device) ? AnyShapeStyle(.orange) : AnyShapeStyle(.secondary))
             }
-            Spacer()
-            VStack(alignment: .trailing, spacing: 3) {
-                SignalBar(rssi: device.rssi, lockRSSI: -200).frame(width: 60)
-                Text("\(Int(device.rssi.rounded())) dBm").font(.caption2).monospacedDigit().foregroundStyle(.secondary)
-            }
+            .lineLimit(1)
+            Spacer(minLength: 0)
+            SignalBars(rssi: device.rssi)
+            Text("\(Int(device.rssi.rounded())) dBm")
+                .font(.system(size: 12)).monospacedDigit()
+                .foregroundStyle(.secondary)
+                .frame(width: 54, alignment: .trailing)
             if inUse {
-                Text("In use").font(.callout.weight(.medium)).foregroundStyle(.secondary).frame(width: 64)
+                Label("In use", systemImage: "checkmark")
+                    .font(.system(size: 13, weight: .semibold))
+                    .labelStyle(.titleAndIcon)
+                    .imageScale(.small)
+                    .foregroundStyle(.white)
+                    .frame(width: 76, height: 28)
+                    .background(.tint, in: .capsule)
             } else {
-                Button("Use", action: use).frame(width: 64)
+                Button(action: use) { Text("Use").frame(width: 52) }
+                    .buttonBorderShape(.capsule)
             }
         }
-        .padding(.vertical, 4)
+        .padding(.horizontal, 16)
+        .frame(height: 62)
+        .background(inUse ? Color.accentSoft : .clear)
         .accessibilityElement(children: .combine)
+    }
+
+    static func isWarning(_ d: DiscoveredDevice) -> Bool {
+        d.isApple && d.name.localizedCaseInsensitiveContains("airpods")
     }
 
     static func tag(for d: DiscoveredDevice) -> String {
@@ -116,5 +163,22 @@ private struct DeviceRow: View {
         }
         return d.seconds >= 60 ? String(localized: "Stable address · Passive mode")
                                : String(localized: "Unverified · Passive mode")
+    }
+}
+
+/// Four-bar signal glyph: −50, −65, −75 and −85 dBm light one more bar each.
+private struct SignalBars: View {
+    let rssi: Double
+
+    var body: some View {
+        let lit = [-85.0, -75, -65, -50].filter { rssi >= $0 }.count
+        HStack(alignment: .bottom, spacing: 2) {
+            ForEach(0..<4) { i in
+                RoundedRectangle(cornerRadius: 1)
+                    .fill(i < lit ? AnyShapeStyle(.primary) : AnyShapeStyle(.primary.opacity(0.2)))
+                    .frame(width: 3, height: 5 + Double(i) * 3)
+            }
+        }
+        .accessibilityHidden(true)
     }
 }
