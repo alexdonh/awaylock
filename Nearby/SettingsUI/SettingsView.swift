@@ -22,7 +22,7 @@ struct SettingsView: View {
             updatesSection
         }
         .formStyle(.grouped)
-        .frame(width: 560)
+        .frame(width: 680)
         .frame(minHeight: 640, idealHeight: 900)
         .sheet(isPresented: $showPicker) {
             DevicePickerView(settings: settings) { controller.choose($0) }
@@ -226,31 +226,42 @@ struct SettingsView: View {
     }
 }
 
-/// Slider for the lock level with a live "Now" needle for the device's current signal.
+/// Full-width slider for the lock level: a tick at the "back" level and a live
+/// "Now" needle for the device's current signal, both crossing the track.
 struct ThresholdSlider: View {
     @Binding var lockRSSI: Double
     let current: Double?
 
+    /// Native knob half-width: the track's ends sit this far in from the edges.
+    private let inset = 10.0
+    private let trackY = 29.0
+
     var body: some View {
-        VStack(spacing: 2) {
-            GeometryReader { geo in
-                if let current {
-                    // Slider track is inset by about the knob radius on each side.
-                    let inset = 10.0
-                    let x = inset + (geo.size.width - 2 * inset) * signalFraction(current)
-                    VStack(spacing: 2) {
-                        Text("Now").font(.caption2.weight(.semibold)).foregroundStyle(.green)
-                        Capsule().fill(.green).frame(width: 3, height: 10)
+        GeometryReader { geo in
+            let x = { (rssi: Double) in inset + (geo.size.width - 2 * inset) * signalFraction(rssi) }
+            ZStack(alignment: .topLeading) {
+                // No `step`: it draws a tick per dBm. Round in the binding instead.
+                Slider(value: Binding(get: { lockRSSI }, set: { lockRSSI = $0.rounded() }), in: AppSettings.rssiRange)
+                    .labelsHidden()
+                    .frame(width: geo.size.width)
+                    .position(x: geo.size.width / 2, y: trackY)
+                    .accessibilityLabel("Lock threshold")
+                    .accessibilityValue("\(Int(lockRSSI)) dBm")
+                Group {
+                    Capsule().fill(.secondary).frame(width: 2, height: 12)
+                        .position(x: x(lockRSSI + ProximitySettings.hysteresis), y: trackY)
+                    if let current {
+                        Text("Now").font(.system(size: 11, weight: .semibold)).foregroundStyle(.green)
+                            .position(x: x(current), y: 10)
+                        Capsule().fill(.green).frame(width: 3, height: 18)
+                            .position(x: x(current), y: trackY)
                     }
-                    .position(x: x, y: geo.size.height / 2)
-                    .accessibilityHidden(true)
                 }
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
             }
-            .frame(height: 26)
-            Slider(value: $lockRSSI, in: AppSettings.rssiRange, step: 1)
-                .accessibilityLabel("Lock threshold")
-                .accessibilityValue("\(Int(lockRSSI)) dBm")
         }
+        .frame(height: 46)
     }
 }
 
