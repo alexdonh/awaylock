@@ -131,6 +131,8 @@ struct SettingsView: View {
         }
     }
 
+    static let languageSettingsURL = URL(string: "x-apple.systempreferences:com.apple.Localization-Settings.extension")!
+
     // ponytail: fixed 15 dB margin below "here"; make it a setting if users calibrate from across the room.
     static let calibrationMargin = 15.0
     static func lockLevel(from current: Double) -> Double {
@@ -192,6 +194,13 @@ struct SettingsView: View {
                 Text("Auto").tag(SignalMode.auto)
                 Text("Connected").tag(SignalMode.connected)
                 Text("Passive").tag(SignalMode.passive)
+            }
+            // macOS already has a per-app language setting; link to it instead of duplicating it.
+            LabeledContent {
+                Button("Language & Region…") { NSWorkspace.shared.open(Self.languageSettingsURL) }
+            } label: {
+                Text("Language")
+                Text("Choose Nearby’s language under Applications")
             }
         }
         .onAppear { loginStatus = SMAppService.mainApp.status }
