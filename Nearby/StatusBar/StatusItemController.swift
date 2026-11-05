@@ -54,12 +54,12 @@ final class StatusItemController: NSObject, NSMenuDelegate {
         menu.addItem(lock)
         menu.addItem(.separator())
 
-        menu.addItem(item(String(localized: "About Nearby"), #selector(showAbout)))
+        menu.addItem(item(String(localized: "About"), #selector(showAbout)))
         updateItem.target = self
         updateItem.action = #selector(checkForUpdates)
         menu.addItem(updateItem)
         menu.addItem(item(String(localized: "Settings…"), #selector(showSettings), key: ","))
-        menu.addItem(item(String(localized: "Quit Nearby"), #selector(NSApplication.terminate(_:)), key: "q", target: NSApp))
+        menu.addItem(item(String(localized: "Quit"), #selector(NSApplication.terminate(_:)), key: "q", target: NSApp))
         self.item.menu = menu
     }
 
