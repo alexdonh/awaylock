@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65820E61DCB7E0196DD26A5B /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 6776252044188ACE9427F313 /* Sparkle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		738DAC38954DDE9FEB6FBA19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C72367E3D400B2EBF9F622F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0850AC9A02767CB15E84297E;
+			remoteInfo = Nearby;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F6DDA149F439ACE388CAF61 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		3AB5E659FC848134D070AD6D /* Nearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nearby.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BA2DDD0C431697BD9361160 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		7426312B660C755D478E0466 /* Spike */ = {isa = PBXFileReference; includeInIndex = 0; path = Spike; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA8AE40607E333ADCBF829D6 /* NearbyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearbyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7F4E818EEA892F5D34B38779 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0850AC9A02767CB15E84297E /* Nearby */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1C9FF29C613F79D6E22C72EE /* Nearby */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7F4E818EEA892F5D34B38779 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Nearby;
+			sourceTree = "<group>";
+		};
+		3F68232E0E2707A28E6FC9A2 /* NearbyTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = NearbyTests;
+			sourceTree = "<group>";
+		};
+		BA75B14B1DE321DCD5229154 /* Spike */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Spike;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A70B58C7FF93C1DBCA2C6F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65820E61DCB7E0196DD26A5B /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2706BA0AC2D03D49D19BC7F5 = {
+			isa = PBXGroup;
+			children = (
+				3FB0EE1EB989A87FDB15B59C /* Config */,
+				1C9FF29C613F79D6E22C72EE /* Nearby */,
+				3F68232E0E2707A28E6FC9A2 /* NearbyTests */,
+				BA75B14B1DE321DCD5229154 /* Spike */,
+				4D2B1F0A3813F3370DB54A8B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3FB0EE1EB989A87FDB15B59C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5BA2DDD0C431697BD9361160 /* Debug.xcconfig */,
+				1F6DDA149F439ACE388CAF61 /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		4D2B1F0A3813F3370DB54A8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AB5E659FC848134D070AD6D /* Nearby.app */,
+				EA8AE40607E333ADCBF829D6 /* NearbyTests.xctest */,
+				7426312B660C755D478E0466 /* Spike */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0850AC9A02767CB15E84297E /* Nearby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7D5AEBBBCC5297659BBC470 /* Build configuration list for PBXNativeTarget "Nearby" */;
+			buildPhases = (
+				3A0F5E236E50350972A74682 /* Sources */,
+				E90BC1C30E93A563B57FCACF /* Resources */,
+				3A70B58C7FF93C1DBCA2C6F5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1C9FF29C613F79D6E22C72EE /* Nearby */,
+			);
+			name = Nearby;
+			packageProductDependencies = (
+				6776252044188ACE9427F313 /* Sparkle */,
+			);
+			productName = Nearby;
+			productReference = 3AB5E659FC848134D070AD6D /* Nearby.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48DB06726CC7E04DB2A6AEBD /* Spike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 181B3931B67ED6450F730637 /* Build configuration list for PBXNativeTarget "Spike" */;
+			buildPhases = (
+				43810CA7D3C0AC01E144686B /* Sources */,
+				A0410DBA8DC9407F88B84342 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BA75B14B1DE321DCD5229154 /* Spike */,
+			);
+			name = Spike;
+			packageProductDependencies = (
+			);
+			productName = Spike;
+			productReference = 7426312B660C755D478E0466 /* Spike */;
+			productType = "com.apple.product-type.tool";
+		};
+		75092D4A925D2F7E5D653191 /* NearbyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CB7842893B201882251B0EB /* Build configuration list for PBXNativeTarget "NearbyTests" */;
+			buildPhases = (
+				D9F245076B904B7E7FC607FD /* Sources */,
+				1661780434985ABB9885451B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AF2020FF4651D825773F60A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3F68232E0E2707A28E6FC9A2 /* NearbyTests */,
+			);
+			name = NearbyTests;
+			packageProductDependencies = (
+			);
+			productName = NearbyTests;
+			productReference = EA8AE40607E333ADCBF829D6 /* NearbyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C72367E3D400B2EBF9F622F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					0850AC9A02767CB15E84297E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					48DB06726CC7E04DB2A6AEBD = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					75092D4A925D2F7E5D653191 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 4D2B1E5B4A19EC9490ADB1CF /* Build configuration list for PBXProject "Nearby" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 2706BA0AC2D03D49D19BC7F5;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C262B30160297EBA5D195542 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4D2B1F0A3813F3370DB54A8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0850AC9A02767CB15E84297E /* Nearby */,
+				75092D4A925D2F7E5D653191 /* NearbyTests */,
+				48DB06726CC7E04DB2A6AEBD /* Spike */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1661780434985ABB9885451B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A0410DBA8DC9407F88B84342 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E90BC1C30E93A563B57FCACF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A0F5E236E50350972A74682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43810CA7D3C0AC01E144686B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9F245076B904B7E7FC607FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AF2020FF4651D825773F60A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0850AC9A02767CB15E84297E /* Nearby */;
+			targetProxy = 738DAC38954DDE9FEB6FBA19 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		110555CAC1B8BB4C8C970078 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Spike reads Bluetooth LE adverts to test device tracking.";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NEARBY_BUNDLE_ID).spike";
+				PRODUCT_NAME = spike;
+			};
+			name = Release;
+		};
+		486BC2AF89BBEC2FBE00A116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Spike reads Bluetooth LE adverts to test device tracking.";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NEARBY_BUNDLE_ID).spike";
+				PRODUCT_NAME = spike;
+			};
+			name = Debug;
+		};
+		48F91A2225AFA30529C318AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NEARBY_BUNDLE_ID).tests";
+				PRODUCT_NAME = NearbyTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nearby.app/Contents/MacOS/Nearby";
+			};
+			name = Debug;
+		};
+		A94E383F7B2F6857399E14BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nearby/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Nearby;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Nearby reads the signal strength of the device you choose so it can lock your Mac when you walk away.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NEARBY_BUNDLE_ID)";
+				PRODUCT_NAME = Nearby;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+			};
+			name = Release;
+		};
+		C4C631631BF2610C57E24964 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NEARBY_BUNDLE_ID).tests";
+				PRODUCT_NAME = NearbyTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nearby.app/Contents/MacOS/Nearby";
+			};
+			name = Release;
+		};
+		C4EEBFD68B814DB86E8512FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F6DDA149F439ACE388CAF61 /* Release.xcconfig */;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CB6E6CE1C07605FD50D3AB45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA2DDD0C431697BD9361160 /* Debug.xcconfig */;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D0DC055AAFCD0FA97059A667 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nearby/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Nearby;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Nearby reads the signal strength of the device you choose so it can lock your Mac when you walk away.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(NEARBY_BUNDLE_ID)";
+				PRODUCT_NAME = Nearby;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		181B3931B67ED6450F730637 /* Build configuration list for PBXNativeTarget "Spike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				486BC2AF89BBEC2FBE00A116 /* Debug */,
+				110555CAC1B8BB4C8C970078 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3CB7842893B201882251B0EB /* Build configuration list for PBXNativeTarget "NearbyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F91A2225AFA30529C318AC /* Debug */,
+				C4C631631BF2610C57E24964 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4D2B1E5B4A19EC9490ADB1CF /* Build configuration list for PBXProject "Nearby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6E6CE1C07605FD50D3AB45 /* Debug */,
+				C4EEBFD68B814DB86E8512FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E7D5AEBBBCC5297659BBC470 /* Build configuration list for PBXNativeTarget "Nearby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0DC055AAFCD0FA97059A667 /* Debug */,
+				A94E383F7B2F6857399E14BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C262B30160297EBA5D195542 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6776252044188ACE9427F313 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C262B30160297EBA5D195542 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C72367E3D400B2EBF9F622F0 /* Project object */;
+}
