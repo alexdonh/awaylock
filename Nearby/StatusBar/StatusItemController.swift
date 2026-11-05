@@ -172,8 +172,16 @@ struct MenuHeaderView: View {
                     Spacer()
                     Text("\(left) s").font(.system(size: 20, weight: .semibold)).monospacedDigit().foregroundStyle(.orange)
                 }
-                ProgressView(value: Double(left), total: Double(max(1, settings.awaySeconds)))
-                    .tint(.orange)
+                // A capsule, not ProgressView: its tint isn't honored everywhere a menu draws.
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        Capsule().fill(.quaternary)
+                        Capsule().fill(.orange)
+                            .frame(width: geo.size.width * Double(left) / Double(max(1, settings.awaySeconds)))
+                    }
+                }
+                .frame(height: 4)
+                .accessibilityHidden(true)
                 Text("Locking in \(left) seconds. Come back to cancel.")
                     .font(.system(size: 12)).foregroundStyle(.secondary)
             } else {
@@ -244,7 +252,10 @@ struct SignalBar: View {
             ZStack(alignment: .leading) {
                 Capsule().fill(.quaternary)
                 Capsule().fill(.green).frame(width: geo.size.width * signalFraction(rssi ?? -100))
-                Rectangle().fill(.secondary).frame(width: 2, height: 10)
+            }
+            // Overlay, not a ZStack child: a 10 pt child would stretch the 4 pt bar to 10 pt.
+            .overlay(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 1).fill(.secondary).frame(width: 2, height: 10)
                     .offset(x: geo.size.width * signalFraction(lockRSSI) - 1)
             }
         }
