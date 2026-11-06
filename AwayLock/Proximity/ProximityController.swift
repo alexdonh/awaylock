@@ -36,6 +36,8 @@ final class ProximityController {
     private var expectingLock = false
     private var asleep = false
     private var lastReadingAt: ContinuousClock.Instant?
+    /// Last raw readings (seconds since start, dBm; nil = lost), logged with each lock.
+    private var recent: [(t: Int, rssi: Int?)] = []
     private var pendingInstall: (() -> Void)?
     private let epoch = ContinuousClock.now
 
@@ -191,6 +193,11 @@ final class ProximityController {
     private func send(_ event: ProximityMachine.Event) {
         let now = ContinuousClock.now - epoch
         let s = settings.proximity
+        switch event {
+        case .reading(let v): remember(now, Int(v))
+        case .lost: remember(now, nil)
+        default: break
+        }
         for effect in machine.handle(event, at: now, settings: s) { run(effect) }
         model.state = machine.state
         model.rssi = machine.smoothed
@@ -201,10 +208,23 @@ final class ProximityController {
         }
     }
 
+    private func remember(_ now: Duration, _ rssi: Int?) {
+        recent.append((Int(now / .seconds(1)), rssi))
+        if recent.count > 30 { recent.removeFirst() }
+    }
+
     private func run(_ effect: ProximityMachine.Effect) {
         switch effect {
         case .lock:
-            Log.session.info("locking: device away")
+            let trace = recent.map { "\($0.t):\($0.rssi.map(String.init) ?? "lost")" }.joined(separator: " ")
+            let s = settings.proximity
+            let why = machine.lastRaw == nil ? "signal lost" : "below lock level"
+            let smoothed = machine.smoothed ?? 0
+            Log.session.notice("""
+                locking: \(why, privacy: .public) \
+                smoothed \(smoothed, privacy: .public) lock \(s.lockRSSI, privacy: .public) \
+                delay \(s.awaySeconds, privacy: .public)s trace \(trace, privacy: .public)
+                """)
             expectingLock = true
             Task {
                 let ok = await screen.lock()
