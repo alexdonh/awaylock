@@ -10,7 +10,7 @@ nonisolated enum SignalMode: String, CaseIterable, Identifiable, Sendable {
 @Observable
 final class AppSettings {
     typealias Key = UserDefaults.Key
-    static let awayChoices = [5, 10, 30, 60]
+    static let awayChoices = [0, 5, 10, 30, 60]
     nonisolated static let rssiRange: ClosedRange<Double> = -95 ... -50
 
     @ObservationIgnored private let defaults: UserDefaults

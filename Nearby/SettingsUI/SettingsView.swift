@@ -120,10 +120,13 @@ struct SettingsView: View {
                     .help("Sets the lock level \(Int(Self.calibrationMargin)) dB below your device’s current signal")
                 }
             }
-            Picker("Lock after away for", selection: $settings.awaySeconds) {
-                ForEach(AppSettings.awayChoices, id: \.self) { Text("\($0) s").tag($0) }
+            LabeledContent("Lock after away for") {
+                FitSegments(choices: AppSettings.awayChoices, selection: $settings.awaySeconds) {
+                    $0 == 0 ? String(localized: "Immediately") : String(localized: "\($0) s")
+                }
+                .fixedSize()
+                .accessibilityLabel(Text("Lock after away for"))
             }
-            .pickerStyle(.segmented)
             Toggle(isOn: $settings.lockOnSignalLost) {
                 Text("Lock when signal is lost")
                 Text("Bluetooth off or no reading counts as away")
@@ -306,5 +309,32 @@ struct PasswordSheet: View {
         guard !password.isEmpty else { return }
         onSave(password)
         dismiss()
+    }
+}
+
+/// Segmented control sized per label. SwiftUI's segmented Picker forces equal widths.
+private struct FitSegments: NSViewRepresentable {
+    let choices: [Int]
+    @Binding var selection: Int
+    let label: (Int) -> String
+
+    func makeNSView(context: Context) -> NSSegmentedControl {
+        let control = NSSegmentedControl(labels: choices.map(label), trackingMode: .selectOne,
+                                         target: context.coordinator, action: #selector(Coordinator.changed(_:)))
+        control.segmentDistribution = .fit
+        return control
+    }
+
+    func updateNSView(_ control: NSSegmentedControl, context: Context) {
+        context.coordinator.parent = self
+        control.selectedSegment = choices.firstIndex(of: selection) ?? -1
+    }
+
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
+
+    final class Coordinator: NSObject {
+        var parent: FitSegments
+        init(_ parent: FitSegments) { self.parent = parent }
+        @objc func changed(_ sender: NSSegmentedControl) { parent.selection = parent.choices[sender.selectedSegment] }
     }
 }
