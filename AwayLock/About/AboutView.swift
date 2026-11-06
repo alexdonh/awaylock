@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AboutView: View {
     let updater: UpdaterController
+    @State private var showsAcknowledgements = false
     static let repoURL = URL(string: "https://github.com/alexdonh/awaylock")!
     static let releaseNotesURL = repoURL.appending(path: "releases")
     static let sponsorsURL = URL(string: "https://github.com/sponsors/alexdonh")!
@@ -38,6 +39,8 @@ struct AboutView: View {
                     .disabled(!updater.isConfigured)
                 Link("Release Notes", destination: Self.releaseNotesURL)
                     .buttonStyle(.bordered)
+                Button("Acknowledgements") { showsAcknowledgements = true }
+                    .buttonStyle(.bordered)
             }
             .controlSize(.large)
             .buttonBorderShape(.capsule)
@@ -61,6 +64,7 @@ struct AboutView: View {
         .padding(.top, 4)
         .padding(.bottom, 22)
         .frame(width: 460)
+        .sheet(isPresented: $showsAcknowledgements) { AcknowledgementsView() }
     }
 
     private func feature(_ symbol: ImageResource, _ title: LocalizedStringKey, _ detail: LocalizedStringKey) -> some View {
@@ -79,6 +83,27 @@ struct AboutView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 13)
+    }
+}
+
+private struct AcknowledgementsView: View {
+    @Environment(\.dismiss) private var dismiss
+    private let text = Bundle.main.url(forResource: "Acknowledgements", withExtension: "txt")
+        .flatMap { try? String(contentsOf: $0, encoding: .utf8) } ?? ""
+
+    var body: some View {
+        VStack(alignment: .trailing, spacing: 12) {
+            ScrollView {
+                Text(verbatim: text)
+                    .font(.system(size: 11, design: .monospaced))
+                    .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            Button("Done") { dismiss() }
+                .keyboardShortcut(.defaultAction)
+        }
+        .padding(20)
+        .frame(width: 600, height: 480)
     }
 }
 

@@ -76,6 +76,10 @@ AwayLock is free and open source. If it's useful to you, you can support it:
 [![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/alexdonh)
 [![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=white)](https://paypal.me/alexdonh)
 
+## Acknowledgements
+
+- [Sparkle](https://sparkle-project.org) for updates (MIT). Full notices in [Acknowledgements.txt](AwayLock/Resources/Acknowledgements.txt), also shown in the app under About → Acknowledgements.
+
 ## License
 
 [Apache-2.0](LICENSE)
