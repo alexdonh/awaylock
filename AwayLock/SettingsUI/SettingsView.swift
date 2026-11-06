@@ -165,7 +165,7 @@ struct SettingsView: View {
                 Text("Keep Mac awake")
                 Text("Keeps the display on while your device is near")
             }
-            Toggle(isOn: Binding(get: { settings.autoUnlock }, set: setAutoUnlock)) {
+            Toggle(isOn: Binding(get: { settings.autoUnlock }, set: { setAutoUnlock($0) })) {
                 Text("Unlock when I come back")
                 Text("Enters your login password after your device is back in range for 3 seconds. Requires Accessibility access.")
             }
