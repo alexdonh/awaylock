@@ -38,11 +38,11 @@ struct SettingsView: View {
                 settings.autoUnlock = true
             }
         }
-        .alert("This device can’t be tracked reliably",
+        .alert("This device can't be tracked",
                isPresented: Binding(get: { model.untrackableName != nil }, set: { if !$0 { model.untrackableName = nil } })) {
             Button("OK") {}
         } message: {
-            Text("\(model.untrackableName ?? "") stopped advertising or changed its address. AwayLock kept your previous choice.")
+            Text("\(model.untrackableName ?? "") stopped broadcasting or changed its Bluetooth address. Your previous device is still in use.")
         }
     }
 
@@ -87,14 +87,14 @@ struct SettingsView: View {
 
     // LocalizedStringKey, not String: a String handed to Text is shown verbatim, untranslated.
     private var statusText: LocalizedStringKey {
-        guard settings.deviceUUID != nil else { return "Pick the device you carry" }
+        guard settings.deviceUUID != nil else { return "Choose the device you carry" }
         if model.pausedUntil != nil { return "Paused" }
         if model.bluetoothOff { return "Bluetooth is off" }
-        let dbm = model.rssi.map { "\(Int($0.rounded())) dBm" } ?? "— dBm"
+        let dbm = model.rssi.map { "\(Int($0.rounded())) dBm" } ?? String(localized: "no signal")
         return switch model.state {
-        case .near(armed: true): "Near · \(dbm) · Mac stays unlocked"
-        case .near(armed: false): "Not seen near yet · \(dbm)"
-        case .leaving: "Away · \(dbm) · locking in \(model.remaining ?? 0) s"
+        case .near(armed: true): "Near, \(dbm)"
+        case .near(armed: false): "Not near yet, \(dbm)"
+        case .leaving: "Away, locking in \(model.remaining ?? 0) s"
         case .locked: "Locked"
         case .unknown: "Checking…"
         case .idle: "Off"
@@ -119,11 +119,11 @@ struct SettingsView: View {
                 }
                 ThresholdSlider(lockRSSI: $settings.lockRSSI, current: model.rssi)
                 HStack {
-                    Text("Far · −95")
+                    Text("Far (-95)")
                     Spacer()
-                    Text("Unlocks again above \(Int(settings.lockRSSI + ProximitySettings.hysteresis)) dBm")
+                    Text("Near again above \(Int(settings.lockRSSI + ProximitySettings.hysteresis)) dBm")
                     Spacer()
-                    Text("Near · −50")
+                    Text("Near (-50)")
                 }
                 .font(.caption).foregroundStyle(.secondary)
                 HStack {
@@ -131,10 +131,10 @@ struct SettingsView: View {
                     Button {
                         if let now = model.rssi { settings.lockRSSI = Self.lockLevel(from: now) }
                     } label: {
-                        Label("Set from where I am now", systemImage: "location")
+                        Label("Use current signal", systemImage: "location")
                     }
                     .disabled(model.rssi == nil)
-                    .help("Sets the lock level \(Int(Self.calibrationMargin)) dB below your device’s current signal")
+                    .help("Sets the lock level \(Int(Self.calibrationMargin)) dB below your device's current signal")
                 }
             }
             LabeledContent("Lock after away for") {
@@ -146,7 +146,7 @@ struct SettingsView: View {
             }
             Toggle(isOn: $settings.lockOnSignalLost) {
                 Text("Lock when signal is lost")
-                Text("Bluetooth off or no reading counts as away")
+                Text("Treat Bluetooth off or no signal as away")
             }
         }
     }
@@ -165,14 +165,14 @@ struct SettingsView: View {
         Section {
             Toggle(isOn: $settings.keepAwakeWhileNear) {
                 Text("Keep Mac awake")
-                Text("The display won’t idle off while your device is close")
+                Text("Keeps the display on while your device is near")
             }
             Toggle(isOn: Binding(get: { settings.autoUnlock }, set: setAutoUnlock)) {
                 Text("Unlock when I come back")
-                Text("Types your login password after 3 s back in range. Needs Accessibility.")
+                Text("Enters your login password after your device is back in range for 3 seconds. Requires Accessibility access.")
             }
             if settings.autoUnlock, !axTrusted {
-                Button("Grant Accessibility in System Settings…") { UnlockService.requestTrust() }
+                Button("Open Accessibility Settings…") { UnlockService.requestTrust() }
             }
         } header: {
             Text("While nearby")
@@ -181,7 +181,7 @@ struct SettingsView: View {
                     axTrusted = UnlockService.isTrusted
                 }
         } footer: {
-            Label("Off by default — a relayed Bluetooth signal could fake “near”. Locking is always safe.",
+            Label("Off by default. Someone could relay your device's Bluetooth signal to make it seem near.",
                   systemImage: "exclamationmark.triangle")
                 .font(.caption).foregroundStyle(.secondary)
         }
@@ -220,7 +220,7 @@ struct SettingsView: View {
                 Button("Language & Region…") { NSWorkspace.shared.open(Self.languageSettingsURL) }
             } label: {
                 Text("Language")
-                Text("Choose AwayLock’s language under Applications")
+                Text("Choose AwayLock's language under Applications")
             }
         }
         .onAppear { loginStatus = SMAppService.mainApp.status }
@@ -234,7 +234,7 @@ struct SettingsView: View {
                 .disabled(!updater.isConfigured)
             Toggle(isOn: $updater.automaticallyDownloads) {
                 Text("Automatically download and install")
-                Text("Installs only while your device is near, so a restart never locks you out")
+                Text("Only installs while your device is near")
             }
             .disabled(!updater.isConfigured || !updater.automaticallyChecks)
             LabeledContent {
@@ -248,11 +248,11 @@ struct SettingsView: View {
     }
 
     private var lastCheckedText: LocalizedStringKey {
-        guard updater.isConfigured else { return "Updates aren’t set up in this build" }
+        guard updater.isConfigured else { return "Updates aren't set up in this build" }
         guard let date = updater.lastChecked else { return "Never checked" }
         let when = date.formatted(.relative(presentation: .named))
-        if let version = updater.availableVersion { return "Last checked \(when) · \(version) available" }
-        return "Last checked \(when) · You’re up to date"
+        if let version = updater.availableVersion { return "Last checked \(when). Version \(version) is available." }
+        return "Last checked \(when). You're up to date."
     }
 }
 
@@ -303,8 +303,8 @@ struct PasswordSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Unlock when you come back").font(.headline)
-            Text("AwayLock types your login password on the lock screen when your device has been back in range for 3 seconds. It’s stored in your Keychain on this Mac only. A relayed Bluetooth signal could fake “near”, so leave this off on shared or sensitive Macs.")
+            Text("Unlock when I come back").font(.headline)
+            Text("AwayLock enters your login password on the lock screen after your device has been back in range for 3 seconds. The password is stored in the Keychain on this Mac only. Someone could relay your device's Bluetooth signal to make it seem near. Don't turn this on for shared Macs or Macs with sensitive data.")
                 .font(.callout).foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             SecureField("Login password", text: $password)

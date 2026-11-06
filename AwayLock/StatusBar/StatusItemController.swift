@@ -161,17 +161,17 @@ struct MenuHeaderView: View {
         VStack(alignment: .leading, spacing: 10) {
             if settings.deviceUUID == nil {
                 row(Icon(name: "antenna.off", size: 20), title: Text("No device chosen"),
-                    detail: Text("Choose one in Settings…"), color: .secondary)
+                    detail: Text("Choose a device in Settings"), color: .secondary)
             } else if let until = model.pausedUntil {
                 row(Image(systemName: "pause").font(.system(size: 17)), title: Text("Paused"),
-                    detail: Text("Resumes at \(until.formatted(date: .omitted, time: .shortened)) · won’t lock"), color: .secondary)
+                    detail: Text("Won't lock until \(until.formatted(date: .omitted, time: .shortened))"), color: .secondary)
             } else if model.bluetoothOff {
                 row(Icon(name: "antenna.off", size: 20), title: Text(settings.deviceName),
                     detail: Text("Bluetooth is off"), color: .secondary)
             } else if case .leaving = model.state, let left = model.remaining {
                 HStack(spacing: 10) {
                     tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
-                    titles(Text(settings.deviceName), Text("Away · \(dbm)"), .orange)
+                    titles(Text(settings.deviceName), Text("Away, \(dbm)"), .orange)
                     Spacer()
                     Text("\(left) s").font(.system(size: 20, weight: .semibold)).monospacedDigit().foregroundStyle(.orange)
                 }
@@ -195,7 +195,7 @@ struct MenuHeaderView: View {
                 SignalBar(rssi: model.rssi, lockRSSI: settings.lockRSSI)
             }
             if model.lockFailed {
-                Label("Couldn’t lock. Turn on “Require password immediately” in Lock Screen settings.",
+                Label("Couldn't lock. In Lock Screen settings, set Require password to Immediately.",
                       systemImage: "exclamationmark.triangle")
                     .font(.system(size: 11)).foregroundStyle(.orange)
                     .fixedSize(horizontal: false, vertical: true)
@@ -206,15 +206,15 @@ struct MenuHeaderView: View {
         .frame(width: 300, alignment: .leading)
     }
 
-    private var dbm: String { model.rssi.map { "\(Int($0.rounded())) dBm" } ?? "— dBm" }
+    private var dbm: String { model.rssi.map { "\(Int($0.rounded())) dBm" } ?? String(localized: "no signal") }
 
     private var statusLine: LocalizedStringKey {
         switch model.state {
-        case .near(armed: false): "Not seen near yet · \(dbm)"
+        case .near(armed: false): "Not near yet, \(dbm)"
         case .locked(byApp: true): "Locked by AwayLock"
         case .locked(byApp: false): "Locked"
         case .unknown: "Checking…"
-        default: "Near · \(dbm)"
+        default: "Near, \(dbm)"
         }
     }
 

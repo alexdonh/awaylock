@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// "Choose your key" sheet. Scans only while open.
+/// Device picker sheet. Scans only while open.
 struct DevicePickerView: View {
     let settings: AppSettings
     let onChoose: (DiscoveredDevice) -> Void
@@ -27,10 +27,10 @@ struct DevicePickerView: View {
                     .frame(width: 64, height: 64)
                     .background(Color.accentSoft, in: .rect(cornerRadius: 20))
                     .accessibilityHidden(true)
-                Text("Choose your key")
+                Text("Choose a device")
                     .font(.system(size: 22, weight: .bold))
                     .padding(.top, 6)
-                Text("Keep this device with you. When it walks away, your Mac locks.")
+                Text("Pick a device you keep with you. Your Mac locks when it goes out of range.")
                     .font(.system(size: 13))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -55,7 +55,7 @@ struct DevicePickerView: View {
                 ScrollView {
                     Card(dividerInset: 68) {
                         if devices.isEmpty {
-                            Text("Listening… Devices show up after they’ve been heard for 10 seconds.")
+                            Text("Looking for devices. A device shows up after it has been detected for 10 seconds.")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.secondary)
                                 .frame(maxWidth: .infinity, minHeight: Self.rowHeight)
@@ -157,13 +157,13 @@ private struct DeviceRow: View {
     static func tag(for d: DiscoveredDevice) -> String {
         let n = d.name.lowercased()
         if d.isApple {
-            if n.contains("watch") { return String(localized: "Same iCloud · Best key — always on your wrist") }
-            if n.contains("iphone") { return String(localized: "Same iCloud · Weaker in a pocket or bag") }
+            if n.contains("watch") { return String(localized: "Same iCloud account, recommended") }
+            if n.contains("iphone") { return String(localized: "Same iCloud account, weaker in a pocket or bag") }
             if n.contains("airpods") { return String(localized: "Locks whenever the case is closed") }
-            return String(localized: "Apple, same iCloud")
+            return String(localized: "Same iCloud account")
         }
-        return d.seconds >= 60 ? String(localized: "Stable address · Passive mode")
-                               : String(localized: "Unverified · Passive mode")
+        return d.seconds >= 60 ? String(localized: "Stable address, passive mode")
+                               : String(localized: "Not verified, passive mode")
     }
 }
 

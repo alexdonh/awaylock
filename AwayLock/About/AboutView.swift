@@ -15,7 +15,7 @@ struct AboutView: View {
                 .font(.system(size: 12)).monospacedDigit()
                 .foregroundStyle(.secondary)
                 .padding(.top, 2)
-            Text("Your Mac locks itself when you walk away, and stays unlocked while you’re close.")
+            Text("Locks your Mac when you walk away and keeps it unlocked while you're nearby.")
                 .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 340)
@@ -23,10 +23,10 @@ struct AboutView: View {
                 .padding(.top, 12)
 
             Card(dividerInset: 62) {
-                feature("device.watch", "One key", "Your Apple Watch, iPhone or a Bluetooth band.")
-                feature("lock", "Walk away, it locks", "After a few seconds out of range, or the moment the signal is lost.")
-                feature("display", "Stay close, stay unlocked", "No idle lock or sleep while your key is nearby.")
-                feature("shield.check", "Private by design", "Everything stays on this Mac. The only network call is a daily update check.")
+                feature("device.watch", "Uses a device you carry", "Apple Watch, iPhone, or a Bluetooth band.")
+                feature("lock", "Locks when you leave", "After a few seconds out of range, or as soon as the signal is lost.")
+                feature("display", "Stays awake while you're near", "No idle lock or display sleep while your device is in range.")
+                feature("shield.check", "Private", "Your data stays on this Mac. The only network request is a daily update check.")
             }
             .padding(.top, 22)
 
@@ -41,7 +41,7 @@ struct AboutView: View {
             .buttonBorderShape(.capsule)
             .padding(.top, 20)
 
-            Link("© 2026 · Open source on GitHub", destination: Self.repoURL)
+            Link("© 2026 Alex Do. Open source on GitHub.", destination: Self.repoURL)
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
                 .padding(.top, 18)
