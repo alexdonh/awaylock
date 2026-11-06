@@ -23,10 +23,10 @@ struct AboutView: View {
                 .padding(.top, 12)
 
             Card(dividerInset: 62) {
-                feature("device.watch", "Uses a device you carry", "Apple Watch, iPhone, or a Bluetooth band.")
-                feature("lock", "Locks when you leave", "After a few seconds out of range, or as soon as the signal is lost.")
-                feature("display", "Stays awake while you're near", "No idle lock or display sleep while your device is in range.")
-                feature("shield.check", "Private", "Your data stays on this Mac. The only network request is a daily update check.")
+                feature(.deviceWatch, "Uses a device you carry", "Apple Watch, iPhone, or a Bluetooth band.")
+                feature(.lock, "Locks when you leave", "After a few seconds out of range, or as soon as the signal is lost.")
+                feature(.display, "Stays awake while you're near", "No idle lock or display sleep while your device is in range.")
+                feature(.shieldCheck, "Private", "Your data stays on this Mac. The only network request is a daily update check.")
             }
             .padding(.top, 22)
 
@@ -52,7 +52,7 @@ struct AboutView: View {
         .frame(width: 460)
     }
 
-    private func feature(_ symbol: String, _ title: LocalizedStringKey, _ detail: LocalizedStringKey) -> some View {
+    private func feature(_ symbol: ImageResource, _ title: LocalizedStringKey, _ detail: LocalizedStringKey) -> some View {
         HStack(spacing: 14) {
             Icon(name: symbol, size: 18)
                 .foregroundStyle(.tint)
@@ -71,21 +71,11 @@ struct AboutView: View {
     }
 }
 
-/// Stand-in for the app icon (the asset catalog's AppIcon is still empty).
-// ponytail: drawn in SwiftUI; swap for NSApp.applicationIconImage once a real icon ships.
 private struct AppIconView: View {
     var body: some View {
-        ZStack {
-            ForEach([(150.0, 0.12), (110, 0.18), (72, 0.26)], id: \.0) { size, alpha in
-                Circle().stroke(.white.opacity(alpha), lineWidth: 1.5).frame(width: size, height: size)
-            }
-            Icon(name: "lock.open", size: 40)
-                .foregroundStyle(.white)
-        }
-        .frame(width: 96, height: 96)
-        .background(Color(red: 0x12 / 255, green: 0x3F / 255, blue: 0x73 / 255))
-        .clipShape(.rect(cornerRadius: 26))
-        .shadow(color: Color(red: 10 / 255, green: 30 / 255, blue: 60 / 255).opacity(0.35), radius: 12, y: 10)
-        .accessibilityLabel("AwayLock app icon")
+        Image(nsImage: NSApp.applicationIconImage)
+            .resizable()
+            .frame(width: 96, height: 96)
+            .accessibilityLabel("AwayLock app icon")
     }
 }

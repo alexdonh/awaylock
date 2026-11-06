@@ -51,7 +51,7 @@ struct SettingsView: View {
     private var deviceCard: some View {
         Section {
             HStack(spacing: 16) {
-                Icon(name: settings.deviceUUID == nil ? "antenna.off" : deviceIcon(for: settings.deviceName), size: 28)
+                Icon(name: settings.deviceUUID == nil ? .antennaOff : deviceIcon(for: settings.deviceName), size: 28)
                     .foregroundStyle(.tint)
                     .frame(width: 56, height: 56)
                     .background(.tint.opacity(0.12), in: .rect(cornerRadius: 16))

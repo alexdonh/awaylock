@@ -56,16 +56,6 @@ final class AppSettings {
     }
 }
 
-/// Design glyph (asset name in Icons/) for a device, from its advertised name.
-nonisolated func deviceIcon(for name: String) -> String {
-    let n = name.lowercased()
-    if n.contains("watch") { return "device.watch" }
-    if n.contains("iphone") || n.contains("ipad") { return "device.phone" }
-    if n.contains("airpods") || n.contains("buds") { return "device.earbuds" }
-    if n.contains("band") { return "device.band" }
-    return "antenna"
-}
-
 /// Signal as 0…1 across the slider range, for bars and needles.
 nonisolated func signalFraction(_ rssi: Double) -> Double {
     let r = AppSettings.rssiRange

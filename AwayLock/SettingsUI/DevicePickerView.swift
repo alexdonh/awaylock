@@ -22,7 +22,7 @@ struct DevicePickerView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 8) {
-                Icon(name: "antenna", size: 32)
+                Icon(name: .antenna, size: 32)
                     .foregroundStyle(.tint)
                     .frame(width: 64, height: 64)
                     .background(Color.accentSoft, in: .rect(cornerRadius: 20))

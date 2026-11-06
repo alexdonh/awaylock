@@ -80,11 +80,11 @@ final class StatusItemController: NSObject, NSMenuDelegate {
 
     private func apply(_ icon: IconState) {
         guard let button = item.button else { return }
-        // Design glyphs from Icons/ (template assets), drawn at the design's 17 pt.
-        let image = NSImage(named: icon.symbol)
-        image?.size = NSSize(width: 17, height: 17)
-        image?.isTemplate = true
-        image?.accessibilityDescription = icon.label
+        // Status glyphs from the icon kit (template assets), 18 pt.
+        let image = NSImage(resource: icon.symbol)
+        image.size = NSSize(width: 18, height: 18)
+        image.isTemplate = true
+        image.accessibilityDescription = icon.label
         button.image = image
         button.setAccessibilityLabel(icon.label)
         badge.isHidden = !icon.badge
@@ -122,14 +122,14 @@ final class StatusItemController: NSObject, NSMenuDelegate {
 }
 
 private nonisolated struct IconState: Equatable, Sendable {
-    var symbol: String
+    var symbol: ImageResource
     var label: String
     var badge: Bool
 
     @MainActor
     init(model: ProximityModel, settings: AppSettings, updateAvailable: Bool) {
         badge = updateAvailable
-        let off = "antenna.off"
+        let off = ImageResource.statusOff
         if settings.deviceUUID == nil {
             (symbol, label) = (off, String(localized: "AwayLock: no device chosen"))
         } else if model.pausedUntil != nil {
@@ -139,13 +139,13 @@ private nonisolated struct IconState: Equatable, Sendable {
         } else {
             switch model.state {
             case .leaving:
-                (symbol, label) = ("lock.leaving", String(localized: "AwayLock: device leaving, locking soon"))
+                (symbol, label) = (.statusLeaving, String(localized: "AwayLock: device leaving, locking soon"))
             case .locked(byApp: true):
-                (symbol, label) = ("lock", String(localized: "AwayLock: locked"))
+                (symbol, label) = (.statusLocked, String(localized: "AwayLock: locked"))
             case .idle:
                 (symbol, label) = (off, String(localized: "AwayLock: off"))
             default:
-                (symbol, label) = ("lock.open", String(localized: "AwayLock: device near"))
+                (symbol, label) = (.statusNear, String(localized: "AwayLock: device near"))
             }
         }
     }
@@ -160,13 +160,13 @@ struct MenuHeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             if settings.deviceUUID == nil {
-                row(Icon(name: "antenna.off", size: 20), title: Text("No device chosen"),
+                row(Icon(name: .antennaOff, size: 20), title: Text("No device chosen"),
                     detail: Text("Choose a device in Settings"), color: .secondary)
             } else if let until = model.pausedUntil {
                 row(Image(systemName: "pause").font(.system(size: 17)), title: Text("Paused"),
                     detail: Text("Won't lock until \(until.formatted(date: .omitted, time: .shortened))"), color: .secondary)
             } else if model.bluetoothOff {
-                row(Icon(name: "antenna.off", size: 20), title: Text(settings.deviceName),
+                row(Icon(name: .antennaOff, size: 20), title: Text(settings.deviceName),
                     detail: Text("Bluetooth is off"), color: .secondary)
             } else if case .leaving = model.state, let left = model.remaining {
                 HStack(spacing: 10) {

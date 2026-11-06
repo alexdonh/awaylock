@@ -29,10 +29,21 @@ struct Card<Content: View>: View {
 
 /// Glyph from the design (template asset in Icons/), sized like a symbol.
 struct Icon: View {
-    let name: String
+    let name: ImageResource
     var size: CGFloat
 
     var body: some View {
         Image(name).resizable().scaledToFit().frame(width: size, height: size)
     }
 }
+
+/// Design glyph (Icons/ asset) for a device, from its advertised name.
+func deviceIcon(for name: String) -> ImageResource {
+    let n = name.lowercased()
+    if n.contains("watch") { return .deviceWatch }
+    if n.contains("iphone") || n.contains("ipad") { return .devicePhone }
+    if n.contains("airpods") || n.contains("buds") { return .deviceEarbuds }
+    if n.contains("band") { return .deviceBand }
+    return .antenna
+}
+
