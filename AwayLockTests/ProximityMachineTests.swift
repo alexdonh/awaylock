@@ -1,3 +1,4 @@
+import CoreBluetooth
 import Testing
 @testable import AwayLock
 
@@ -290,5 +291,14 @@ struct LockFailureTests {
         #expect(m.state == .leaving(since: .seconds(t + 2)))
         #expect(!m.handle(.tick, at: .seconds(t + 2 + 9), settings: s).contains(.lock))
         #expect(m.handle(.tick, at: .seconds(t + 2 + 10), settings: s).contains(.lock))
+    }
+}
+
+struct DisconnectGraceTests {
+    /// 2026-11-06: four false locks, each 3.1–3.4 s after iOS hung up (HCI 0x13) with the phone on the desk.
+    @Test func hangUpWaitsLongRangeLossDoesNot() {
+        #expect(ConnectedRSSIEngine.grace(after: CBError(.peripheralDisconnected)) == ConnectedRSSIEngine.hangUpGrace)
+        #expect(ConnectedRSSIEngine.grace(after: CBError(.connectionTimeout)) == ConnectedRSSIEngine.reconnectGrace)
+        #expect(ConnectedRSSIEngine.grace(after: nil) == ConnectedRSSIEngine.reconnectGrace)
     }
 }
