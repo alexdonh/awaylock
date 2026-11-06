@@ -22,6 +22,9 @@ struct SettingsView: View {
             updatesSection
         }
         .formStyle(.grouped)
+        // An always-visible scroller sits over the form's right margin; widen that margin by its width to stay centered.
+        .contentMargins(.trailing, NSScroller.preferredScrollerStyle == .legacy
+                        ? NSScroller.scrollerWidth(for: .regular, scrollerStyle: .legacy) : 0, for: .scrollContent)
         .frame(width: 680)
         .frame(minHeight: 640, idealHeight: 900)
         .sheet(isPresented: $showPicker) {
