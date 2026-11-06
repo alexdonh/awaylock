@@ -12,3 +12,6 @@ Config/Local.xcconfig
 # private notes and tool state, not part of the public repo
 /docs/
 .serena/
+
+# Sparkle private key (generate_keys -x); never commit
+*.key
