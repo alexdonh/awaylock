@@ -21,6 +21,12 @@
             "value" : "%@ a cessé d'émettre ou a changé d'adresse Bluetooth. Votre appareil précédent reste utilisé."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ha smesso di trasmettere o ha cambiato indirizzo Bluetooth. Il dispositivo precedente resta in uso."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33,6 +39,18 @@
             "value" : "%@이(가) 신호 송출을 멈췄거나 Bluetooth 주소가 바뀌었습니다. 이전 기기를 계속 사용합니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ parou de transmitir ou mudou o endereço Bluetooth. Seu dispositivo anterior continua em uso."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ перестало передавать сигнал или сменило Bluetooth-адрес. Используется прежнее устройство."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43,6 +61,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 已停止广播或更改了蓝牙地址。仍在使用之前的设备。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 已停止廣播或變更了藍牙位址。仍在使用先前的裝置。"
           }
         }
       }
@@ -124,6 +148,24 @@
             }
           }
         },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dispositivo nascosto perché il suo indirizzo Bluetooth cambia continuamente."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dispositivi nascosti perché il loro indirizzo Bluetooth cambia continuamente."
+                }
+              }
+            }
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -136,6 +178,54 @@
             "value" : "Bluetooth 주소가 계속 바뀌어 기기 %lld개를 숨겼습니다."
           }
         },
+        "pt-BR" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dispositivo oculto porque o endereço Bluetooth muda constantemente."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dispositivos ocultos porque o endereço Bluetooth muda constantemente."
+                }
+              }
+            }
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Скрыто %lld устройство: его Bluetooth-адрес постоянно меняется."
+                }
+              },
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Скрыто %lld устройства: их Bluetooth-адрес постоянно меняется."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Скрыто %lld устройств: их Bluetooth-адрес постоянно меняется."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Скрыто %lld устройства: их Bluetooth-адрес постоянно меняется."
+                }
+              }
+            }
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -146,6 +236,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已隐藏 %lld 个蓝牙地址不断变化的设备。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已隱藏 %lld 個藍牙位址不斷變化的裝置。"
           }
         }
       }
@@ -170,6 +266,12 @@
             "value" : "%lld s"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld s"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -182,6 +284,18 @@
             "value" : "%lld초"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld s"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld с"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -189,6 +303,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 秒"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld 秒"
@@ -216,6 +336,12 @@
             "value" : "À propos"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -228,6 +354,18 @@
             "value" : "정보"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О программе"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -238,6 +376,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关于"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於"
           }
         }
       }
@@ -262,6 +406,12 @@
             "value" : "À propos de AwayLock"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni su AwayLock"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -274,6 +424,18 @@
             "value" : "AwayLock에 관하여"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre o AwayLock"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Об AwayLock"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -284,6 +446,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关于 AwayLock"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於 AwayLock"
           }
         }
       }
@@ -308,6 +476,12 @@
             "value" : "Après quelques secondes hors de portée, ou dès que le signal est perdu."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dopo alcuni secondi fuori portata, o appena il segnale si perde."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -320,6 +494,18 @@
             "value" : "범위를 벗어나고 몇 초 뒤, 또는 신호가 끊기는 즉시."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Após alguns segundos fora do alcance, ou assim que o sinal é perdido."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Через несколько секунд вне зоны действия или сразу при потере сигнала."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -330,6 +516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "离开范围几秒后，或在信号丢失的瞬间。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "離開範圍幾秒後，或在訊號中斷時立即鎖定。"
           }
         }
       }
@@ -354,6 +546,12 @@
             "value" : "Apple Watch, iPhone ou un bracelet Bluetooth."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch, iPhone o un braccialetto Bluetooth."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -366,6 +564,18 @@
             "value" : "Apple Watch, iPhone 또는 Bluetooth 밴드."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch, iPhone ou uma pulseira Bluetooth."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch, iPhone или Bluetooth-браслет."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -376,6 +586,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apple Watch、iPhone 或蓝牙手环。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch、iPhone 或藍牙手環。"
           }
         }
       }
@@ -400,6 +616,12 @@
             "value" : "Automatique"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatico"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -412,6 +634,18 @@
             "value" : "자동"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automático"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авто"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -422,6 +656,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自动"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動"
           }
         }
       }
@@ -446,6 +686,12 @@
             "value" : "Rechercher automatiquement les mises à jour"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla automaticamente gli aggiornamenti"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -458,6 +704,18 @@
             "value" : "자동으로 업데이트 확인"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar atualizações automaticamente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматически проверять обновления"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -468,6 +726,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自动检查更新"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動檢查更新"
           }
         }
       }
@@ -492,6 +756,12 @@
             "value" : "Télécharger et installer automatiquement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarica e installa automaticamente"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -504,6 +774,18 @@
             "value" : "자동으로 다운로드 및 설치"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baixar e instalar automaticamente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматически загружать и устанавливать"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -514,6 +796,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自动下载并安装"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動下載並安裝"
           }
         }
       }
@@ -538,6 +826,12 @@
             "value" : "Éloigné, %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lontano, %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -550,6 +844,18 @@
             "value" : "멀어짐, %@"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longe, %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далеко, %@"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -560,6 +866,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已离开，%@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已離開，%@"
           }
         }
       }
@@ -584,6 +896,12 @@
             "value" : "Éloigné, verrouillage dans %lld s"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lontano, blocco tra %lld s"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -596,6 +914,18 @@
             "value" : "멀어짐, %lld초 후 잠금"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longe, bloqueando em %lld s"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далеко, блокировка через %lld с"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -606,6 +936,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已离开，%lld 秒后锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已離開，%lld 秒後鎖定"
           }
         }
       }
@@ -636,6 +972,12 @@
             "value" : "Icône de l'app AwayLock"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icona dell'app AwayLock"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -648,6 +990,18 @@
             "value" : "AwayLock 앱 아이콘"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícone do app AwayLock"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Значок приложения AwayLock"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -658,6 +1012,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock 应用图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock App 圖像"
           }
         }
       }
@@ -682,6 +1042,12 @@
             "value" : "AwayLock saisit votre mot de passe de session sur l'écran verrouillé quand votre appareil est revenu à portée depuis 3 secondes. Le mot de passe est stocké uniquement dans le trousseau de ce Mac. Quelqu'un pourrait relayer le signal Bluetooth de votre appareil pour le faire paraître proche. N'activez pas cette option sur un Mac partagé ou contenant des données sensibles."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock inserisce la password di login nella schermata di blocco quando il dispositivo torna in portata da 3 secondi. La password è salvata solo nel portachiavi di questo Mac. Qualcuno potrebbe ritrasmettere il segnale Bluetooth del dispositivo per farlo sembrare vicino. Non attivare questa opzione su Mac condivisi o con dati sensibili."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -694,6 +1060,18 @@
             "value" : "기기가 범위 안으로 돌아오고 3초가 지나면 AwayLock이 잠금 화면에 로그인 암호를 입력합니다. 암호는 이 Mac의 키체인에만 저장됩니다. 누군가 기기의 Bluetooth 신호를 중계해 가까이 있는 것처럼 보이게 할 수 있습니다. 공용 Mac이나 민감한 데이터가 있는 Mac에서는 켜지 마세요."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AwayLock digita sua senha de login na tela de bloqueio depois que seu dispositivo volta ao alcance por 3 segundos. A senha fica guardada apenas nas Chaves deste Mac. Alguém poderia retransmitir o sinal Bluetooth do seu dispositivo para que ele pareça próximo. Não ative isto em Macs compartilhados ou com dados sensíveis."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock вводит пароль входа на экране блокировки, когда устройство находится в зоне действия 3 секунды. Пароль хранится только в связке ключей этого Mac. Злоумышленник может ретранслировать Bluetooth-сигнал вашего устройства, чтобы оно казалось рядом. Не включайте эту функцию на общих Mac или Mac с конфиденциальными данными."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -704,6 +1082,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "当你的设备回到范围内 3 秒后，AwayLock 会在锁定屏幕上输入你的登录密码。密码仅存储在这台 Mac 的钥匙串中。他人可能中继你设备的蓝牙信号，使其看起来在附近。请勿在共用或存有敏感数据的 Mac 上开启此功能。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當你的裝置回到範圍內 3 秒後，AwayLock 會在鎖定畫面輸入你的登入密碼。密碼只儲存在這台 Mac 的鑰匙圈中。他人可能轉送你裝置的藍牙訊號，讓它看起來就在附近。請勿在共用或存有敏感資料的 Mac 上開啟此功能。"
           }
         }
       }
@@ -728,6 +1112,12 @@
             "value" : "AwayLock : Bluetooth désactivé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: Bluetooth disattivato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -740,6 +1130,18 @@
             "value" : "AwayLock: Bluetooth가 꺼져 있음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: Bluetooth desligado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: Bluetooth выключен"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -750,6 +1152,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：蓝牙已关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：藍牙已關閉"
           }
         }
       }
@@ -774,6 +1182,12 @@
             "value" : "AwayLock : l'appareil s'éloigne, verrouillage imminent"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: dispositivo in allontanamento, blocco a breve"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -786,6 +1200,18 @@
             "value" : "AwayLock: 기기가 멀어지는 중, 곧 잠김"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: dispositivo se afastando, bloqueio em breve"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: устройство удаляется, скоро блокировка"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -796,6 +1222,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：设备正在离开，即将锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：裝置正在離開，即將鎖定"
           }
         }
       }
@@ -820,6 +1252,12 @@
             "value" : "AwayLock : appareil à proximité"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: dispositivo vicino"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -832,6 +1270,18 @@
             "value" : "AwayLock: 기기가 가까이 있음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: dispositivo próximo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: устройство рядом"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -842,6 +1292,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：设备在附近"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：裝置在附近"
           }
         }
       }
@@ -866,6 +1322,12 @@
             "value" : "AwayLock : verrouillé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: bloccato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -878,6 +1340,18 @@
             "value" : "AwayLock: 잠김"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: bloqueado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: заблокировано"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -888,6 +1362,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：已锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：已鎖定"
           }
         }
       }
@@ -912,6 +1392,12 @@
             "value" : "AwayLock : aucun appareil choisi"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: nessun dispositivo scelto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -924,6 +1410,18 @@
             "value" : "AwayLock: 선택한 기기 없음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: nenhum dispositivo escolhido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: устройство не выбрано"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -934,6 +1432,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：未选择设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：未選擇裝置"
           }
         }
       }
@@ -958,6 +1462,12 @@
             "value" : "AwayLock : désactivé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: disattivato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -970,6 +1480,18 @@
             "value" : "AwayLock: 꺼짐"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: desativado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: выключено"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -980,6 +1502,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：已关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：已關閉"
           }
         }
       }
@@ -1004,6 +1532,12 @@
             "value" : "AwayLock : en pause"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: in pausa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1016,6 +1550,18 @@
             "value" : "AwayLock: 일시 정지됨"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: pausado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock: на паузе"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1026,6 +1572,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AwayLock：已暂停"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AwayLock：已暫停"
           }
         }
       }
@@ -1050,6 +1602,12 @@
             "value" : "Bluetooth désactivé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il Bluetooth è disattivato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1062,6 +1620,18 @@
             "value" : "Bluetooth가 꺼져 있음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Bluetooth está desligado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth выключен"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1072,6 +1642,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "蓝牙已关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "藍牙已關閉"
           }
         }
       }
@@ -1096,6 +1672,12 @@
             "value" : "Annuler"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1108,6 +1690,18 @@
             "value" : "취소"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1115,6 +1709,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "取消"
@@ -1142,6 +1742,12 @@
             "value" : "modifier l'appareil qui verrouille votre Mac"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cambiare il dispositivo che blocca il Mac"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1154,6 +1760,18 @@
             "value" : "Mac을 잠그는 기기 변경"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alterar o dispositivo que bloqueia seu Mac"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "изменить устройство, которое блокирует Mac"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1164,6 +1782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更改锁定你的 Mac 的设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改鎖定你的 Mac 的裝置"
           }
         }
       }
@@ -1188,6 +1812,12 @@
             "value" : "Modifier…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1200,6 +1830,18 @@
             "value" : "변경…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterar…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1207,6 +1849,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改…"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "更改…"
@@ -1234,6 +1882,12 @@
             "value" : "Rechercher des mises à jour…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla aggiornamenti…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1246,6 +1900,18 @@
             "value" : "업데이트 확인…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificar Atualizações…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверить обновления…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1256,6 +1922,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "检查更新…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "檢查更新項目…"
           }
         }
       }
@@ -1280,6 +1952,12 @@
             "value" : "Vérification…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifica…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1292,6 +1970,18 @@
             "value" : "확인 중…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verificando…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверка…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1302,6 +1992,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在检查…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在檢查…"
           }
         }
       }
@@ -1326,6 +2022,12 @@
             "value" : "Choisissez un appareil"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli un dispositivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1338,6 +2040,18 @@
             "value" : "기기 선택"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um dispositivo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите устройство"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1348,6 +2062,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇裝置"
           }
         }
       }
@@ -1372,6 +2092,12 @@
             "value" : "Choisissez un appareil dans Réglages"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli un dispositivo nelle Impostazioni"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1384,6 +2110,18 @@
             "value" : "설정에서 기기를 선택하세요"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um dispositivo nos Ajustes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите устройство в настройках"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1394,6 +2132,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在设置中选择设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在設定中選擇裝置"
           }
         }
       }
@@ -1418,6 +2162,12 @@
             "value" : "Choisissez la langue de AwayLock sous Applications"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli la lingua di AwayLock in Applicazioni"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1430,6 +2180,18 @@
             "value" : "응용 프로그램에서 AwayLock의 언어를 선택하세요"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha o idioma do AwayLock em Aplicativos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите язык AwayLock в разделе «Приложения»"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1440,6 +2202,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在“应用程序”下选择 AwayLock 的语言"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在「應用程式」下選擇 AwayLock 的語言"
           }
         }
       }
@@ -1464,6 +2232,12 @@
             "value" : "Choisissez l'appareil que vous portez"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli il dispositivo che porti con te"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1476,6 +2250,18 @@
             "value" : "가지고 다니는 기기를 선택하세요"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha o dispositivo que você leva consigo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите устройство, которое всегда с вами"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1486,6 +2272,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择你随身携带的设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇你隨身攜帶的裝置"
           }
         }
       }
@@ -1510,6 +2302,12 @@
             "value" : "Choisir…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1522,6 +2320,18 @@
             "value" : "선택…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolher…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1532,6 +2342,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇…"
           }
         }
       }
@@ -1556,6 +2372,12 @@
             "value" : "Connecté"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connesso"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1568,6 +2390,18 @@
             "value" : "연결"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conectado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключение"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1578,6 +2412,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "连接"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連線"
           }
         }
       }
@@ -1602,6 +2442,12 @@
             "value" : "Verrouillage impossible. Dans les réglages Écran verrouillé, réglez Exiger le mot de passe sur Immédiatement."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile bloccare. Nelle impostazioni Schermata di blocco, imposta Richiedi password su Immediatamente."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1614,6 +2460,18 @@
             "value" : "잠글 수 없습니다. 잠금 화면 설정에서 암호 요구를 즉시로 설정하세요."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi possível bloquear. Nos ajustes de Tela Bloqueada, defina Exigir senha como Imediatamente."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось заблокировать. В настройках экрана блокировки установите для параметра «Запрашивать пароль» значение «Сразу»."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1624,6 +2482,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法锁定。请在“锁定屏幕”设置中将“需要密码”设为“立即”。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法鎖定。請在「鎖定畫面」設定中將「要求密碼」設為「立即」。"
           }
         }
       }
@@ -1648,6 +2512,12 @@
             "value" : "OK"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1660,6 +2530,18 @@
             "value" : "완료"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1667,6 +2549,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "完成"
@@ -1694,6 +2582,12 @@
             "value" : "Saisit votre mot de passe quand votre appareil est de retour à portée depuis 3 secondes. Nécessite l'accès Accessibilité."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisce la password di login quando il dispositivo torna in portata da 3 secondi. Richiede l'accesso Accessibilità."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1706,6 +2600,18 @@
             "value" : "기기가 범위 안으로 돌아오고 3초 후 로그인 암호를 입력합니다. 손쉬운 사용 권한이 필요합니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digita sua senha de login depois que o dispositivo volta ao alcance por 3 segundos. Requer acesso de Acessibilidade."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вводит пароль входа, когда устройство 3 секунды снова в зоне действия. Требуется доступ к универсальному доступу."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1716,6 +2622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设备回到范围内 3 秒后输入你的登录密码。需要辅助功能权限。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "裝置回到範圍內 3 秒後輸入你的登入密碼。需要輔助使用權限。"
           }
         }
       }
@@ -1740,6 +2652,12 @@
             "value" : "Loin (-95)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lontano (-95)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1752,6 +2670,18 @@
             "value" : "멀리 (-95)"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longe (-95)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далеко (-95)"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1762,6 +2692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "远 (-95)"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "遠 (-95)"
           }
         }
       }
@@ -1786,6 +2722,12 @@
             "value" : "Général"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generali"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1798,6 +2740,18 @@
             "value" : "일반"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geral"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Основные"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1808,6 +2762,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
           }
         }
       }
@@ -1832,6 +2792,12 @@
             "value" : "Immédiatement"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subito"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1844,6 +2810,18 @@
             "value" : "즉시"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imediatamente"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сразу"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1851,6 +2829,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "立即"
@@ -1878,6 +2862,12 @@
             "value" : "Actif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In uso"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1890,6 +2880,18 @@
             "value" : "사용 중"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em uso"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используется"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1897,6 +2899,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用中"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用中"
@@ -1924,6 +2932,12 @@
             "value" : "Garder le Mac éveillé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni il Mac attivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1936,6 +2950,18 @@
             "value" : "Mac 깨어 있게 유지"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manter o Mac ativo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не давать Mac засыпать"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1946,6 +2972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保持 Mac 唤醒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "讓 Mac 保持喚醒"
           }
         }
       }
@@ -1970,6 +3002,12 @@
             "value" : "Garde l'écran allumé tant que votre appareil est proche"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantiene lo schermo acceso mentre il dispositivo è vicino"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1982,6 +3020,18 @@
             "value" : "기기가 가까이 있는 동안 디스플레이를 켜 둡니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantém a tela ligada enquanto o dispositivo está próximo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экран не гаснет, пока устройство рядом"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1992,6 +3042,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设备靠近时保持显示器开启"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "裝置在附近時讓顯示器保持開啟"
           }
         }
       }
@@ -2016,6 +3072,12 @@
             "value" : "Langue"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2028,6 +3090,18 @@
             "value" : "언어"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Язык"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2038,6 +3112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "语言"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語言"
           }
         }
       }
@@ -2062,6 +3142,12 @@
             "value" : "Langue et région…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua e area geografica…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2074,6 +3160,18 @@
             "value" : "언어 및 지역…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idioma e Região…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Язык и регион…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2084,6 +3182,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "语言与地区…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語言與地區…"
           }
         }
       }
@@ -2108,6 +3212,12 @@
             "value" : "Dernière vérification : %@. La version %@ est disponible."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ultimo controllo: %@. È disponibile la versione %@."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2120,6 +3230,18 @@
             "value" : "마지막 확인: %@. 버전 %@ 사용 가능."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última verificação: %@. A versão %@ está disponível."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Последняя проверка: %@. Доступна версия %@."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2130,6 +3252,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "上次检查：%@。版本 %@ 可用。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上次檢查：%@。版本 %@ 可用。"
           }
         }
       }
@@ -2154,6 +3282,12 @@
             "value" : "Dernière vérification : %@. À jour."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ultimo controllo: %@. È tutto aggiornato."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2166,6 +3300,18 @@
             "value" : "마지막 확인: %@. 최신 상태입니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última verificação: %@. Você está atualizado."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Последняя проверка: %@. Установлена последняя версия."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2176,6 +3322,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "上次检查：%@。已是最新版本。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上次檢查：%@。已是最新版本。"
           }
         }
       }
@@ -2200,6 +3352,12 @@
             "value" : "Verrouillage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocco"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2212,6 +3370,18 @@
             "value" : "잠금"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueio"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокировка"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2222,6 +3392,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鎖定"
           }
         }
       }
@@ -2246,6 +3422,12 @@
             "value" : "Verrouiller après un éloignement de"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca dopo un'assenza di"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2258,6 +3440,18 @@
             "value" : "멀어진 후 잠금까지"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear após ausência de"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокировать после отсутствия"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2268,6 +3462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "离开多久后锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "離開多久後鎖定"
           }
         }
       }
@@ -2292,6 +3492,12 @@
             "value" : "Verrouiller maintenant"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca ora"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2304,6 +3510,18 @@
             "value" : "지금 잠그기"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear Agora"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заблокировать сейчас"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2314,6 +3532,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "立即锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即鎖定"
           }
         }
       }
@@ -2338,6 +3562,12 @@
             "value" : "Seuil de verrouillage"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soglia di blocco"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2350,6 +3580,18 @@
             "value" : "잠금 임계값"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite de bloqueio"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Порог блокировки"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2360,6 +3602,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "锁定阈值"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鎖定門檻"
           }
         }
       }
@@ -2384,6 +3632,12 @@
             "value" : "Verrouiller au-delà de"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca oltre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2396,6 +3650,18 @@
             "value" : "이보다 멀어지면 잠금"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear quando mais longe que"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокировать дальше, чем"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2406,6 +3672,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "超过此距离时锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "超過此距離時鎖定"
           }
         }
       }
@@ -2430,6 +3702,12 @@
             "value" : "Verrouiller si le signal est perdu"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca quando il segnale si perde"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2442,6 +3720,18 @@
             "value" : "신호가 끊기면 잠금"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear quando o sinal for perdido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокировать при потере сигнала"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2452,6 +3742,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "信号丢失时锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訊號中斷時鎖定"
           }
         }
       }
@@ -2476,6 +3772,12 @@
             "value" : "Verrouillé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloccato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2488,6 +3790,18 @@
             "value" : "잠김"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заблокировано"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2498,6 +3812,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已鎖定"
           }
         }
       }
@@ -2522,6 +3842,12 @@
             "value" : "Verrouillé par AwayLock"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloccato da AwayLock"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2534,6 +3860,18 @@
             "value" : "AwayLock이 잠금"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueado pelo AwayLock"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заблокировано AwayLock"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2544,6 +3882,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已由 AwayLock 锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已由 AwayLock 鎖定"
           }
         }
       }
@@ -2622,6 +3966,24 @@
             }
           }
         },
+        "it" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Blocco tra %lld secondo. Torna indietro per annullare."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Blocco tra %lld secondi. Torna indietro per annullare."
+                }
+              }
+            }
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2634,6 +3996,54 @@
             "value" : "%lld초 후 잠깁니다. 돌아오면 취소됩니다."
           }
         },
+        "pt-BR" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bloqueando em %lld segundo. Volte para cancelar."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Bloqueando em %lld segundos. Volte para cancelar."
+                }
+              }
+            }
+          }
+        },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Блокировка через %lld секунду. Вернитесь, чтобы отменить."
+                }
+              },
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Блокировка через %lld секунды. Вернитесь, чтобы отменить."
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Блокировка через %lld секунд. Вернитесь, чтобы отменить."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Блокировка через %lld секунды. Вернитесь, чтобы отменить."
+                }
+              }
+            }
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2644,6 +4054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld 秒后锁定。回来即可取消。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 秒後鎖定。回來即可取消。"
           }
         }
       }
@@ -2668,6 +4084,12 @@
             "value" : "Se verrouille quand vous partez"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si blocca quando ti allontani"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2680,6 +4102,18 @@
             "value" : "자리를 뜨면 잠금"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueia quando você sai"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокирует, когда вы уходите"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2690,6 +4124,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "离开时锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "離開時鎖定"
           }
         }
       }
@@ -2714,6 +4154,12 @@
             "value" : "Verrouille dès que le boîtier est fermé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si blocca ogni volta che chiudi la custodia"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2726,6 +4172,18 @@
             "value" : "케이스를 닫을 때마다 잠깁니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueia sempre que o estojo é fechado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокирует при каждом закрытии футляра"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2736,6 +4194,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "每次合上充电盒都会锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每次闔上充電盒都會鎖定"
           }
         }
       }
@@ -2760,6 +4224,12 @@
             "value" : "Votre Mac se verrouille quand vous vous éloignez et reste déverrouillé tant que vous êtes à proximité."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blocca il Mac quando ti allontani e lo tiene sbloccato mentre sei vicino."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2772,6 +4242,18 @@
             "value" : "자리를 뜨면 Mac이 자동으로 잠기고, 가까이 있는 동안에는 잠금 해제 상태를 유지합니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloqueia seu Mac quando você se afasta e o mantém desbloqueado enquanto você está por perto."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Блокирует Mac, когда вы уходите, и оставляет его разблокированным, пока вы рядом."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2782,6 +4264,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你离开时 Mac 自动锁定，你在附近时保持解锁。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你離開時鎖定 Mac，你在附近時保持解鎖。"
           }
         }
       }
@@ -2806,6 +4294,12 @@
             "value" : "L'élément de connexion doit être approuvé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'elemento di login richiede la tua approvazione"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2818,6 +4312,18 @@
             "value" : "로그인 항목에 승인이 필요합니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O item de início precisa da sua aprovação"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Объект входа требует вашего подтверждения"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2828,6 +4334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "登录项需要你的批准"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登入項目需要你的核准"
           }
         }
       }
@@ -2852,6 +4364,12 @@
             "value" : "Mot de passe de session"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password di login"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2864,6 +4382,18 @@
             "value" : "로그인 암호"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senha de login"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пароль входа"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2874,6 +4404,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "登录密码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登入密碼"
           }
         }
       }
@@ -2898,6 +4434,12 @@
             "value" : "Recherche d'appareils. Un appareil apparaît après avoir été détecté pendant 10 secondes."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricerca dispositivi. Un dispositivo compare dopo essere stato rilevato per 10 secondi."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2910,6 +4452,18 @@
             "value" : "기기를 찾는 중입니다. 10초 동안 감지되면 표시됩니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procurando dispositivos. Um dispositivo aparece depois de ser detectado por 10 segundos."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск устройств. Устройство появится после 10 секунд обнаружения."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2920,6 +4474,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在查找设备。设备被检测到 10 秒后才会显示。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在尋找裝置。裝置偵測到 10 秒後才會顯示。"
           }
         }
       }
@@ -2944,6 +4504,12 @@
             "value" : "Proche (-50)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vicino (-50)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2956,6 +4522,18 @@
             "value" : "가까이 (-50)"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perto (-50)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Близко (-50)"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2963,6 +4541,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近 (-50)"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "近 (-50)"
@@ -2990,6 +4574,12 @@
             "value" : "De nouveau proche au-dessus de %lld dBm"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di nuovo vicino sopra %lld dBm"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3002,6 +4592,18 @@
             "value" : "%lld dBm 이상이면 다시 가까움"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perto de novo acima de %lld dBm"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Снова рядом выше %lld dBm"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3012,6 +4614,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "高于 %lld dBm 时重新视为在附近"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高於 %lld dBm 時重新視為在附近"
           }
         }
       }
@@ -3036,6 +4644,12 @@
             "value" : "Proche, %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vicino, %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3048,6 +4662,18 @@
             "value" : "가까움, %@"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perto, %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Рядом, %@"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3055,6 +4681,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在附近，%@"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "在附近，%@"
@@ -3082,6 +4714,12 @@
             "value" : "Appareils à proximité"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivi vicini"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3094,6 +4732,18 @@
             "value" : "근처 기기"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivos próximos"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устройства поблизости"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3104,6 +4754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "附近的设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "附近的裝置"
           }
         }
       }
@@ -3128,6 +4784,12 @@
             "value" : "Jamais vérifié"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mai controllato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3140,6 +4802,18 @@
             "value" : "확인한 적 없음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nunca verificado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ещё не проверялось"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3150,6 +4824,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "从未检查"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "從未檢查"
           }
         }
       }
@@ -3174,6 +4854,12 @@
             "value" : "Aucun appareil choisi"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun dispositivo scelto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3186,6 +4872,18 @@
             "value" : "선택한 기기 없음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum dispositivo escolhido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устройство не выбрано"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3196,6 +4894,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未选择设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未選擇裝置"
           }
         }
       }
@@ -3220,6 +4924,12 @@
             "value" : "Ni verrouillage ni mise en veille de l'écran pour inactivité tant que votre appareil est à portée."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun blocco o stop dello schermo per inattività mentre il dispositivo è in portata."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3232,6 +4942,18 @@
             "value" : "기기가 범위 안에 있는 동안에는 유휴 잠금이나 디스플레이 잠자기가 없습니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem bloqueio ou repouso da tela por inatividade enquanto o dispositivo está no alcance."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Без блокировки и отключения экрана при бездействии, пока устройство в зоне действия."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3242,6 +4964,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设备在范围内时，不会因闲置而锁定或关闭显示器。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "裝置在範圍內時，不會因閒置而鎖定或關閉顯示器。"
           }
         }
       }
@@ -3266,6 +4994,12 @@
             "value" : "aucun signal"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nessun segnale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3278,6 +5012,18 @@
             "value" : "신호 없음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sem sinal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "нет сигнала"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3288,6 +5034,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无信号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無訊號"
           }
         }
       }
@@ -3312,6 +5064,12 @@
             "value" : "Pas encore à proximité, %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non ancora vicino, %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3324,6 +5082,18 @@
             "value" : "아직 가까이 없음, %@"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ainda não está perto, %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пока не рядом, %@"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3331,6 +5101,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尚未在附近，%@"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "尚未在附近，%@"
@@ -3358,6 +5134,12 @@
             "value" : "Non vérifié, mode passif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non verificato, modalità passiva"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3370,6 +5152,18 @@
             "value" : "확인되지 않음, 패시브 모드"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não verificado, modo passivo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не проверено, пассивный режим"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3380,6 +5174,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未验证，被动模式"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未驗證，被動模式"
           }
         }
       }
@@ -3404,6 +5204,12 @@
             "value" : "Actuel"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ora"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3416,6 +5222,18 @@
             "value" : "현재"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agora"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сейчас"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3426,6 +5244,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "当前"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前"
           }
         }
       }
@@ -3450,6 +5274,12 @@
             "value" : "Désactivé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disattivato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3462,6 +5292,18 @@
             "value" : "끔"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключено"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3472,6 +5314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
           }
         }
       }
@@ -3496,6 +5344,12 @@
             "value" : "Désactivé par défaut. Quelqu'un pourrait relayer le signal Bluetooth de votre appareil pour le faire paraître proche."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disattivato per impostazione predefinita. Qualcuno potrebbe ritrasmettere il segnale Bluetooth del dispositivo per farlo sembrare vicino."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3508,6 +5362,18 @@
             "value" : "기본값은 끔입니다. 누군가 기기의 Bluetooth 신호를 중계해 가까이 있는 것처럼 보이게 할 수 있습니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado por padrão. Alguém poderia retransmitir o sinal Bluetooth do seu dispositivo para que ele pareça próximo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По умолчанию выключено. Злоумышленник может ретранслировать Bluetooth-сигнал устройства, чтобы оно казалось рядом."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3518,6 +5384,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "默认关闭。他人可能中继你设备的蓝牙信号，使其看起来在附近。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "預設為關閉。他人可能轉送你裝置的藍牙訊號，讓它看起來就在附近。"
           }
         }
       }
@@ -3542,6 +5414,12 @@
             "value" : "OK"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3554,6 +5432,18 @@
             "value" : "확인"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОК"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3561,6 +5451,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "好"
@@ -3588,6 +5484,12 @@
             "value" : "Installe uniquement quand votre appareil est proche"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installa solo mentre il dispositivo è vicino"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3600,6 +5502,18 @@
             "value" : "기기가 가까이 있을 때만 설치합니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Só instala enquanto o dispositivo está próximo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устанавливает, только когда устройство рядом"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3610,6 +5524,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "仅在设备靠近时安装"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "僅在裝置靠近時安裝"
           }
         }
       }
@@ -3634,6 +5554,12 @@
             "value" : "Ouvrir les réglages d'accessibilité…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri impostazioni Accessibilità…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3646,6 +5572,18 @@
             "value" : "손쉬운 사용 설정 열기…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Ajustes de Acessibilidade…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть настройки универсального доступа…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3656,6 +5594,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开辅助功能设置…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打開輔助使用設定…"
           }
         }
       }
@@ -3680,6 +5624,12 @@
             "value" : "Ouvrir les éléments de connexion…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri elementi login…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3692,6 +5642,18 @@
             "value" : "로그인 항목 열기…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Itens de Início…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть объекты входа…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3702,6 +5664,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "打开登录项…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打開登入項目…"
           }
         }
       }
@@ -3726,6 +5694,12 @@
             "value" : "Passif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3738,6 +5712,18 @@
             "value" : "패시브"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passivo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пассивный"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3748,6 +5734,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "被动"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "被動"
           }
         }
       }
@@ -3772,6 +5764,12 @@
             "value" : "Suspendre 1 heure"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausa per 1 ora"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3784,6 +5782,18 @@
             "value" : "1시간 동안 일시 정지"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausar por 1 Hora"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пауза на 1 час"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3794,6 +5804,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "暂停 1 小时"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暫停 1 小時"
           }
         }
       }
@@ -3818,6 +5834,12 @@
             "value" : "En pause"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In pausa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3830,6 +5852,18 @@
             "value" : "일시 정지됨"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На паузе"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3840,6 +5874,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已暂停"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已暫停"
           }
         }
       }
@@ -3864,6 +5904,12 @@
             "value" : "Choisissez un appareil que vous gardez sur vous. Votre Mac se verrouille quand il est hors de portée."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli un dispositivo che porti sempre con te. Il Mac si blocca quando esce dalla portata."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3876,6 +5922,18 @@
             "value" : "항상 지니고 다니는 기기를 선택하세요. 기기가 범위를 벗어나면 Mac이 잠깁니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha um dispositivo que você leva consigo. Seu Mac é bloqueado quando ele sai do alcance."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите устройство, которое всегда с вами. Mac заблокируется, когда оно выйдет из зоны действия."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3886,6 +5944,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "选择一台你随身携带的设备。设备超出范围时，Mac 会锁定。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇一台你隨身攜帶的裝置。裝置超出範圍時，Mac 會鎖定。"
           }
         }
       }
@@ -3910,6 +5974,12 @@
             "value" : "Confidentiel"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3922,6 +5992,18 @@
             "value" : "개인 정보 보호"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конфиденциально"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3932,6 +6014,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "注重隐私"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "注重隱私"
           }
         }
       }
@@ -3956,6 +6044,12 @@
             "value" : "Quitter"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3968,6 +6062,18 @@
             "value" : "종료"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encerrar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завершить"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3978,6 +6084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "結束"
           }
         }
       }
@@ -4002,6 +6114,12 @@
             "value" : "Notes de version"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note di rilascio"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4014,6 +6132,18 @@
             "value" : "릴리스 노트"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notas de Versão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примечания к выпуску"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4024,6 +6154,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "发行说明"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本說明"
           }
         }
       }
@@ -4048,6 +6184,12 @@
             "value" : "Reprendre"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riprendi"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4060,6 +6202,18 @@
             "value" : "재개"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retomar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возобновить"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4070,6 +6224,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "继续"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繼續"
           }
         }
       }
@@ -4094,6 +6254,12 @@
             "value" : "Même compte iCloud"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stesso account iCloud"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4106,6 +6272,18 @@
             "value" : "같은 iCloud 계정"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesma conta do iCloud"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тот же аккаунт iCloud"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4116,6 +6294,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "同一 iCloud 账户"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同一 iCloud 帳號"
           }
         }
       }
@@ -4140,6 +6324,12 @@
             "value" : "Même compte iCloud, recommandé"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stesso account iCloud, consigliato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4152,6 +6342,18 @@
             "value" : "같은 iCloud 계정, 권장"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesma conta do iCloud, recomendado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тот же аккаунт iCloud, рекомендуется"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4162,6 +6364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "同一 iCloud 账户，推荐"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同一 iCloud 帳號，建議使用"
           }
         }
       }
@@ -4186,6 +6394,12 @@
             "value" : "Même compte iCloud, plus faible dans une poche ou un sac"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stesso account iCloud, più debole in tasca o in borsa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4198,6 +6412,18 @@
             "value" : "같은 iCloud 계정, 주머니나 가방 안에서는 약함"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mesma conta do iCloud, mais fraco no bolso ou na bolsa"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тот же аккаунт iCloud, слабее в кармане или сумке"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4208,6 +6434,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "同一 iCloud 账户，放在口袋或包里时信号较弱"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同一 iCloud 帳號，放在口袋或包包裡時訊號較弱"
           }
         }
       }
@@ -4232,6 +6464,12 @@
             "value" : "Enregistrer"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4244,6 +6482,18 @@
             "value" : "저장"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4254,6 +6504,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "存储"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儲存"
           }
         }
       }
@@ -4278,6 +6534,12 @@
             "value" : "Recherche"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricerca"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4290,6 +6552,18 @@
             "value" : "검색 중"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procurando"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поиск"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4300,6 +6574,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在扫描"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在掃描"
           }
         }
       }
@@ -4324,6 +6604,12 @@
             "value" : "Règle le seuil %lld dB sous le signal actuel de l'appareil"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta la soglia di blocco %lld dB sotto il segnale attuale del dispositivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4336,6 +6622,18 @@
             "value" : "잠금 수준을 기기의 현재 신호보다 %lld dB 낮게 설정합니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Define o nível de bloqueio %lld dB abaixo do sinal atual do dispositivo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устанавливает порог блокировки на %lld дБ ниже текущего сигнала устройства"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4346,6 +6644,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "将锁定阈值设为比设备当前信号低 %lld dB"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "將鎖定門檻設為比裝置目前訊號低 %lld dB"
           }
         }
       }
@@ -4370,6 +6674,12 @@
             "value" : "Réglages…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4382,6 +6692,18 @@
             "value" : "설정…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4392,6 +6714,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设置…"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定…"
           }
         }
       }
@@ -4416,6 +6744,12 @@
             "value" : "Signal %@, verrouillage sous %lld dBm"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnale %@, blocca sotto %lld dBm"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4428,6 +6762,18 @@
             "value" : "신호 %@, %lld dBm 미만이면 잠김"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sinal %@, bloqueia abaixo de %lld dBm"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сигнал %@, блокировка ниже %lld dBm"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4438,6 +6784,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "信号 %@，低于 %lld dBm 时锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訊號 %@，低於 %lld dBm 時鎖定"
           }
         }
       }
@@ -4462,6 +6814,12 @@
             "value" : "Mode du signal"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalità segnale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4474,6 +6832,18 @@
             "value" : "신호 모드"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo de sinal"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режим сигнала"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4484,6 +6854,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "信号模式"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "訊號模式"
           }
         }
       }
@@ -4508,6 +6884,12 @@
             "value" : "Adresse stable, mode passif"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indirizzo stabile, modalità passiva"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4520,6 +6902,18 @@
             "value" : "고정 주소, 패시브 모드"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Endereço estável, modo passivo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Постоянный адрес, пассивный режим"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4530,6 +6924,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "固定地址，被动模式"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "固定位址，被動模式"
           }
         }
       }
@@ -4554,6 +6954,12 @@
             "value" : "Ouvrir à la connexion"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri al login"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4566,6 +6972,18 @@
             "value" : "로그인 시 시작"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir ao iniciar sessão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Запускать при входе"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4576,6 +6994,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "登录时启动"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登入時啟動"
           }
         }
       }
@@ -4600,6 +7024,12 @@
             "value" : "Reste actif tant que vous êtes proche"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resta attivo mentre sei vicino"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4612,6 +7042,18 @@
             "value" : "가까이 있는 동안 깨어 있음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fica ativo enquanto você está perto"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не засыпает, пока вы рядом"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4622,6 +7064,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你在附近时保持唤醒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你在附近時保持喚醒"
           }
         }
       }
@@ -4646,6 +7094,12 @@
             "value" : "Impossible de suivre cet appareil"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossibile monitorare questo dispositivo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4658,6 +7112,18 @@
             "value" : "이 기기는 추적할 수 없습니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível rastrear este dispositivo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это устройство нельзя отслеживать"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4668,6 +7134,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法跟踪此设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法追蹤此裝置"
           }
         }
       }
@@ -4692,6 +7164,12 @@
             "value" : "Bluetooth désactivé ou aucun signal compte comme éloigné"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Considera Bluetooth spento o assenza di segnale come lontano"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4704,6 +7182,18 @@
             "value" : "Bluetooth가 꺼지거나 신호가 없으면 멀어진 것으로 간주"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Considerar Bluetooth desligado ou sem sinal como longe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Считать выключенный Bluetooth или отсутствие сигнала уходом"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4714,6 +7204,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "蓝牙关闭或没有信号都视为已离开"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "藍牙關閉或沒有訊號都視為已離開"
           }
         }
       }
@@ -4738,6 +7234,12 @@
             "value" : "inconnu"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sconosciuto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4750,6 +7252,18 @@
             "value" : "알 수 없음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "desconhecido"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "неизвестно"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4757,6 +7271,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "未知"
@@ -4784,6 +7304,12 @@
             "value" : "Déverrouiller à mon retour"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sblocca quando torno"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4796,6 +7322,18 @@
             "value" : "돌아오면 잠금 해제"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desbloquear quando eu voltar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разблокировать, когда я вернусь"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4806,6 +7344,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "我回来时解锁"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我回來時解鎖"
           }
         }
       }
@@ -4830,6 +7374,12 @@
             "value" : "Mise à jour disponible : AwayLock %@…"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiornamento disponibile: AwayLock %@…"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4842,6 +7392,18 @@
             "value" : "업데이트 가능: AwayLock %@…"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualização Disponível: AwayLock %@…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступно обновление: AwayLock %@…"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4849,6 +7411,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用更新：AwayLock %@…"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "有可用更新：AwayLock %@…"
@@ -4876,6 +7444,12 @@
             "value" : "Mises à jour"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiornamenti"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4888,6 +7462,18 @@
             "value" : "업데이트"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualizações"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновления"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4895,6 +7481,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "更新"
@@ -4922,6 +7514,12 @@
             "value" : "Les mises à jour ne sont pas configurées dans cette version"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli aggiornamenti non sono configurati in questa build"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4934,6 +7532,18 @@
             "value" : "이 빌드에는 업데이트가 설정되어 있지 않습니다"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As atualizações não estão configuradas nesta versão"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновления не настроены в этой сборке"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4944,6 +7554,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此版本未设置更新"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此版本未設定更新"
           }
         }
       }
@@ -4968,6 +7584,12 @@
             "value" : "Utiliser"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4980,6 +7602,18 @@
             "value" : "사용"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4987,6 +7621,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用"
@@ -5014,6 +7654,12 @@
             "value" : "Utiliser le signal actuel"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa segnale attuale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5026,6 +7672,18 @@
             "value" : "현재 신호 사용"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar sinal atual"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использовать текущий сигнал"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5036,6 +7694,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用当前信号"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用目前訊號"
           }
         }
       }
@@ -5060,6 +7724,12 @@
             "value" : "Utilise un appareil que vous portez"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa un dispositivo che porti con te"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5072,6 +7742,18 @@
             "value" : "가지고 다니는 기기 사용"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa um dispositivo que você leva consigo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Использует устройство, которое всегда с вами"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5082,6 +7764,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用你随身携带的设备"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用你隨身攜帶的裝置"
           }
         }
       }
@@ -5106,6 +7794,12 @@
             "value" : "Version %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versione %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5118,6 +7812,18 @@
             "value" : "버전 %@"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versão %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия %@"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5125,6 +7831,12 @@
           }
         },
         "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本 %@"
+          }
+        },
+        "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本 %@"
@@ -5152,6 +7864,12 @@
             "value" : "À proximité"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando sei vicino"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5164,6 +7882,18 @@
             "value" : "가까이 있을 때"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quando por perto"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Когда рядом"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5174,6 +7904,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在附近时"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在附近時"
           }
         }
       }
@@ -5198,6 +7934,12 @@
             "value" : "Aucun verrouillage jusqu'à %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun blocco fino alle %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5210,6 +7952,18 @@
             "value" : "%@까지 잠기지 않음"
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não bloqueia até %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не заблокируется до %@"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5220,6 +7974,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ 前不会锁定"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 前不會鎖定"
           }
         }
       }
@@ -5244,6 +8004,12 @@
             "value" : "Vos données restent sur ce Mac. La seule requête réseau est une recherche quotidienne de mises à jour."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi dati restano su questo Mac. L'unica richiesta di rete è un controllo giornaliero degli aggiornamenti."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5256,6 +8022,18 @@
             "value" : "모든 데이터는 이 Mac에만 남습니다. 네트워크 요청은 하루 한 번의 업데이트 확인뿐입니다."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus dados ficam neste Mac. A única solicitação de rede é uma verificação diária de atualizações."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ваши данные остаются на этом Mac. Сеть используется только для ежедневной проверки обновлений."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5266,6 +8044,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "所有数据都留在这台 Mac 上。唯一的网络请求是每日检查更新。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你的資料都留在這台 Mac 上。唯一的網路請求是每日檢查更新。"
           }
         }
       }
@@ -5290,6 +8074,12 @@
             "value" : "© 2026 Alex Do. Open source sur GitHub."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2026 Alex Do. Open source su GitHub."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5302,6 +8092,18 @@
             "value" : "© 2026 Alex Do. GitHub 오픈 소스."
           }
         },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2026 Alex Do. Código aberto no GitHub."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2026 Alex Do. Открытый код на GitHub."
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5312,6 +8114,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "© 2026 Alex Do。在 GitHub 上开源。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "© 2026 Alex Do。在 GitHub 上開源。"
           }
         }
       }
