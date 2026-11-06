@@ -794,6 +794,52 @@
         }
       }
     },
+    "change the device that locks your Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "das Gerät ändern, das deinen Mac sperrt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cambiar el dispositivo que bloquea tu Mac"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "modifier l’appareil qui verrouille votre Mac"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac をロックするデバイスを変更"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac을 잠그는 기기 변경"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "thay đổi thiết bị khóa máy Mac"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改锁定你的 Mac 的设备"
+          }
+        }
+      }
+    },
     "Check for Updates…": {
       "localizations": {
         "de": {

@@ -1,3 +1,4 @@
+import LocalAuthentication
 import ServiceManagement
 import SwiftUI
 
@@ -64,7 +65,20 @@ struct SettingsView: View {
                     }
                 }
                 Spacer()
-                Button(settings.deviceUUID == nil ? LocalizedStringKey("Choose…") : LocalizedStringKey("Change…")) { showPicker = true }
+                Button(settings.deviceUUID == nil ? LocalizedStringKey("Choose…") : LocalizedStringKey("Change…")) {
+                    // First pick has nothing to protect; swapping the key needs the owner (Touch ID or password).
+                    guard settings.deviceUUID != nil else { showPicker = true; return }
+                    // The system prompt hands focus back to the previous app, burying this window; restore it.
+                    let window = NSApp.keyWindow
+                    Task {
+                        let reason = String(localized: "change the device that locks your Mac")
+                        let ok = (try? await LAContext().evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason)) == true
+                        NSApp.activate()
+                        window?.makeKeyAndOrderFront(nil)
+                        window?.orderFrontRegardless()
+                        if ok { showPicker = true }
+                    }
+                }
                     .controlSize(.large)
             }
             .padding(.vertical, 6)
