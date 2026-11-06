@@ -1,0 +1,133 @@
+# AwayLock release.
+#
+# A `v*` tag (pushed after scripts/release.sh) builds, signs and notarizes the DMG, then publishes
+# a GitHub Release with the DMG and appcast.xml. https://awaylock.app/appcast.xml redirects to
+# releases/latest/download/appcast.xml, so a stable release is what installed copies update to.
+# Prerelease tags (v1.2.0-beta.1) are marked prerelease and are not "latest".
+#
+# A manual run is a dry run: the same build, signing and notarization, uploaded as a workflow
+# artifact. Nothing is published.
+#
+# Secrets:
+#   DEVELOPER_ID_P12           base64 of the "Developer ID Application" cert + private key (.p12)
+#   DEVELOPER_ID_P12_PASSWORD  its export password
+#   TEAM_ID                    Apple team ID
+#   NOTARY_KEY_P8              base64 of an App Store Connect API key (.p8), Developer role
+#   NOTARY_KEY_ID, NOTARY_ISSUER
+#   SPARKLE_ED_KEY             contents of the file from `generate_keys -x`
+
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: macos-26
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Derive the version
+        id: ver
+        run: |
+          set -euo pipefail
+          CFG="$(sed -n 's/^MARKETING_VERSION = //p' Config/Base.xcconfig)"
+          if [ "$GITHUB_REF_TYPE" = tag ]; then
+            V="${GITHUB_REF_NAME#v}"
+            if [ "$V" != "$CFG" ]; then
+              echo "::error::tag says $V but Config/Base.xcconfig has MARKETING_VERSION = $CFG; tag with scripts/release.sh"
+              exit 1
+            fi
+          else
+            V="$CFG"
+          fi
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+
+      - name: Extract release notes from CHANGELOG.md
+        id: notes
+        run: |
+          set -euo pipefail
+          NOTES="$RUNNER_TEMP/notes.md"
+          awk -v v="${{ steps.ver.outputs.version }}" '$1 == "##" && f {exit} f; $1 == "##" && $2 == v {f=1}' CHANGELOG.md \
+            | sed '/./,$!d' > "$NOTES"
+          grep -q '[^[:space:]]' "$NOTES" || echo "- Release v${{ steps.ver.outputs.version }}" > "$NOTES"
+          echo "file=$NOTES" >> "$GITHUB_OUTPUT"
+          cat "$NOTES"
+
+      - name: Install the signing certificate and keys
+        env:
+          DEVELOPER_ID_P12: ${{ secrets.DEVELOPER_ID_P12 }}
+          DEVELOPER_ID_P12_PASSWORD: ${{ secrets.DEVELOPER_ID_P12_PASSWORD }}
+          NOTARY_KEY_P8: ${{ secrets.NOTARY_KEY_P8 }}
+          SPARKLE_ED_KEY: ${{ secrets.SPARKLE_ED_KEY }}
+        run: |
+          set -euo pipefail
+          KC="$RUNNER_TEMP/signing.keychain-db"
+          PW="$(uuidgen)"
+          security create-keychain -p "$PW" "$KC"
+          security set-keychain-settings -lut 21600 "$KC"
+          security unlock-keychain -p "$PW" "$KC"
+          echo "$DEVELOPER_ID_P12" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security import "$RUNNER_TEMP/cert.p12" -k "$KC" -P "$DEVELOPER_ID_P12_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$PW" "$KC" >/dev/null
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          rm "$RUNNER_TEMP/cert.p12"
+          echo "$NOTARY_KEY_P8" | base64 --decode > "$RUNNER_TEMP/notary.p8"
+          printf '%s' "$SPARKLE_ED_KEY" > "$RUNNER_TEMP/sparkle.key"
+
+      - name: Build, sign and notarize
+        env:
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          NOTARY_KEY_PATH: ${{ runner.temp }}/notary.p8
+          NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
+          NOTARY_ISSUER: ${{ secrets.NOTARY_ISSUER }}
+          SPARKLE_KEY_FILE: ${{ runner.temp }}/sparkle.key
+          RELEASE_NOTES: ${{ steps.notes.outputs.file }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: scripts/build-dmg.sh
+
+      - name: Upload the build (dry run)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: AwayLock-${{ steps.ver.outputs.version }}
+          path: |
+            build/release/updates/*.dmg
+            build/release/updates/appcast.xml
+
+      - name: Publish the GitHub Release
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          V="${{ steps.ver.outputs.version }}"
+          PRE=""
+          case "$V" in *-*) PRE="--prerelease" ;; esac
+          # Edit-or-create plus --clobber makes re-running a tag idempotent.
+          if gh release view "v$V" >/dev/null 2>&1; then
+            gh release edit "v$V" --title "AwayLock $V" --notes-file "${{ steps.notes.outputs.file }}" $PRE
+          else
+            gh release create "v$V" --verify-tag --title "AwayLock $V" --notes-file "${{ steps.notes.outputs.file }}" $PRE
+          fi
+          gh release upload "v$V" "build/release/updates/AwayLock-$V.dmg" build/release/updates/appcast.xml --clobber
+
+      - name: Remove the signing keychain and keys
+        if: always()
+        run: |
+          security delete-keychain "$RUNNER_TEMP/signing.keychain-db" 2>/dev/null || true
+          rm -f "$RUNNER_TEMP/notary.p8" "$RUNNER_TEMP/sparkle.key"
