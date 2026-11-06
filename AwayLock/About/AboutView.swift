@@ -2,7 +2,8 @@ import SwiftUI
 
 struct AboutView: View {
     let updater: UpdaterController
-    static let releaseNotesURL = URL(string: "https://github.com/alexdonh/awaylock/releases")!
+    static let repoURL = URL(string: "https://github.com/alexdonh/awaylock")!
+    static let releaseNotesURL = repoURL.appending(path: "releases")
 
     var body: some View {
         VStack(spacing: 0) {
@@ -40,7 +41,7 @@ struct AboutView: View {
             .buttonBorderShape(.capsule)
             .padding(.top, 20)
 
-            Text("© 2026 · Open source on GitHub")
+            Link("© 2026 · Open source on GitHub", destination: Self.repoURL)
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
                 .padding(.top, 18)

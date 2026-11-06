@@ -297,7 +297,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "AwayLock reads the signal strength of the device you choose so it can lock your Mac when you walk away.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Alex Do";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID)";
 				PRODUCT_NAME = AwayLock;
@@ -324,7 +324,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "AwayLock reads the signal strength of the device you choose so it can lock your Mac when you walk away.";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Alex Do";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID)";
 				PRODUCT_NAME = AwayLock;
