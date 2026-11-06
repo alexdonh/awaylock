@@ -8,3 +8,7 @@ Config/Local.xcconfig
 # spike output (contains nearby device IDs)
 /*.csv
 /summary.txt
+
+# private notes and tool state, not part of the public repo
+/docs/
+.serena/
