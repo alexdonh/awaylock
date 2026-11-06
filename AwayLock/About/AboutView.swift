@@ -4,6 +4,8 @@ struct AboutView: View {
     let updater: UpdaterController
     static let repoURL = URL(string: "https://github.com/alexdonh/awaylock")!
     static let releaseNotesURL = repoURL.appending(path: "releases")
+    static let sponsorsURL = URL(string: "https://github.com/sponsors/alexdonh")!
+    static let paypalURL = URL(string: "https://paypal.me/alexdonh")!
 
     var body: some View {
         VStack(spacing: 0) {
@@ -45,6 +47,15 @@ struct AboutView: View {
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
                 .padding(.top, 18)
+
+            HStack(spacing: 6) {
+                Text("Support AwayLock:").foregroundStyle(.secondary)
+                Link(destination: Self.sponsorsURL) { Text(verbatim: "GitHub Sponsors") }
+                Text(verbatim: "·").foregroundStyle(.secondary)
+                Link(destination: Self.paypalURL) { Text(verbatim: "PayPal") }
+            }
+            .font(.system(size: 11))
+            .padding(.top, 4)
         }
         .padding(.horizontal, 24)
         .padding(.top, 4)

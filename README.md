@@ -69,6 +69,13 @@ git push origin main v1.2.0       # CI builds, notarizes and publishes the relea
 
 Release notes come from the `## Unreleased` section of `CHANGELOG.md` if there is one. Otherwise they're generated from `feat:`/`fix:`/`perf:` commits since the last tag. `.github/workflows/release.yml` lists the secrets it needs. A manual run of that workflow is a dry run: it builds a notarized DMG as an artifact and publishes nothing.
 
+## Support
+
+AwayLock is free and open source. If it's useful to you, you can support it:
+
+[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/alexdonh)
+[![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=white)](https://paypal.me/alexdonh)
+
 ## License
 
 [Apache-2.0](LICENSE)
