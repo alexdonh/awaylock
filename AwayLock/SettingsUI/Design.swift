@@ -47,3 +47,15 @@ func deviceIcon(for name: String) -> ImageResource {
     return .antenna
 }
 
+extension NSWindow {
+    /// Brings the window (and its parent, for a sheet) back in front after a system prompt took focus.
+    /// activate() is only a request on macOS 14+ and can be declined while another app is
+    /// frontmost; orderFrontRegardless() still brings the window above that app's windows.
+    func bringToFront() {
+        NSApp.activate()
+        let main = sheetParent ?? self
+        main.makeKeyAndOrderFront(nil)
+        main.orderFrontRegardless()
+        if sheetParent != nil { makeKey() }
+    }
+}

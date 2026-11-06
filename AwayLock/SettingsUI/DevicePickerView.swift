@@ -1,3 +1,4 @@
+import CoreBluetooth
 import SwiftUI
 
 /// Device picker sheet. Scans only while open.
@@ -100,8 +101,16 @@ struct DevicePickerView: View {
         }
         .frame(width: 600)
         .task {
+            // The first scan shows the Bluetooth prompt, which hands focus to the previous app when answered.
+            var asking = CBManager.authorization == .notDetermined
             let scanner = DeviceScanner()
-            for await next in await scanner.scan() { snapshot = next }
+            for await next in await scanner.scan() {
+                snapshot = next
+                if asking, CBManager.authorization != .notDetermined {
+                    asking = false
+                    NSApp.windows.first { $0.sheetParent != nil && $0.isVisible }?.bringToFront()
+                }
+            }
         }
     }
 }

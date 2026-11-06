@@ -67,10 +67,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             windows[key] = w
             return w
         }()
-        // activate() is only a request on macOS 14+ and can be declined while another app is
-        // frontmost; orderFrontRegardless() still brings the window above that app's windows.
-        NSApp.activate()
-        window.makeKeyAndOrderFront(nil)
-        window.orderFrontRegardless()
+        window.bringToFront()
     }
 }

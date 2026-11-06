@@ -73,9 +73,7 @@ struct SettingsView: View {
                     Task {
                         let reason = String(localized: "change the device that locks your Mac")
                         let ok = (try? await LAContext().evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason)) == true
-                        NSApp.activate()
-                        window?.makeKeyAndOrderFront(nil)
-                        window?.orderFrontRegardless()
+                        window?.bringToFront()
                         if ok { showPicker = true }
                     }
                 }
