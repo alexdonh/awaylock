@@ -2,12 +2,12 @@ import SwiftUI
 
 struct AboutView: View {
     let updater: UpdaterController
-    static let releaseNotesURL = URL(string: "https://github.com/OWNER/nearby/releases")!
+    static let releaseNotesURL = URL(string: "https://github.com/alexdonh/awaylock/releases")!
 
     var body: some View {
         VStack(spacing: 0) {
             AppIconView()
-            Text("Nearby")
+            Text("AwayLock")
                 .font(.system(size: 24, weight: .bold))
                 .padding(.top, 16)
             Text("Version \(updater.version)")
@@ -85,6 +85,6 @@ private struct AppIconView: View {
         .background(Color(red: 0x12 / 255, green: 0x3F / 255, blue: 0x73 / 255))
         .clipShape(.rect(cornerRadius: 26))
         .shadow(color: Color(red: 10 / 255, green: 30 / 255, blue: 60 / 255).opacity(0.35), radius: 12, y: 10)
-        .accessibilityLabel("Nearby app icon")
+        .accessibilityLabel("AwayLock app icon")
     }
 }

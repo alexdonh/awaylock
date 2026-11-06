@@ -6,7 +6,7 @@ import Security
 /// Opt-in auto-unlock: wakes the display and types the login password from the Keychain.
 /// The machine only asks for it after a lock *the app* made and a 3 s sustained return.
 final class UnlockService {
-    private static let service = "Nearby login password"
+    private static let service = Bundle.main.bundleIdentifier ?? "app.awaylock.mac"
 
     // MARK: password (Keychain only, never UserDefaults)
 
@@ -58,7 +58,7 @@ final class UnlockService {
         guard let password = Self.readPassword() else { Log.session.error("unlock skipped: no password in Keychain"); return }
 
         var id = IOPMAssertionID(0)
-        IOPMAssertionDeclareUserActivity("Nearby unlock" as CFString, kIOPMUserActiveLocal, &id)
+        IOPMAssertionDeclareUserActivity("AwayLock unlock" as CFString, kIOPMUserActiveLocal, &id)
         try? await Task.sleep(for: .milliseconds(800))
 
         // Verified lock screen immediately before typing, so the password never lands in another app.

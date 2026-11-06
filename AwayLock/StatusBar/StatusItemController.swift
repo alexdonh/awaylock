@@ -98,7 +98,7 @@ final class StatusItemController: NSObject, NSMenuDelegate {
         pauseItem.title = model.pausedUntil == nil ? String(localized: "Pause for 1 Hour") : String(localized: "Resume")
         pauseItem.isEnabled = settings.deviceUUID != nil
         if let version = updater.availableVersion {
-            updateItem.title = String(localized: "Update Available: Nearby \(version)…")
+            updateItem.title = String(localized: "Update Available: AwayLock \(version)…")
             updateItem.image = NSImage(systemSymbolName: "circle.fill", accessibilityDescription: nil)?
                 .withSymbolConfiguration(.init(pointSize: 7, weight: .regular).applying(.init(paletteColors: [.systemOrange])))
         } else {
@@ -131,21 +131,21 @@ private nonisolated struct IconState: Equatable, Sendable {
         badge = updateAvailable
         let off = "antenna.off"
         if settings.deviceUUID == nil {
-            (symbol, label) = (off, String(localized: "Nearby: no device chosen"))
+            (symbol, label) = (off, String(localized: "AwayLock: no device chosen"))
         } else if model.pausedUntil != nil {
-            (symbol, label) = (off, String(localized: "Nearby: paused"))
+            (symbol, label) = (off, String(localized: "AwayLock: paused"))
         } else if model.bluetoothOff {
-            (symbol, label) = (off, String(localized: "Nearby: Bluetooth is off"))
+            (symbol, label) = (off, String(localized: "AwayLock: Bluetooth is off"))
         } else {
             switch model.state {
             case .leaving:
-                (symbol, label) = ("lock.leaving", String(localized: "Nearby: device leaving, locking soon"))
+                (symbol, label) = ("lock.leaving", String(localized: "AwayLock: device leaving, locking soon"))
             case .locked(byApp: true):
-                (symbol, label) = ("lock", String(localized: "Nearby: locked"))
+                (symbol, label) = ("lock", String(localized: "AwayLock: locked"))
             case .idle:
-                (symbol, label) = (off, String(localized: "Nearby: off"))
+                (symbol, label) = (off, String(localized: "AwayLock: off"))
             default:
-                (symbol, label) = ("lock.open", String(localized: "Nearby: device near"))
+                (symbol, label) = ("lock.open", String(localized: "AwayLock: device near"))
             }
         }
     }
@@ -211,7 +211,7 @@ struct MenuHeaderView: View {
     private var statusLine: LocalizedStringKey {
         switch model.state {
         case .near(armed: false): "Not seen near yet · \(dbm)"
-        case .locked(byApp: true): "Locked by Nearby"
+        case .locked(byApp: true): "Locked by AwayLock"
         case .locked(byApp: false): "Locked"
         case .unknown: "Checking…"
         default: "Near · \(dbm)"

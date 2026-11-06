@@ -5,6 +5,6 @@ import Dispatch
 @globalActor
 actor BluetoothActor {
     static let shared = BluetoothActor()
-    nonisolated static let queue = DispatchSerialQueue(label: "nearby.bluetooth", qos: .utility)
+    nonisolated static let queue = DispatchSerialQueue(label: "app.awaylock.bluetooth", qos: .utility)
     nonisolated var unownedExecutor: UnownedSerialExecutor { Self.queue.asUnownedSerialExecutor() }
 }

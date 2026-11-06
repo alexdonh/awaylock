@@ -46,13 +46,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func showSettings() {
-        show("settings", title: String(localized: "Nearby")) {
+        show("settings", title: String(localized: "AwayLock")) {
             SettingsView(settings: settings, model: controller.model, controller: controller, updater: updater)
         }
     }
 
     private func showAbout() {
-        show("about", title: String(localized: "About Nearby")) { AboutView(updater: updater) }
+        show("about", title: String(localized: "About AwayLock")) { AboutView(updater: updater) }
     }
 
     private func show(_ key: String, title: String, @ViewBuilder content: () -> some View) {

@@ -15,10 +15,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48DB06726CC7E04DB2A6AEBD"
-               BuildableName = "Spike"
-               BlueprintName = "Spike"
-               ReferencedContainer = "container:Nearby.xcodeproj">
+               BlueprintIdentifier = "84276007F4E5D385A7251FA8"
+               BuildableName = "AwayLock.app"
+               BlueprintName = "AwayLock"
+               ReferencedContainer = "container:AwayLock.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E26DA4C23BC97802573052D8"
+               BuildableName = "AwayLockTests.xctest"
+               BlueprintName = "AwayLockTests"
+               ReferencedContainer = "container:AwayLock.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,14 +46,27 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "48DB06726CC7E04DB2A6AEBD"
-            BuildableName = "Spike"
-            BlueprintName = "Spike"
-            ReferencedContainer = "container:Nearby.xcodeproj">
+            BlueprintIdentifier = "84276007F4E5D385A7251FA8"
+            BuildableName = "AwayLock.app"
+            BlueprintName = "AwayLock"
+            ReferencedContainer = "container:AwayLock.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E26DA4C23BC97802573052D8"
+               BuildableName = "AwayLockTests.xctest"
+               BlueprintName = "AwayLockTests"
+               ReferencedContainer = "container:AwayLock.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <CommandLineArguments>
+      </CommandLineArguments>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -55,14 +82,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "48DB06726CC7E04DB2A6AEBD"
-            BuildableName = "Spike"
-            BlueprintName = "Spike"
-            ReferencedContainer = "container:Nearby.xcodeproj">
+            BlueprintIdentifier = "84276007F4E5D385A7251FA8"
+            BuildableName = "AwayLock.app"
+            BlueprintName = "AwayLock"
+            ReferencedContainer = "container:AwayLock.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -74,10 +99,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "48DB06726CC7E04DB2A6AEBD"
-            BuildableName = "Spike"
-            BlueprintName = "Spike"
-            ReferencedContainer = "container:Nearby.xcodeproj">
+            BlueprintIdentifier = "84276007F4E5D385A7251FA8"
+            BuildableName = "AwayLock.app"
+            BlueprintName = "AwayLock"
+            ReferencedContainer = "container:AwayLock.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

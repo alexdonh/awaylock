@@ -1,5 +1,5 @@
 import Testing
-@testable import Nearby
+@testable import AwayLock
 
 struct RSSIFilterTests {
     @Test func firstReadingPassesThrough() {

@@ -1,4 +1,4 @@
-name: Nearby
+name: AwayLock
 options:
   deploymentTarget:
     macOS: "26.0"
@@ -12,41 +12,41 @@ packages:
     url: https://github.com/sparkle-project/Sparkle
     exactVersion: 2.10.1
 targets:
-  Nearby:
+  AwayLock:
     type: application
     platform: macOS
     sources:
-      - path: Nearby
+      - path: AwayLock
     dependencies:
       - package: Sparkle
     settings:
       base:
-        PRODUCT_NAME: Nearby
-        PRODUCT_BUNDLE_IDENTIFIER: $(NEARBY_BUNDLE_ID)
+        PRODUCT_NAME: AwayLock
+        PRODUCT_BUNDLE_IDENTIFIER: $(AWAYLOCK_BUNDLE_ID)
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         GENERATE_INFOPLIST_FILE: YES
-        INFOPLIST_FILE: Nearby/Info.plist
+        INFOPLIST_FILE: AwayLock/Info.plist
         INFOPLIST_KEY_LSUIElement: YES
-        INFOPLIST_KEY_CFBundleDisplayName: Nearby
+        INFOPLIST_KEY_CFBundleDisplayName: AwayLock
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
-        INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: Nearby reads the signal strength of the device you choose so it can lock your Mac when you walk away.
+        INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: AwayLock reads the signal strength of the device you choose so it can lock your Mac when you walk away.
         INFOPLIST_KEY_NSHumanReadableCopyright: © 2026
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         COMBINE_HIDPI_IMAGES: YES
         LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/../Frameworks
-  NearbyTests:
+  AwayLockTests:
     type: bundle.unit-test
     platform: macOS
     sources:
-      - path: NearbyTests
+      - path: AwayLockTests
     dependencies:
-      - target: Nearby
+      - target: AwayLock
     settings:
       base:
-        PRODUCT_NAME: NearbyTests
-        PRODUCT_BUNDLE_IDENTIFIER: $(NEARBY_BUNDLE_ID).tests
+        PRODUCT_NAME: AwayLockTests
+        PRODUCT_BUNDLE_IDENTIFIER: $(AWAYLOCK_BUNDLE_ID).tests
         GENERATE_INFOPLIST_FILE: YES
-        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Nearby.app/Contents/MacOS/Nearby
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/AwayLock.app/Contents/MacOS/AwayLock
         BUNDLE_LOADER: $(TEST_HOST)
   Spike:
     type: tool
@@ -56,20 +56,20 @@ targets:
     settings:
       base:
         PRODUCT_NAME: spike
-        PRODUCT_BUNDLE_IDENTIFIER: $(NEARBY_BUNDLE_ID).spike
+        PRODUCT_BUNDLE_IDENTIFIER: $(AWAYLOCK_BUNDLE_ID).spike
         GENERATE_INFOPLIST_FILE: YES
         CREATE_INFOPLIST_SECTION_IN_BINARY: YES
         INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: Spike reads Bluetooth LE adverts to test device tracking.
         ENABLE_HARDENED_RUNTIME: NO
 schemes:
-  Nearby:
+  AwayLock:
     build:
       targets:
-        Nearby: all
-        NearbyTests: [test]
+        AwayLock: all
+        AwayLockTests: [test]
     test:
       targets:
-        - NearbyTests
+        - AwayLockTests
   Spike:
     build:
       targets:

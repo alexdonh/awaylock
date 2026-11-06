@@ -17,7 +17,7 @@ final class PowerAssertion: PowerAsserting {
             let result = IOPMAssertionCreateWithName(
                 kIOPMAssertionTypePreventUserIdleDisplaySleep as CFString,
                 IOPMAssertionLevel(kIOPMAssertionLevelOn),
-                "Nearby: your device is near" as CFString, &id)
+                "AwayLock: your device is near" as CFString, &id)
             held = result == kIOReturnSuccess
             if !held { Log.session.error("power assertion failed: \(result)") }
         } else {

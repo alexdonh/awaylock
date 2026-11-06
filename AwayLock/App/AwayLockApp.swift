@@ -1,7 +1,7 @@
 import AppKit
 
 @main
-enum NearbyApp {
+enum AwayLockApp {
     static func main() {
         let app = NSApplication.shared
         let delegate = AppDelegate()
@@ -19,7 +19,7 @@ enum NearbyApp {
             holder.submenu = menu
             main.addItem(holder)
         }
-        submenu("Nearby", [NSMenuItem(title: "Quit Nearby", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")])
+        submenu("AwayLock", [NSMenuItem(title: "Quit AwayLock", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")])
         submenu("Edit", [
             NSMenuItem(title: "Undo", action: Selector(("undo:")), keyEquivalent: "z"),
             NSMenuItem(title: "Cut", action: #selector(NSText.cut(_:)), keyEquivalent: "x"),

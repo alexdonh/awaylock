@@ -155,7 +155,7 @@ func typeTest() -> Never {
 func holdAwake() {
     var id: IOPMAssertionID = 0
     let r = IOPMAssertionCreateWithName(kIOPMAssertionTypePreventUserIdleDisplaySleep as CFString,
-                                        IOPMAssertionLevel(kIOPMAssertionLevelOn), "Nearby spike" as CFString, &id)
+                                        IOPMAssertionLevel(kIOPMAssertionLevelOn), "AwayLock spike" as CFString, &id)
     err("assertion \(r == kIOReturnSuccess ? "held" : "FAILED \(r)") for \(minutes) min — leave the Mac idle and watch for locks")
     print("timestamp,event")
     let dnc = DistributedNotificationCenter.default()

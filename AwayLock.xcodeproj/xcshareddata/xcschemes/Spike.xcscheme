@@ -15,24 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0850AC9A02767CB15E84297E"
-               BuildableName = "Nearby.app"
-               BlueprintName = "Nearby"
-               ReferencedContainer = "container:Nearby.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75092D4A925D2F7E5D653191"
-               BuildableName = "NearbyTests.xctest"
-               BlueprintName = "NearbyTests"
-               ReferencedContainer = "container:Nearby.xcodeproj">
+               BlueprintIdentifier = "AC596707F07D58BA23FCD537"
+               BuildableName = "Spike"
+               BlueprintName = "Spike"
+               ReferencedContainer = "container:AwayLock.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,27 +32,14 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0850AC9A02767CB15E84297E"
-            BuildableName = "Nearby.app"
-            BlueprintName = "Nearby"
-            ReferencedContainer = "container:Nearby.xcodeproj">
+            BlueprintIdentifier = "AC596707F07D58BA23FCD537"
+            BuildableName = "Spike"
+            BlueprintName = "Spike"
+            ReferencedContainer = "container:AwayLock.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75092D4A925D2F7E5D653191"
-               BuildableName = "NearbyTests.xctest"
-               BlueprintName = "NearbyTests"
-               ReferencedContainer = "container:Nearby.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -82,12 +55,14 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0850AC9A02767CB15E84297E"
-            BuildableName = "Nearby.app"
-            BlueprintName = "Nearby"
-            ReferencedContainer = "container:Nearby.xcodeproj">
+            BlueprintIdentifier = "AC596707F07D58BA23FCD537"
+            BuildableName = "Spike"
+            BlueprintName = "Spike"
+            ReferencedContainer = "container:AwayLock.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -99,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0850AC9A02767CB15E84297E"
-            BuildableName = "Nearby.app"
-            BlueprintName = "Nearby"
-            ReferencedContainer = "container:Nearby.xcodeproj">
+            BlueprintIdentifier = "AC596707F07D58BA23FCD537"
+            BuildableName = "Spike"
+            BlueprintName = "Spike"
+            ReferencedContainer = "container:AwayLock.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

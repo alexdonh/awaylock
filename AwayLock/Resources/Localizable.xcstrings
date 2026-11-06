@@ -1,48 +1,48 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "%@ stopped advertising or changed its address. Nearby kept your previous choice.": {
+    "%@ stopped advertising or changed its address. AwayLock kept your previous choice.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ sendet nicht mehr oder hat seine Adresse geändert. Nearby hat deine vorherige Auswahl beibehalten."
+            "value": "%@ sendet nicht mehr oder hat seine Adresse geändert. AwayLock hat deine vorherige Auswahl beibehalten."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ dejó de emitir o cambió su dirección. Nearby mantuvo tu elección anterior."
+            "value": "%@ dejó de emitir o cambió su dirección. AwayLock mantuvo tu elección anterior."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ a cessé d’émettre ou a changé d’adresse. Nearby a conservé votre choix précédent."
+            "value": "%@ a cessé d’émettre ou a changé d’adresse. AwayLock a conservé votre choix précédent."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ のアドバタイズが止まったか、アドレスが変わりました。Nearby は以前の選択を維持しました。"
+            "value": "%@ のアドバタイズが止まったか、アドレスが変わりました。AwayLock は以前の選択を維持しました。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ 기기가 신호 송출을 멈췄거나 주소가 바뀌었습니다. Nearby는 이전 선택을 유지했습니다."
+            "value": "%@ 기기가 신호 송출을 멈췄거나 주소가 바뀌었습니다. AwayLock은 이전 선택을 유지했습니다."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ đã ngừng phát tín hiệu hoặc đổi địa chỉ. Nearby giữ lựa chọn trước đó của bạn."
+            "value": "%@ đã ngừng phát tín hiệu hoặc đổi địa chỉ. AwayLock giữ lựa chọn trước đó của bạn."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ 已停止广播或更改了地址。Nearby 保留了你之前的选择。"
+            "value": "%@ 已停止广播或更改了地址。AwayLock 保留了你之前的选择。"
           }
         }
       }
@@ -242,48 +242,48 @@
         }
       }
     },
-    "About Nearby": {
+    "About AwayLock": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Über Nearby"
+            "value": "Über AwayLock"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Acerca de Nearby"
+            "value": "Acerca de AwayLock"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "À propos de Nearby"
+            "value": "À propos de AwayLock"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby について"
+            "value": "AwayLock について"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby에 관하여"
+            "value": "AwayLock에 관하여"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Giới thiệu Nearby"
+            "value": "Giới thiệu AwayLock"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "关于 Nearby"
+            "value": "关于 AwayLock"
           }
         }
       }
@@ -932,48 +932,48 @@
         }
       }
     },
-    "Choose Nearby’s language under Applications": {
+    "Choose AwayLock’s language under Applications": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wähle die Sprache von Nearby unter „Apps“"
+            "value": "Wähle die Sprache von AwayLock unter „Apps“"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elige el idioma de Nearby en Aplicaciones"
+            "value": "Elige el idioma de AwayLock en Aplicaciones"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choisissez la langue de Nearby sous Applications"
+            "value": "Choisissez la langue de AwayLock sous Applications"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "「アプリケーション」で Nearby の言語を選択"
+            "value": "「アプリケーション」で AwayLock の言語を選択"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "응용 프로그램에서 Nearby의 언어를 선택하세요"
+            "value": "응용 프로그램에서 AwayLock의 언어를 선택하세요"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Chọn ngôn ngữ cho Nearby trong mục Ứng dụng"
+            "value": "Chọn ngôn ngữ cho AwayLock trong mục Ứng dụng"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在“应用程序”下选择 Nearby 的语言"
+            "value": "在“应用程序”下选择 AwayLock 的语言"
           }
         }
       }
@@ -2220,48 +2220,48 @@
         }
       }
     },
-    "Locked by Nearby": {
+    "Locked by AwayLock": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Von Nearby gesperrt"
+            "value": "Von AwayLock gesperrt"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bloqueado por Nearby"
+            "value": "Bloqueado por AwayLock"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Verrouillé par Nearby"
+            "value": "Verrouillé par AwayLock"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby がロックしました"
+            "value": "AwayLock がロックしました"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby가 잠금"
+            "value": "AwayLock이 잠금"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Đã khóa bởi Nearby"
+            "value": "Đã khóa bởi AwayLock"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已由 Nearby 锁定"
+            "value": "已由 AwayLock 锁定"
           }
         }
       }
@@ -2642,54 +2642,54 @@
         }
       }
     },
-    "Nearby": {
+    "AwayLock": {
       "shouldTranslate": false
     },
-    "Nearby %@": {
+    "AwayLock %@": {
       "shouldTranslate": false
     },
-    "Nearby app icon": {
+    "AwayLock app icon": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby-App-Symbol"
+            "value": "AwayLock-App-Symbol"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Icono de la app Nearby"
+            "value": "Icono de la app AwayLock"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Icône de l’app Nearby"
+            "value": "Icône de l’app AwayLock"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby のアプリアイコン"
+            "value": "AwayLock のアプリアイコン"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby 앱 아이콘"
+            "value": "AwayLock 앱 아이콘"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Biểu tượng ứng dụng Nearby"
+            "value": "Biểu tượng ứng dụng AwayLock"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby 应用图标"
+            "value": "AwayLock 应用图标"
           }
         }
       }
@@ -2740,370 +2740,370 @@
         }
       }
     },
-    "Nearby types your login password on the lock screen when your device has been back in range for 3 seconds. It’s stored in your Keychain on this Mac only. A relayed Bluetooth signal could fake “near”, so leave this off on shared or sensitive Macs.": {
+    "AwayLock types your login password on the lock screen when your device has been back in range for 3 seconds. It’s stored in your Keychain on this Mac only. A relayed Bluetooth signal could fake “near”, so leave this off on shared or sensitive Macs.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby gibt dein Anmeldepasswort auf dem Sperrbildschirm ein, wenn dein Gerät seit 3 Sekunden wieder in Reichweite ist. Es wird nur im Schlüsselbund dieses Mac gespeichert. Ein weitergeleitetes Bluetooth-Signal könnte „in der Nähe“ vortäuschen – lass dies auf gemeinsam genutzten oder sensiblen Macs deshalb aus."
+            "value": "AwayLock gibt dein Anmeldepasswort auf dem Sperrbildschirm ein, wenn dein Gerät seit 3 Sekunden wieder in Reichweite ist. Es wird nur im Schlüsselbund dieses Mac gespeichert. Ein weitergeleitetes Bluetooth-Signal könnte „in der Nähe“ vortäuschen – lass dies auf gemeinsam genutzten oder sensiblen Macs deshalb aus."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby escribe tu contraseña de inicio de sesión en la pantalla de bloqueo cuando tu dispositivo lleva 3 segundos de vuelta en el alcance. Se guarda solo en el llavero de este Mac. Una señal Bluetooth retransmitida podría simular que está «cerca», así que desactívalo en Macs compartidos o con datos sensibles."
+            "value": "AwayLock escribe tu contraseña de inicio de sesión en la pantalla de bloqueo cuando tu dispositivo lleva 3 segundos de vuelta en el alcance. Se guarda solo en el llavero de este Mac. Una señal Bluetooth retransmitida podría simular que está «cerca», así que desactívalo en Macs compartidos o con datos sensibles."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby saisit votre mot de passe de session sur l’écran verrouillé quand votre appareil est revenu à portée depuis 3 secondes. Il est stocké uniquement dans le trousseau de ce Mac. Un signal Bluetooth relayé pourrait simuler « à proximité » : désactivez cette option sur les Mac partagés ou sensibles."
+            "value": "AwayLock saisit votre mot de passe de session sur l’écran verrouillé quand votre appareil est revenu à portée depuis 3 secondes. Il est stocké uniquement dans le trousseau de ce Mac. Un signal Bluetooth relayé pourrait simuler « à proximité » : désactivez cette option sur les Mac partagés ou sensibles."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "デバイスが範囲内に戻って 3 秒経つと、Nearby がロック画面にログインパスワードを入力します。パスワードはこの Mac のキーチェーンにのみ保存されます。中継された Bluetooth 信号で「近く」を偽装される可能性があるため、共有の Mac や機密性の高い Mac ではオフにしてください。"
+            "value": "デバイスが範囲内に戻って 3 秒経つと、AwayLock がロック画面にログインパスワードを入力します。パスワードはこの Mac のキーチェーンにのみ保存されます。中継された Bluetooth 信号で「近く」を偽装される可能性があるため、共有の Mac や機密性の高い Mac ではオフにしてください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "기기가 범위 안으로 돌아오고 3초가 지나면 Nearby가 잠금 화면에 로그인 암호를 입력합니다. 암호는 이 Mac의 키체인에만 저장됩니다. 중계된 Bluetooth 신호로 ‘가까움’이 위조될 수 있으므로 공용 Mac이나 민감한 Mac에서는 끄세요."
+            "value": "기기가 범위 안으로 돌아오고 3초가 지나면 AwayLock이 잠금 화면에 로그인 암호를 입력합니다. 암호는 이 Mac의 키체인에만 저장됩니다. 중계된 Bluetooth 신호로 ‘가까움’이 위조될 수 있으므로 공용 Mac이나 민감한 Mac에서는 끄세요."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby sẽ nhập mật khẩu đăng nhập trên màn hình khóa khi thiết bị của bạn quay lại trong phạm vi được 3 giây. Mật khẩu chỉ được lưu trong Chuỗi khóa trên máy Mac này. Tín hiệu Bluetooth bị chuyển tiếp có thể giả mạo “ở gần”, vì vậy hãy tắt tính năng này trên máy Mac dùng chung hoặc chứa dữ liệu nhạy cảm."
+            "value": "AwayLock sẽ nhập mật khẩu đăng nhập trên màn hình khóa khi thiết bị của bạn quay lại trong phạm vi được 3 giây. Mật khẩu chỉ được lưu trong Chuỗi khóa trên máy Mac này. Tín hiệu Bluetooth bị chuyển tiếp có thể giả mạo “ở gần”, vì vậy hãy tắt tính năng này trên máy Mac dùng chung hoặc chứa dữ liệu nhạy cảm."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "当你的设备回到范围内 3 秒后，Nearby 会在锁定屏幕上输入你的登录密码。密码仅存储在这台 Mac 的钥匙串中。中继的蓝牙信号可能伪造“在附近”，因此在共用或敏感的 Mac 上请关闭此功能。"
+            "value": "当你的设备回到范围内 3 秒后，AwayLock 会在锁定屏幕上输入你的登录密码。密码仅存储在这台 Mac 的钥匙串中。中继的蓝牙信号可能伪造“在附近”，因此在共用或敏感的 Mac 上请关闭此功能。"
           }
         }
       }
     },
-    "Nearby: Bluetooth is off": {
+    "AwayLock: Bluetooth is off": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: Bluetooth ist aus"
+            "value": "AwayLock: Bluetooth ist aus"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: Bluetooth desactivado"
+            "value": "AwayLock: Bluetooth desactivado"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : Bluetooth désactivé"
+            "value": "AwayLock : Bluetooth désactivé"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：Bluetooth がオフです"
+            "value": "AwayLock：Bluetooth がオフです"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: Bluetooth가 꺼져 있음"
+            "value": "AwayLock: Bluetooth가 꺼져 있음"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: Bluetooth đang tắt"
+            "value": "AwayLock: Bluetooth đang tắt"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：蓝牙已关闭"
+            "value": "AwayLock：蓝牙已关闭"
           }
         }
       }
     },
-    "Nearby: device leaving, locking soon": {
+    "AwayLock: device leaving, locking soon": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: Gerät entfernt sich, Sperre gleich"
+            "value": "AwayLock: Gerät entfernt sich, Sperre gleich"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: el dispositivo se aleja, se bloqueará pronto"
+            "value": "AwayLock: el dispositivo se aleja, se bloqueará pronto"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : l’appareil s’éloigne, verrouillage imminent"
+            "value": "AwayLock : l’appareil s’éloigne, verrouillage imminent"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：デバイスが離れています。まもなくロックします"
+            "value": "AwayLock：デバイスが離れています。まもなくロックします"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: 기기가 멀어지는 중, 곧 잠김"
+            "value": "AwayLock: 기기가 멀어지는 중, 곧 잠김"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: thiết bị đang rời xa, sắp khóa"
+            "value": "AwayLock: thiết bị đang rời xa, sắp khóa"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：设备正在离开，即将锁定"
+            "value": "AwayLock：设备正在离开，即将锁定"
           }
         }
       }
     },
-    "Nearby: device near": {
+    "AwayLock: device near": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: Gerät in der Nähe"
+            "value": "AwayLock: Gerät in der Nähe"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: dispositivo cerca"
+            "value": "AwayLock: dispositivo cerca"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : appareil à proximité"
+            "value": "AwayLock : appareil à proximité"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：デバイスが近くにあります"
+            "value": "AwayLock：デバイスが近くにあります"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: 기기가 가까이 있음"
+            "value": "AwayLock: 기기가 가까이 있음"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: thiết bị ở gần"
+            "value": "AwayLock: thiết bị ở gần"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：设备在附近"
+            "value": "AwayLock：设备在附近"
           }
         }
       }
     },
-    "Nearby: locked": {
+    "AwayLock: locked": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: gesperrt"
+            "value": "AwayLock: gesperrt"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: bloqueado"
+            "value": "AwayLock: bloqueado"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : verrouillé"
+            "value": "AwayLock : verrouillé"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：ロック中"
+            "value": "AwayLock：ロック中"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: 잠김"
+            "value": "AwayLock: 잠김"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: đã khóa"
+            "value": "AwayLock: đã khóa"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：已锁定"
+            "value": "AwayLock：已锁定"
           }
         }
       }
     },
-    "Nearby: no device chosen": {
+    "AwayLock: no device chosen": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: kein Gerät ausgewählt"
+            "value": "AwayLock: kein Gerät ausgewählt"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: ningún dispositivo elegido"
+            "value": "AwayLock: ningún dispositivo elegido"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : aucun appareil choisi"
+            "value": "AwayLock : aucun appareil choisi"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：デバイス未選択"
+            "value": "AwayLock：デバイス未選択"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: 선택한 기기 없음"
+            "value": "AwayLock: 선택한 기기 없음"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: chưa chọn thiết bị"
+            "value": "AwayLock: chưa chọn thiết bị"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：未选择设备"
+            "value": "AwayLock：未选择设备"
           }
         }
       }
     },
-    "Nearby: off": {
+    "AwayLock: off": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: aus"
+            "value": "AwayLock: aus"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: desactivado"
+            "value": "AwayLock: desactivado"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : désactivé"
+            "value": "AwayLock : désactivé"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：オフ"
+            "value": "AwayLock：オフ"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: 꺼짐"
+            "value": "AwayLock: 꺼짐"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: tắt"
+            "value": "AwayLock: tắt"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：已关闭"
+            "value": "AwayLock：已关闭"
           }
         }
       }
     },
-    "Nearby: paused": {
+    "AwayLock: paused": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: pausiert"
+            "value": "AwayLock: pausiert"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: en pausa"
+            "value": "AwayLock: en pausa"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby : en pause"
+            "value": "AwayLock : en pause"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：一時停止中"
+            "value": "AwayLock：一時停止中"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: 일시 정지됨"
+            "value": "AwayLock: 일시 정지됨"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby: đã tạm dừng"
+            "value": "AwayLock: đã tạm dừng"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nearby：已暂停"
+            "value": "AwayLock：已暂停"
           }
         }
       }
@@ -4856,48 +4856,48 @@
         }
       }
     },
-    "Update Available: Nearby %@…": {
+    "Update Available: AwayLock %@…": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Update verfügbar: Nearby %@ …"
+            "value": "Update verfügbar: AwayLock %@ …"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Actualización disponible: Nearby %@…"
+            "value": "Actualización disponible: AwayLock %@…"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mise à jour disponible : Nearby %@…"
+            "value": "Mise à jour disponible : AwayLock %@…"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アップデートがあります：Nearby %@…"
+            "value": "アップデートがあります：AwayLock %@…"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "업데이트 가능: Nearby %@…"
+            "value": "업데이트 가능: AwayLock %@…"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Có bản cập nhật: Nearby %@…"
+            "value": "Có bản cập nhật: AwayLock %@…"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "有可用更新：Nearby %@…"
+            "value": "有可用更新：AwayLock %@…"
           }
         }
       }

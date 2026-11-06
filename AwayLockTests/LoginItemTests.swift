@@ -1,6 +1,6 @@
 import ServiceManagement
 import Testing
-@testable import Nearby
+@testable import AwayLock
 
 @MainActor
 final class FakeLoginItem: LoginItemServing {

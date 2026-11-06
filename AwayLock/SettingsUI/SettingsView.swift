@@ -42,7 +42,7 @@ struct SettingsView: View {
                isPresented: Binding(get: { model.untrackableName != nil }, set: { if !$0 { model.untrackableName = nil } })) {
             Button("OK") {}
         } message: {
-            Text("\(model.untrackableName ?? "") stopped advertising or changed its address. Nearby kept your previous choice.")
+            Text("\(model.untrackableName ?? "") stopped advertising or changed its address. AwayLock kept your previous choice.")
         }
     }
 
@@ -220,7 +220,7 @@ struct SettingsView: View {
                 Button("Language & Region…") { NSWorkspace.shared.open(Self.languageSettingsURL) }
             } label: {
                 Text("Language")
-                Text("Choose Nearby’s language under Applications")
+                Text("Choose AwayLock’s language under Applications")
             }
         }
         .onAppear { loginStatus = SMAppService.mainApp.status }
@@ -241,7 +241,7 @@ struct SettingsView: View {
                 Button("Check for Updates…") { updater.checkForUpdates() }
                     .disabled(!updater.isConfigured)
             } label: {
-                Text("Nearby \(updater.version)")
+                Text("AwayLock \(updater.version)")
                 Text(lastCheckedText)
             }
         }
@@ -304,7 +304,7 @@ struct PasswordSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Unlock when you come back").font(.headline)
-            Text("Nearby types your login password on the lock screen when your device has been back in range for 3 seconds. It’s stored in your Keychain on this Mac only. A relayed Bluetooth signal could fake “near”, so leave this off on shared or sensitive Macs.")
+            Text("AwayLock types your login password on the lock screen when your device has been back in range for 3 seconds. It’s stored in your Keychain on this Mac only. A relayed Bluetooth signal could fake “near”, so leave this off on shared or sensitive Macs.")
                 .font(.callout).foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             SecureField("Login password", text: $password)

@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52EA3C6D885E107DBE989FFE /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 9908B301AB3FE189860F556C /* Sparkle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21AFABD826B09A75F98139C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9CEAABE40DBC4E3AEDEB263 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84276007F4E5D385A7251FA8;
+			remoteInfo = AwayLock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		050883A81C887DCB6DB93EC6 /* Spike */ = {isa = PBXFileReference; includeInIndex = 0; path = Spike; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EEC249291F81FE71D39F349 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		2546B24044BFED767C6A06C0 /* AwayLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwayLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5375486C088E491105E566DB /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		942634C91AA50E302CF8942C /* AwayLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwayLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F141B9F6F87FF5CEDE3143D3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 84276007F4E5D385A7251FA8 /* AwayLock */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3B6366F7592AF314B1B73C28 /* AwayLockTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = AwayLockTests;
+			sourceTree = "<group>";
+		};
+		5BDA0AD826C6D8CBF4A8D48F /* Spike */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Spike;
+			sourceTree = "<group>";
+		};
+		E8EBC9F5D318961E11E0883C /* AwayLock */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F141B9F6F87FF5CEDE3143D3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = AwayLock;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D44AA2C2DD1125241BA8DF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52EA3C6D885E107DBE989FFE /* Sparkle in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6395344F45C00DC384E8EEC7 = {
+			isa = PBXGroup;
+			children = (
+				E8EBC9F5D318961E11E0883C /* AwayLock */,
+				3B6366F7592AF314B1B73C28 /* AwayLockTests */,
+				9DA5A49E2353AAA3E064438B /* Config */,
+				5BDA0AD826C6D8CBF4A8D48F /* Spike */,
+				B73B776F4B36F3D1683EF3AD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DA5A49E2353AAA3E064438B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1EEC249291F81FE71D39F349 /* Debug.xcconfig */,
+				5375486C088E491105E566DB /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B73B776F4B36F3D1683EF3AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				942634C91AA50E302CF8942C /* AwayLock.app */,
+				2546B24044BFED767C6A06C0 /* AwayLockTests.xctest */,
+				050883A81C887DCB6DB93EC6 /* Spike */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84276007F4E5D385A7251FA8 /* AwayLock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F1A48ABD0AF661F6C3AB97A /* Build configuration list for PBXNativeTarget "AwayLock" */;
+			buildPhases = (
+				8F4BCBF49849273064940D82 /* Sources */,
+				D902E95D32A1D21492990145 /* Resources */,
+				3D44AA2C2DD1125241BA8DF6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E8EBC9F5D318961E11E0883C /* AwayLock */,
+			);
+			name = AwayLock;
+			packageProductDependencies = (
+				9908B301AB3FE189860F556C /* Sparkle */,
+			);
+			productName = AwayLock;
+			productReference = 942634C91AA50E302CF8942C /* AwayLock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC596707F07D58BA23FCD537 /* Spike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAEC3F600CA1964586E3A838 /* Build configuration list for PBXNativeTarget "Spike" */;
+			buildPhases = (
+				78400949D2BF4B9DA95EC398 /* Sources */,
+				DBBEC0A650FE20BDAE1334F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5BDA0AD826C6D8CBF4A8D48F /* Spike */,
+			);
+			name = Spike;
+			packageProductDependencies = (
+			);
+			productName = Spike;
+			productReference = 050883A81C887DCB6DB93EC6 /* Spike */;
+			productType = "com.apple.product-type.tool";
+		};
+		E26DA4C23BC97802573052D8 /* AwayLockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E43D1FED986EA0EEC9CB2A24 /* Build configuration list for PBXNativeTarget "AwayLockTests" */;
+			buildPhases = (
+				C6D90CF65473C9913A1D1DAE /* Sources */,
+				DBC41C31608AB2E398BDCF95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D68EFF790D65C4EB1B1C2DBF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3B6366F7592AF314B1B73C28 /* AwayLockTests */,
+			);
+			name = AwayLockTests;
+			packageProductDependencies = (
+			);
+			productName = AwayLockTests;
+			productReference = 2546B24044BFED767C6A06C0 /* AwayLockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9CEAABE40DBC4E3AEDEB263 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					84276007F4E5D385A7251FA8 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					AC596707F07D58BA23FCD537 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					E26DA4C23BC97802573052D8 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 791D3113EF7D501BCDD04433 /* Build configuration list for PBXProject "AwayLock" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6395344F45C00DC384E8EEC7;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0FBEE1590D4FD288C14CCB56 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B73B776F4B36F3D1683EF3AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84276007F4E5D385A7251FA8 /* AwayLock */,
+				E26DA4C23BC97802573052D8 /* AwayLockTests */,
+				AC596707F07D58BA23FCD537 /* Spike */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D902E95D32A1D21492990145 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBBEC0A650FE20BDAE1334F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBC41C31608AB2E398BDCF95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78400949D2BF4B9DA95EC398 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F4BCBF49849273064940D82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6D90CF65473C9913A1D1DAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D68EFF790D65C4EB1B1C2DBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84276007F4E5D385A7251FA8 /* AwayLock */;
+			targetProxy = 21AFABD826B09A75F98139C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03A5C9F2FD63F4B91EEF56ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AwayLock/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AwayLock;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "AwayLock reads the signal strength of the device you choose so it can lock your Mac when you walk away.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID)";
+				PRODUCT_NAME = AwayLock;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+			};
+			name = Release;
+		};
+		0BB0DCB3F5DB3AFF2563520A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EEC249291F81FE71D39F349 /* Debug.xcconfig */;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		13904D283B864F19BF6F1C33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AwayLock/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AwayLock;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "AwayLock reads the signal strength of the device you choose so it can lock your Mac when you walk away.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID)";
+				PRODUCT_NAME = AwayLock;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+			};
+			name = Debug;
+		};
+		2C3F8C9C66617C858FCF7D8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Spike reads Bluetooth LE adverts to test device tracking.";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID).spike";
+				PRODUCT_NAME = spike;
+			};
+			name = Debug;
+		};
+		7CF702D7426F6BB64D8BC0CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID).tests";
+				PRODUCT_NAME = AwayLockTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwayLock.app/Contents/MacOS/AwayLock";
+			};
+			name = Release;
+		};
+		7FED2EE837A1210FBFF1D1EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5375486C088E491105E566DB /* Release.xcconfig */;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C2805191C41CC7DBA784697B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Spike reads Bluetooth LE adverts to test device tracking.";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID).spike";
+				PRODUCT_NAME = spike;
+			};
+			name = Release;
+		};
+		F91F1DD4FCF1817CE7183CBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(AWAYLOCK_BUNDLE_ID).tests";
+				PRODUCT_NAME = AwayLockTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwayLock.app/Contents/MacOS/AwayLock";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F1A48ABD0AF661F6C3AB97A /* Build configuration list for PBXNativeTarget "AwayLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13904D283B864F19BF6F1C33 /* Debug */,
+				03A5C9F2FD63F4B91EEF56ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		791D3113EF7D501BCDD04433 /* Build configuration list for PBXProject "AwayLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BB0DCB3F5DB3AFF2563520A /* Debug */,
+				7FED2EE837A1210FBFF1D1EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BAEC3F600CA1964586E3A838 /* Build configuration list for PBXNativeTarget "Spike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3F8C9C66617C858FCF7D8A /* Debug */,
+				C2805191C41CC7DBA784697B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E43D1FED986EA0EEC9CB2A24 /* Build configuration list for PBXNativeTarget "AwayLockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F91F1DD4FCF1817CE7183CBF /* Debug */,
+				7CF702D7426F6BB64D8BC0CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0FBEE1590D4FD288C14CCB56 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = exactVersion;
+				version = 2.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9908B301AB3FE189860F556C /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FBEE1590D4FD288C14CCB56 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A9CEAABE40DBC4E3AEDEB263 /* Project object */;
+}
