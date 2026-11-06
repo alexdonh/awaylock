@@ -15,3 +15,6 @@ Config/Local.xcconfig
 
 # Sparkle private key (generate_keys -x); never commit
 *.key
+
+# Local secrets; never commit
+.env
