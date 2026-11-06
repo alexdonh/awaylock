@@ -82,7 +82,7 @@ final class StatusItemController: NSObject, NSMenuDelegate {
         guard let button = item.button else { return }
         // Status glyphs from the icon kit (template assets), 18 pt.
         let image = NSImage(resource: icon.symbol)
-        image.size = NSSize(width: 18, height: 18)
+        image.size = NSSize(width: 20, height: 20)
         image.isTemplate = true
         image.accessibilityDescription = icon.label
         button.image = image
