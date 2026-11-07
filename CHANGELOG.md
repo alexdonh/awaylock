@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Make it runable on macOS 14 Sonoma and macOS 15 Sequoia.
+
 ## 1.0.1 (2026-11-07)
 
 - iPhone: locks within about 10 seconds plus your away delay when you walk off right after the phone drops its Bluetooth link. It used to wait up to a minute.

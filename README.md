@@ -8,7 +8,7 @@ AwayLock is a menu bar app. Pick one Bluetooth device you carry: an Apple Watch,
 - Opt-in auto-unlock when you come back (off by default, see [Security](#security)).
 - Low power: it samples fast only when a decision is close.
 
-Requires macOS 26 or later. Available in English, Chinese (Simplified and Traditional), French, German, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish and Vietnamese.
+Requires macOS 14 Sonoma or later. Available in English, Chinese (Simplified and Traditional), French, German, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish and Vietnamese.
 
 ## Install
 

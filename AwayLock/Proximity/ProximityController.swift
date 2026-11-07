@@ -58,11 +58,11 @@ final class ProximityController {
             for await event in ScreenState.events() { handle(event) }
         }
         Task { [settings] in
-            let device = Observations { DeviceChoice(uuid: settings.deviceUUID, mode: settings.signalMode) }
+            let device = observing { DeviceChoice(uuid: settings.deviceUUID, mode: settings.signalMode) }
             for await _ in device.dropFirst() { restart() }
         }
         Task { [settings] in
-            for await _ in Observations({ settings.proximity }).dropFirst() { send(.tick) }
+            for await _ in observing({ settings.proximity }).dropFirst() { send(.tick) }
         }
         restart()
     }

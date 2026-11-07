@@ -1,7 +1,7 @@
 name: AwayLock
 options:
   deploymentTarget:
-    macOS: "26.0"
+    macOS: "14.0"
   defaultSourceDirectoryType: syncedFolder
   settingPresets: none
 configFiles:

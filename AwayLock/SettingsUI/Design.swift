@@ -14,16 +14,36 @@ struct Card<Content: View>: View {
     @ViewBuilder var content: Content
 
     var body: some View {
-        VStack(spacing: 0) {
-            Group(subviews: content) { rows in
-                ForEach(rows.indices, id: \.self) { i in
-                    if i > 0 { Divider().padding(.leading, dividerInset) }
-                    rows[i]
+        Group {
+            if #available(macOS 15, *) {
+                VStack(spacing: 0) {
+                    Group(subviews: content) { rows in
+                        ForEach(rows.indices, id: \.self) { i in
+                            if i > 0 { Divider().padding(.leading, dividerInset) }
+                            rows[i]
+                        }
+                    }
                 }
+            } else {
+                _VariadicView.Tree(DividedRows(dividerInset: dividerInset)) { content }
             }
         }
         .background(Color.card, in: .rect(cornerRadius: 18))
         .clipShape(.rect(cornerRadius: 18))
+    }
+}
+
+/// macOS 14 path for `Card`: same rows and dividers through SwiftUI's older child-view API.
+private struct DividedRows: _VariadicView_MultiViewRoot {
+    let dividerInset: CGFloat
+
+    func body(children: _VariadicView.Children) -> some View {
+        VStack(spacing: 0) {
+            ForEach(Array(children.enumerated()), id: \.offset) { i, row in
+                if i > 0 { Divider().padding(.leading, dividerInset) }
+                row
+            }
+        }
     }
 }
 

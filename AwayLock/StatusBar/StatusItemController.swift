@@ -31,7 +31,7 @@ final class StatusItemController: NSObject, NSMenuDelegate {
         buildMenu()
         buildBadge()
         Task { [weak self, model, settings, updater] in
-            let icons = Observations { IconState(model: model, settings: settings, updateAvailable: updater.availableVersion != nil) }
+            let icons = observing { IconState(model: model, settings: settings, updateAvailable: updater.availableVersion != nil) }
             for await icon in icons { self?.apply(icon) }
         }
     }
