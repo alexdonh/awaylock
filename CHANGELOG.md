@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.1 (2026-11-07)
 
 - iPhone: locks within about 10 seconds plus your away delay when you walk off right after the phone drops its Bluetooth link. It used to wait up to a minute.
 - Auto unlock checks your login password when you save it, so a typo can't get stuck in the Keychain.
