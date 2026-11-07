@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.2 (2026-11-07)
 
 - Make it runable on macOS 14 Sonoma and macOS 15 Sequoia.
 
