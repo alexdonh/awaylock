@@ -298,6 +298,7 @@ struct PasswordSheet: View {
     let onSave: (String) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var password = ""
+    @State private var wrong = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -307,6 +308,11 @@ struct PasswordSheet: View {
                 .fixedSize(horizontal: false, vertical: true)
             SecureField("Login password", text: $password)
                 .onSubmit(save)
+                .onChange(of: password) { wrong = false }
+            if wrong {
+                Text("That isn't your login password.")
+                    .font(.callout).foregroundStyle(.red)
+            }
             HStack {
                 Spacer()
                 Button("Cancel", role: .cancel) { dismiss() }
@@ -322,6 +328,7 @@ struct PasswordSheet: View {
 
     private func save() {
         guard !password.isEmpty else { return }
+        guard UnlockService.verifyPassword(password) else { wrong = true; return }
         onSave(password)
         dismiss()
     }

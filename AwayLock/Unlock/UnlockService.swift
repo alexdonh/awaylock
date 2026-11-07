@@ -1,6 +1,7 @@
 import AppKit
 import ApplicationServices
 import IOKit.pwr_mgt
+import OpenDirectory
 import Security
 
 /// Opt-in auto-unlock: wakes the display and types the login password from the Keychain.
@@ -18,8 +19,20 @@ final class UnlockService {
 
     static var hasPassword: Bool { readPassword() != nil }
 
-    // ponytail: stores what the user typed without verifying it; add an OpenDirectory
-    // verifyPassword check if wrong passwords become a support issue.
+    /// Checks against this user's login record, so a typo never gets typed on the lock screen.
+    /// A wrong try counts toward the account's failed-login limit, like a wrong lock-screen entry.
+    static func verifyPassword(_ password: String) -> Bool {
+        do {
+            let node = try ODNode(session: .default(), type: ODNodeType(kODNodeTypeAuthentication))
+            let record = try node.record(withRecordType: kODRecordTypeUsers, name: NSUserName(), attributes: nil)
+            try record.verifyPassword(password)
+            return true
+        } catch {
+            Log.session.notice("password check failed: \(error.localizedDescription, privacy: .public)")
+            return false
+        }
+    }
+
     @discardableResult
     static func savePassword(_ password: String) -> Bool {
         deletePassword()
