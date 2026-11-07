@@ -124,7 +124,9 @@ jobs:
           else
             gh release create "v$V" --verify-tag --title "AwayLock $V" --notes-file "${{ steps.notes.outputs.file }}" $PRE
           fi
-          gh release upload "v$V" "build/release/updates/AwayLock-$V.dmg" build/release/updates/appcast.xml --clobber
+          # Version-less copy so the site's /download can use releases/latest/download/AwayLock.dmg.
+          cp "build/release/updates/AwayLock-$V.dmg" build/release/updates/AwayLock.dmg
+          gh release upload "v$V" "build/release/updates/AwayLock-$V.dmg" build/release/updates/AwayLock.dmg build/release/updates/appcast.xml --clobber
 
       - name: Remove the signing keychain and keys
         if: always()
