@@ -301,4 +301,19 @@ struct DisconnectGraceTests {
         #expect(ConnectedRSSIEngine.grace(after: CBError(.connectionTimeout)) == ConnectedRSSIEngine.reconnectGrace)
         #expect(ConnectedRSSIEngine.grace(after: nil) == ConnectedRSSIEngine.reconnectGrace)
     }
+
+    @Test func hangUpIsConfirmedByAdverts() {
+        typealias E = ConnectedRSSIEngine
+        let t0 = ContinuousClock.now
+        // Never heard advertising: fall back to the long grace.
+        #expect(E.lostAt(since: t0, grace: E.hangUpGrace, lastAdvert: nil) == t0 + E.hangUpGrace)
+        // Known to advertise (an earlier outage), silent now: lost after the silence window.
+        #expect(E.lostAt(since: t0, grace: E.hangUpGrace, lastAdvert: t0 - .seconds(300)) == t0 + E.advertSilence)
+        // Still advertising 20 s in: the deadline moves with the adverts.
+        #expect(E.lostAt(since: t0, grace: E.hangUpGrace, lastAdvert: t0 + .seconds(20)) == t0 + .seconds(20) + E.advertSilence)
+        // Advertising forever but never reconnecting: the cap still loses it.
+        #expect(E.lostAt(since: t0, grace: E.hangUpGrace, lastAdvert: t0 + .seconds(59)) == t0 + E.hangUpGrace)
+        // Supervision timeout ignores adverts.
+        #expect(E.lostAt(since: t0, grace: E.reconnectGrace, lastAdvert: t0 + .seconds(2)) == t0 + E.reconnectGrace)
+    }
 }

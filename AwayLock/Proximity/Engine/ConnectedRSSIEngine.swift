@@ -8,6 +8,10 @@ import CoreBluetooth
 /// who ended the link: a hang-up (HCI 0x13) means the phone was in range to send it, and its
 /// reconnect took up to 35 s with the phone on the desk (logs, 2026-11-06); a supervision
 /// timeout is the radio losing the phone, so the short grace applies.
+///
+/// A hang-up's long grace is confirmed by adverts: while the link is down the engine scans for the
+/// phone, and once it has heard the phone advertise, silence of `advertSilence` counts as lost.
+/// `lastAdvert` survives outages, so a phone known to advertise is lost fast even if it left at once.
 @BluetoothActor
 final class ConnectedRSSIEngine: NSObject, ProximityEngine {
     private var central: CBCentralManager?
@@ -17,13 +21,24 @@ final class ConnectedRSSIEngine: NSObject, ProximityEngine {
     private var disconnectedAt: ContinuousClock.Instant?
     private var lostSent = false
     private var grace = ConnectedRSSIEngine.reconnectGrace
+    private var lastAdvert: ContinuousClock.Instant?
+    private var adverts = 0
     nonisolated static let reconnectGrace: Duration = .seconds(3)
-    // ponytail: a walk-away that starts with a hang-up locks after 60 s + away delay.
-    // Upgrade: scan for the phone's adverts during the outage and lose it when they stop.
+    /// Cap: a phone that keeps advertising but never reconnects still counts as lost after this.
     nonisolated static let hangUpGrace: Duration = .seconds(60)
+    // ponytail: guess at a locked iPhone's advert gap. Tune from the "reconnected" log lines.
+    nonisolated static let advertSilence: Duration = .seconds(10)
 
     nonisolated static func grace(after error: Error?) -> Duration {
         (error as? CBError)?.code == .peripheralDisconnected ? hangUpGrace : reconnectGrace
+    }
+
+    /// When an outage that began at `since` counts as lost.
+    nonisolated static func lostAt(since: ContinuousClock.Instant, grace: Duration,
+                                   lastAdvert: ContinuousClock.Instant?) -> ContinuousClock.Instant {
+        let cap = since + grace
+        guard grace == hangUpGrace, let lastAdvert else { return cap }
+        return min(cap, max(since, lastAdvert) + advertSilence)
     }
 
     nonisolated override init() { super.init() }
@@ -51,7 +66,10 @@ final class ConnectedRSSIEngine: NSObject, ProximityEngine {
         guard let peripheral else { return }
         if peripheral.state == .connected {
             peripheral.readRSSI()
-        } else if let since = disconnectedAt, !lostSent, ContinuousClock.now - since >= grace {
+        } else if let since = disconnectedAt, !lostSent,
+                  ContinuousClock.now >= Self.lostAt(since: since, grace: grace, lastAdvert: lastAdvert) {
+            Log.bluetooth.notice("lost: no reconnect, \(self.adverts) adverts during outage")
+            central?.stopScan()   // gone: only the pending connect waits, at no CPU cost
             lostSent = true
             continuation?.yield(.lost)
         }
@@ -64,6 +82,7 @@ final class ConnectedRSSIEngine: NSObject, ProximityEngine {
         target = nil
         disconnectedAt = nil
         lostSent = false
+        lastAdvert = nil
         continuation?.finish()
         continuation = nil
     }
@@ -100,12 +119,22 @@ extension ConnectedRSSIEngine: @preconcurrency CBCentralManagerDelegate, @precon
     func centralManager(_ manager: CBCentralManager, didDiscover p: CBPeripheral,
                         advertisementData: [String: Any], rssi: NSNumber) {
         guard p.identifier == target else { return }
+        if peripheral != nil {   // outage scan: the phone is still around
+            lastAdvert = .now
+            adverts += 1
+            return
+        }
         manager.stopScan()
         connect(p)
     }
 
     func centralManager(_ manager: CBCentralManager, didConnect p: CBPeripheral) {
-        Log.bluetooth.debug("connected")
+        if let since = disconnectedAt {
+            Log.bluetooth.notice("reconnected after \(ContinuousClock.now - since, privacy: .public), \(self.adverts) adverts")
+        } else {
+            Log.bluetooth.debug("connected")
+        }
+        manager.stopScan()
         disconnectedAt = nil
         lostSent = false
         p.readRSSI()
@@ -129,6 +158,11 @@ extension ConnectedRSSIEngine: @preconcurrency CBCentralManagerDelegate, @precon
         guard disconnectedAt == nil else { return }
         disconnectedAt = .now
         grace = Self.grace(after: error)
+        adverts = 0
+        // ponytail: duplicates scan wakes us for every nearby advert during the outage (≤ 60 s).
+        if grace == Self.hangUpGrace {
+            central?.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+        }
     }
 
     func peripheral(_ p: CBPeripheral, didReadRSSI rssi: NSNumber, error: Error?) {
