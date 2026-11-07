@@ -40,7 +40,7 @@ AwayLock checks for updates once a day using [Sparkle](https://sparkle-project.o
 
 Your data stays on this Mac. Settings live in `UserDefaults`. The login password, used only if you turn on auto-unlock, lives in your Keychain.
 
-The only network request is the daily update check: one HTTPS GET of `https://awaylock.app/appcast.xml`, which redirects to this repository's latest release.
+The only network request is the daily update check: one HTTPS GET of `https://awaylock.app/appcast.xml`, which redirects to this repository's latest release. Full details: [PRIVACY.md](PRIVACY.md).
 
 ## Security
 
@@ -48,6 +48,8 @@ The only network request is the daily update check: one HTTPS GET of `https://aw
 - **Auto-unlock is off by default.** It enters your login password on the lock screen after your device has been back in range for 3 seconds. It requires Accessibility access. Someone could relay your device's Bluetooth signal to make it seem near, so don't turn it on for shared Macs or Macs with sensitive data.
 - **A lock you start yourself (Control-Command-Q) is never auto unlocked.**
 - Locking uses `SACLockScreenImmediate`, the same private call BLEUnlock uses. If a future macOS removes it, AwayLock sleeps the display instead, which locks only when Require password is set to Immediately in Lock Screen settings. Because it relies on a private API and Accessibility, AwayLock can't be sandboxed and isn't on the Mac App Store.
+
+To report a vulnerability, see [SECURITY.md](SECURITY.md).
 
 ## Build from source
 
