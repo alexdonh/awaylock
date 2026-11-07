@@ -22,6 +22,7 @@ final class ConnectedRSSIEngine: NSObject, ProximityEngine {
     private var lostSent = false
     private var grace = ConnectedRSSIEngine.reconnectGrace
     private var lastAdvert: ContinuousClock.Instant?
+    private var connectedAt: ContinuousClock.Instant?
     private var adverts = 0
     nonisolated static let reconnectGrace: Duration = .seconds(3)
     /// Cap: a phone that keeps advertising but never reconnects still counts as lost after this.
@@ -137,12 +138,17 @@ extension ConnectedRSSIEngine: @preconcurrency CBCentralManagerDelegate, @precon
         manager.stopScan()
         disconnectedAt = nil
         lostSent = false
+        connectedAt = .now
         p.readRSSI()
+        // Backlog experiment: does GATT activity keep iOS from hanging up every ~67 s? Compare "up" in the logs.
+        p.discoverServices(nil)
     }
 
     func centralManager(_ manager: CBCentralManager, didDisconnectPeripheral p: CBPeripheral, error: Error?) {
         guard p.identifier == target else { return }
-        Log.bluetooth.notice("disconnected: \((error as? CBError)?.code.rawValue ?? -1)")
+        let up = connectedAt.map { ContinuousClock.now - $0 }?.description ?? "-"
+        Log.bluetooth.notice("disconnected: \((error as? CBError)?.code.rawValue ?? -1), up \(up, privacy: .public)")
+        connectedAt = nil
         markDown(error)
         manager.connect(p)
     }
