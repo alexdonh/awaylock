@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 (2026-11-08)
+
+- Maintenance release.
+
 ## 1.1.0 (2026-11-08)
 
 - Doesn't lock while you're typing or using the mouse. It locks 5 seconds after you stop, if your device is still away.
