@@ -248,6 +248,13 @@ struct SettingsView: View {
                     Text("After that, unlock yourself. One try per lock.")
                 }
             }
+            if settings.unlockMode == .password,
+               ProximityEngineFactory.resolve(settings.signalMode, isApple: settings.deviceIsApple, name: settings.deviceName) == .passive {
+                // Passive mode trusts unauthenticated adverts: copying a fixed-address device is cheap.
+                Label("Passive signal mode: anyone nearby can fake this device's adverts and trigger the unlock. Use Connected mode or Wake the screen.",
+                      systemImage: "exclamationmark.triangle.fill")
+                    .font(.callout).foregroundStyle(.orange)
+            }
             if settings.unlockMode == .password {
                 LabeledContent {
                     Button("Change…") { askPassword = true }
