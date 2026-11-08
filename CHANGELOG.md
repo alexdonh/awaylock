@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 (2026-11-08)
 
 - Doesn't lock while you're typing or using the mouse. It locks 5 seconds after you stop, if your device is still away.
 - A signal that vanishes straight out of a strong, steady reading gets 15 seconds more, since that's usually a Bluetooth hiccup, not you leaving.
