@@ -10,14 +10,19 @@ struct SettingsView: View {
 
     @State private var showPicker = false
     @State private var askPassword = false
+    @State private var calibrating = false
+    /// After applying a suggestion: what was applied, and the change that reverts it.
+    @State private var undo: (applied: Suggestions.Change, revert: Suggestions.Change)?
     @State private var loginStatus = SMAppService.mainApp.status
     /// Not observable, so re-read on appear and whenever the user comes back from System Settings.
     @State private var axTrusted = UnlockService.isTrusted
 
     var body: some View {
         Form {
+            suggestionSection
             deviceCard
             lockSection
+            unlockSection
             nearbySection
             generalSection
             updatesSection
@@ -35,8 +40,11 @@ struct SettingsView: View {
             PasswordSheet { password in
                 guard UnlockService.savePassword(password) else { return }
                 UnlockService.requestTrust()
-                settings.autoUnlock = true
+                settings.unlockMode = .password
             }
+        }
+        .sheet(isPresented: $calibrating) {
+            CalibrationSheet(controller: controller) { settings.lockRSSI = $0 }
         }
         .alert("This device can't be tracked",
                isPresented: Binding(get: { model.untrackableName != nil }, set: { if !$0 { model.untrackableName = nil } })) {
@@ -93,6 +101,7 @@ struct SettingsView: View {
         case .near(armed: true): "Near, \(dbm)"
         case .near(armed: false): "Not near yet, \(dbm)"
         case .leaving: "Away, locking in \(model.remaining ?? 0) s"
+        case .held: "Away, not locking while you're using this Mac"
         case .locked: "Locked"
         case .unknown: "Checking…"
         case .idle: "Off"
@@ -102,7 +111,7 @@ struct SettingsView: View {
     private var statusColor: Color {
         switch model.state {
         case .near(armed: true): .green
-        case .leaving: .orange
+        case .leaving, .held: .orange
         default: .secondary
         }
     }
@@ -127,12 +136,12 @@ struct SettingsView: View {
                 HStack {
                     Spacer()
                     Button {
-                        if let now = model.rssi { settings.lockRSSI = Self.lockLevel(from: now) }
+                        calibrating = true
                     } label: {
-                        Label("Use current signal", systemImage: "location")
+                        Label { Text("Calibrate…") } icon: { Icon(name: .scope, size: 14) }
                     }
-                    .disabled(model.rssi == nil)
-                    .help("Sets the lock level \(Int(Self.calibrationMargin)) dB below your device's current signal")
+                    .disabled(settings.deviceUUID == nil || model.pausedUntil != nil)
+                    .help("Measures your device's signal where you sit, and optionally where AwayLock should lock")
                 }
             }
             LabeledContent("Lock after away for") {
@@ -144,36 +153,119 @@ struct SettingsView: View {
             }
             Toggle(isOn: $settings.lockOnSignalLost) {
                 Text("Lock when signal is lost")
-                Text("Treat Bluetooth off or no signal as away")
+                Text("Treat Bluetooth off or no signal as away. A signal that vanishes suddenly gets 15 s longer, in case it's a Bluetooth hiccup.")
             }
+            Toggle(isOn: $settings.activityGuard) {
+                Label {
+                    Text("Don't lock while I'm using this Mac")
+                    Text("Locks as soon as you stop typing or using the mouse for 5 seconds.")
+                } icon: {
+                    Icon(name: .keyboard, size: 16).foregroundStyle(.secondary)
+                }
+            }
+        }
+    }
+
+    // MARK: suggestion
+
+    @ViewBuilder private var suggestionSection: some View {
+        if let undo {
+            Section {
+                HStack(spacing: 10) {
+                    Icon(name: .lightbulb, size: 18).foregroundStyle(.green).accessibilityHidden(true)
+                    Text(changeText(undo.applied, done: true)).font(.callout)
+                    Spacer()
+                    Button("Undo") {
+                        controller.apply(undo.revert)
+                        self.undo = nil
+                    }
+                    Button("Done") { self.undo = nil }
+                }
+            }
+        } else if let suggestion = model.suggestion {
+            Section {
+                HStack(alignment: .top, spacing: 10) {
+                    Icon(name: .lightbulb, size: 18).foregroundStyle(.orange).accessibilityHidden(true)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("AwayLock locked \(suggestion.falseLocks) times this week while you were at your desk")
+                            .font(.callout.weight(.semibold))
+                        Text(changeText(suggestion.change, done: false)).font(.callout).foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    Button("Not Now") { controller.dismissSuggestion() }
+                    Button("Apply") {
+                        if let revert = controller.applySuggestion() { undo = (suggestion.change, revert) }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+        }
+    }
+
+    private func changeText(_ change: Suggestions.Change, done: Bool) -> LocalizedStringKey {
+        switch (change, done) {
+        case (.lockRSSI(let level), false): "Try locking when farther than \(Int(level)) dBm."
+        case (.lockRSSI(let level), true): "Lock level set to \(Int(level)) dBm."
+        case (.awaySeconds(let n), false): "Try a \(n) s away delay."
+        case (.awaySeconds(let n), true): "Away delay set to \(n) s."
         }
     }
 
     static let languageSettingsURL = URL(string: "x-apple.systempreferences:com.apple.Localization-Settings.extension")!
 
-    // ponytail: fixed 15 dB margin below "here"; make it a setting if users calibrate from across the room.
-    static let calibrationMargin = 15.0
-    static func lockLevel(from current: Double) -> Double {
-        min(AppSettings.rssiRange.upperBound, max(AppSettings.rssiRange.lowerBound, (current - calibrationMargin).rounded()))
-    }
-
     // MARK: while nearby
 
     private var nearbySection: some View {
-        Section {
+        Section("While nearby") {
             Toggle(isOn: $settings.keepAwakeWhileNear) {
                 Text("Keep Mac awake")
                 Text("Keeps the display on while your device is near")
             }
-            Toggle(isOn: Binding(get: { settings.autoUnlock }, set: { setAutoUnlock($0) })) {
-                Text("Unlock when I come back")
-                Text("Enters your login password after your device is back in range for 3 seconds. Requires Accessibility access.")
+        }
+    }
+
+    // MARK: when I come back
+
+    private var unlockSection: some View {
+        Section {
+            HStack(alignment: .top, spacing: 10) {
+                unlockCard(.off, icon: .shieldCheck, title: "Off", detail: "You unlock yourself")
+                unlockCard(.wake, icon: .displayWake, title: "Wake the screen",
+                           detail: "Your Apple Watch unlocks, if it's set to unlock this Mac", badge: "Safer with Apple Watch")
+                unlockCard(.password, icon: .key, title: "Type my password",
+                           detail: "Enters your login password after 3 seconds back in range")
             }
-            if settings.autoUnlock, !axTrusted {
-                Button("Open Accessibility Settings…") { UnlockService.requestTrust() }
+            .fixedSize(horizontal: false, vertical: true)   // cards share the tallest card's height
+            if settings.unlockMode != .off {
+                LabeledContent {
+                    FitSegments(choices: AppSettings.unlockWindowChoices, selection: $settings.unlockWindowMinutes) {
+                        $0 < 60 ? String(localized: "\($0) min") : String(localized: "\($0 / 60) hours")
+                    }
+                    .fixedSize()
+                    .accessibilityLabel(Text("Only within"))
+                } label: {
+                    Text("Only within")
+                    Text("After that, unlock yourself. One try per lock.")
+                }
+            }
+            if settings.unlockMode == .password {
+                LabeledContent {
+                    Button("Change…") { askPassword = true }
+                } label: {
+                    Label { Text("Login password"); Text("Saved in the Keychain on this Mac") } icon: { Icon(name: .key, size: 16) }
+                }
+                LabeledContent {
+                    if axTrusted {
+                        Text("Allowed").foregroundStyle(.secondary)
+                    } else {
+                        Button("Open Accessibility Settings…") { UnlockService.requestTrust() }
+                    }
+                } label: {
+                    Label { Text("Accessibility"); Text("Needed to type on the lock screen") } icon: { Icon(name: .shieldCheck, size: 16) }
+                }
             }
         } header: {
-            Text("While nearby")
+            Text("When I come back")
                 .onAppear { axTrusted = UnlockService.isTrusted }
                 .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
                     axTrusted = UnlockService.isTrusted
@@ -185,13 +277,45 @@ struct SettingsView: View {
         }
     }
 
-    private func setAutoUnlock(_ on: Bool) {
-        if on {
-            askPassword = true
-        } else {
-            UnlockService.deletePassword()
-            settings.autoUnlock = false
+    private func unlockCard(_ mode: UnlockMode, icon: ImageResource, title: LocalizedStringKey, detail: LocalizedStringKey,
+                            badge: LocalizedStringKey? = nil) -> some View {
+        let selected = settings.unlockMode == mode
+        return Button { setUnlockMode(mode) } label: {
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Icon(name: icon, size: 20).foregroundStyle(selected ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+                    Spacer()
+                    Image(systemName: selected ? "largecircle.fill.circle" : "circle")
+                        .foregroundStyle(selected ? AnyShapeStyle(.tint) : AnyShapeStyle(.tertiary))
+                }
+                Text(title).font(.callout.weight(.semibold))
+                Text(detail).font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                if let badge {
+                    Text(badge).font(.caption2.weight(.semibold))
+                        .padding(.horizontal, 6).padding(.vertical, 2)
+                        .foregroundStyle(.green)
+                        .background(.green.opacity(0.15), in: Capsule())
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding(10)
+            .background(selected ? Color.accentColor.opacity(0.08) : .clear, in: .rect(cornerRadius: 10))
+            .overlay(RoundedRectangle(cornerRadius: 10)
+                .strokeBorder(selected ? Color.accentColor : Color.secondary.opacity(0.3), lineWidth: selected ? 2 : 1))
+            .contentShape(.rect)
         }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
+    /// The password sheet sets `password` once it has a verified password; leaving `password` deletes it.
+    private func setUnlockMode(_ mode: UnlockMode) {
+        if mode == .password {
+            if settings.unlockMode != .password { askPassword = true }
+            return
+        }
+        if settings.unlockMode == .password { UnlockService.deletePassword() }
+        settings.unlockMode = mode
     }
 
     // MARK: general

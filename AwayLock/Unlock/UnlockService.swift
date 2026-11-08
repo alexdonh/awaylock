@@ -4,8 +4,9 @@ import IOKit.pwr_mgt
 import OpenDirectory
 import Security
 
-/// Opt-in auto-unlock: wakes the display and types the login password from the Keychain.
-/// The machine only asks for it after a lock *the app* made and a 3 s sustained return.
+/// Opt-in unlock on return. `wake` mode only wakes the display (an Apple Watch with Mac unlock then
+/// unlocks through macOS). `password` mode also types the login password from the Keychain.
+/// The machine only asks after a lock *the app* made, a 3 s sustained return and the unlock gates.
 final class UnlockService {
     private static let service = Bundle.main.bundleIdentifier ?? "app.awaylock.mac"
 
@@ -65,17 +66,25 @@ final class UnlockService {
 
     // MARK: unlock
 
-    func unlock(using screen: any ScreenLocking) async {
-        guard screen.isLocked else { return }
-        guard Self.isTrusted else { Log.session.error("unlock skipped: no Accessibility permission"); return }
-        guard let password = Self.readPassword() else { Log.session.error("unlock skipped: no password in Keychain"); return }
+    /// Reused across calls: passing the previous ID updates that assertion instead of adding one.
+    private static var activityID = IOPMAssertionID(0)
 
-        var id = IOPMAssertionID(0)
-        IOPMAssertionDeclareUserActivity("AwayLock unlock" as CFString, kIOPMUserActiveLocal, &id)
+    /// Wakes the display as if the user touched the Mac. Needs no permission.
+    static func wakeDisplay() {
+        IOPMAssertionDeclareUserActivity("AwayLock unlock" as CFString, kIOPMUserActiveLocal, &activityID)
+    }
+
+    /// True if the screen reports unlocked within 5 s of typing.
+    func unlock(using screen: any ScreenLocking) async -> Bool {
+        guard screen.isLocked else { return true }
+        guard Self.isTrusted else { Log.session.error("unlock skipped: no Accessibility permission"); return false }
+        guard let password = Self.readPassword() else { Log.session.error("unlock skipped: no password in Keychain"); return false }
+
+        Self.wakeDisplay()
         try? await Task.sleep(for: .milliseconds(800))
 
         // Verified lock screen immediately before typing, so the password never lands in another app.
-        guard screen.isLocked else { return }
+        guard screen.isLocked else { return true }
         let source = CGEventSource(stateID: .hidSystemState)
         for character in password {
             let units = Array(String(character).utf16)
@@ -88,5 +97,10 @@ final class UnlockService {
         for down in [true, false] {
             CGEvent(keyboardEventSource: source, virtualKey: 36, keyDown: down)?.post(tap: .cghidEventTap) // Return
         }
+        for _ in 0..<25 {
+            try? await Task.sleep(for: .milliseconds(200))
+            if !screen.isLocked { return true }
+        }
+        return false
     }
 }

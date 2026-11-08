@@ -4,8 +4,8 @@ import CoreBluetooth
 /// Reports the strongest advert per sample so the filter sees one reading per tick.
 @BluetoothActor
 final class PassiveScanEngine: NSObject, ProximityEngine {
-    // ponytail: 1 s listen window per stable sample (spec). Raise if a band advertises slower
-    // than once a second while connected to its phone (M0 CSV shows the advert rate).
+    // ponytail: 1 s listen window per stable sample. Raise if a band advertises slower than once
+    // a second while connected to its phone (`spike scan` shows the advert rate).
     static let stableWindow: Duration = .seconds(1)
 
     private var central: CBCentralManager?
@@ -16,8 +16,14 @@ final class PassiveScanEngine: NSObject, ProximityEngine {
     private var lastHeard = ContinuousClock.now
     private var lostSent = false
     private var window: Task<Void, Never>?
+    private var radio = RadioHealth()
+    private var healthy = true
+    private let nearbyInfo: Bool
 
-    nonisolated override init() { super.init() }
+    nonisolated init(nearbyInfo: Bool = false) {
+        self.nearbyInfo = nearbyInfo
+        super.init()
+    }
 
     nonisolated func interval(for cadence: Cadence) -> Duration? {
         switch cadence {
@@ -50,6 +56,7 @@ final class PassiveScanEngine: NSObject, ProximityEngine {
     }
 
     func sample() {
+        checkRadio()
         if let iv = interval(for: cadence), !lostSent, ContinuousClock.now - lastHeard > iv * 2 {
             lostSent = true
             continuation?.yield(.lost)
@@ -83,6 +90,18 @@ final class PassiveScanEngine: NSObject, ProximityEngine {
         continuation = nil
     }
 
+    /// Only the continuous duplicates scan (fast cadence) can tell a stalled radio: stable windows
+    /// are 1 s, and the away scan reports each device once.
+    private func checkRadio() {
+        let now = ContinuousClock.now
+        radio.sample(at: now, scanning: cadence == .fast && central?.isScanning == true)
+        let h = radio.isHealthy(at: now)
+        guard h != healthy else { return }
+        healthy = h
+        Log.bluetooth.notice("radio \(h ? "healthy" : "stalled", privacy: .public), baseline \(self.radio.baseline ?? -1)")
+        continuation?.yield(.radio(healthy: h))
+    }
+
     private func flush() {
         if let best { continuation?.yield(.rssi(best)) }
         best = nil
@@ -105,8 +124,12 @@ extension PassiveScanEngine: @preconcurrency CBCentralManagerDelegate {
 
     func centralManager(_ manager: CBCentralManager, didDiscover p: CBPeripheral,
                         advertisementData: [String: Any], rssi: NSNumber) {
-        // Filter first: drop every other device before touching anything.
+        radio.heard(at: .now)   // anyone counts; then drop every other device
         guard p.identifier == target, let value = validRSSI(rssi) else { return }
+        if nearbyInfo, let mfg = advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data,
+           let info = ContinuityParser.nearbyInfo(mfg) {
+            continuation?.yield(.activity(info))
+        }
         lastHeard = .now
         lostSent = false
         if cadence == .away {

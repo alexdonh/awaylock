@@ -26,20 +26,29 @@ struct RSSITrace: Sendable, CustomTestStringConvertible {
     var seconds: Double
     var settings = ProximitySettings.default
     var rssi: @Sendable (Double) -> Double?
+    /// Keyboard/mouse input at time t (default: nobody touches the Mac).
+    var input: @Sendable (Double) -> Bool = { _ in false }
+    /// The Mac's radio hears anyone at time t (default: always).
+    var radioHealthy: @Sendable (Double) -> Bool = { _ in true }
     var testDescription: String { name }
 }
 
 /// Plays engine + system: samples at the engine's interval for the machine's current cadence,
 /// reports `.lost` after 2× cadence of silence, ticks every second, and answers `.lock` with
-/// the screen-locked notification. 0.1 s steps.
+/// the screen-locked notification. Sends the last input time before every tick, and radio
+/// health on change. 0.1 s steps.
 struct Simulation {
     var machine = ProximityMachine()
     var log: [(t: Double, effect: Effect)] = []
     var firstFarReading: Double?
+    var firstHeld: Double?
+
+    static func at(_ t: Double) -> Duration { .milliseconds(Int((t * 1000).rounded())) }
 
     mutating func send(_ e: ProximityMachine.Event, at t: Double, _ s: ProximitySettings) {
-        let effects = machine.handle(e, at: .milliseconds(Int((t * 1000).rounded())), settings: s)
+        let effects = machine.handle(e, at: Self.at(t), settings: s)
         for effect in effects { log.append((t, effect)) }
+        if case .held = machine.state, firstHeld == nil { firstHeld = t }
         if effects.contains(.lock) { send(.screenLocked(byApp: true), at: t, s) }
     }
 
@@ -49,8 +58,14 @@ struct Simulation {
         let table = engine.table
         sim.send(.start, at: 0, s)
         var nextRead = 0.0, lastHeard = 0.0, lostSent = false
+        var lastInput: Double?, healthy = true
         for step in 0...Int(trace.seconds * 10) {
             let t = Double(step) / 10
+            if trace.input(t) { lastInput = t }
+            if trace.radioHealthy(t) != healthy {
+                healthy.toggle()
+                sim.send(.radio(healthy: healthy), at: t, s)
+            }
             if let iv = table[sim.machine.cadence], t >= nextRead - 1e-9 {
                 if let r = trace.rssi(t) {
                     if r < s.lockRSSI, sim.firstFarReading == nil { sim.firstFarReading = t }
@@ -62,6 +77,7 @@ struct Simulation {
             }
             if step % 10 == 0 {
                 let before = sim.machine.cadence
+                if let lastInput { sim.send(.input(lastAt: Simulation.at(lastInput)), at: t, s) }
                 sim.send(.tick, at: t, s)
                 if sim.machine.cadence != before, let iv = table[sim.machine.cadence] { nextRead = min(nextRead, t + iv) }
             }
@@ -100,7 +116,7 @@ extension RSSITrace {
 struct ProximityMachineTests {
     /// The machine's share of the latency: lock within N + 3 s of the first far reading it gets.
     /// Connected mode (5 s stable cadence) also meets N + 3 s from the moment the device crossed.
-    /// Passive mode's 10 s stable cadence can add up to ~10 s of sampling lag on top (see BACKLOG).
+    /// Passive mode's 10 s stable cadence can add up to ~10 s of sampling lag on top.
     @Test("Locks within away delay + 3 s, never early",
           arguments: RSSITrace.walkAwayCases, EngineKind.allCases)
     func walkAway(_ c: (trace: RSSITrace, leftAt: Double), engine: EngineKind) throws {
@@ -152,9 +168,14 @@ struct ProximityMachineTests {
         s.lockOnSignalLost = lockOnLost
         let sim = Simulation.run(RSSITrace(name: "lost", seconds: 120, settings: s) { $0 < 20 ? -50 : nil }, engine: engine)
         #expect(sim.lockTimes.isEmpty == !lockOnLost)
-        // Last reading before 20, lost detected after 2× stable cadence, then the full delay.
+        // Last reading before 20, lost detected after 2× stable cadence, then the full delay
+        // plus the abrupt-loss extra (strong, flat signal straight to nothing).
         let stable = try #require(engine.table[.stable])
-        if lockOnLost { #expect(sim.lockTimes[0] <= 20 + 2 * stable + 10 + 1) }
+        if lockOnLost {
+            #expect(sim.lockTimes[0] <= 20 + 2 * stable + 10 + 15 + 1)
+            #expect(sim.lockTimes[0] >= 20 + 10 + 15)
+            #expect(sim.machine.leaveReason == .abrupt)
+        }
         // Either way, a device we can't hear never holds the Mac awake.
         #expect(sim.has(.holdAwake(false)))
     }
@@ -163,7 +184,7 @@ struct ProximityMachineTests {
     @Test(arguments: EngineKind.allCases)
     func autoUnlockWhenDeviceReturnsWithoutDropout(engine: EngineKind) throws {
         var s = ProximitySettings.default
-        s.autoUnlock = true
+        s.unlockMode = .password
         let sim = Simulation.run(RSSITrace(name: "away and back", seconds: 140, settings: s) { t in
             t < 20 ? -50 : t < 60 ? -85 : -45
         }, engine: engine)
@@ -228,7 +249,7 @@ struct ProximityMachineTests {
 
     @Test func manualLockNeverAutoUnlocks() {
         var s = ProximitySettings.default
-        s.autoUnlock = true
+        s.unlockMode = .password
         var m = ProximityMachine()
         _ = m.handle(.start, at: .zero, settings: s)
         for t in 0...6 { _ = m.handle(.reading(-50), at: .seconds(t), settings: s) }
@@ -240,7 +261,7 @@ struct ProximityMachineTests {
 
     @Test func autoUnlockNeedsThreeSecondsSustained() {
         var s = ProximitySettings.default
-        s.autoUnlock = true
+        s.unlockMode = .password
         var (m, t) = lockedByApp(s)
         // A lucky reading, then far again: no unlock.
         var effects = m.handle(.reading(-40), at: .seconds(t + 10), settings: s)

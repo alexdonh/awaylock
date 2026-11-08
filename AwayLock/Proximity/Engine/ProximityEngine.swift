@@ -4,6 +4,8 @@ nonisolated enum ProximityReading: Sendable, Equatable {
     case rssi(Double)
     case lost          // disconnect, or no advert for 2× the cadence
     case bluetoothOff
+    case radio(healthy: Bool)    // the Mac hears anyone at all while scanning; sent on change only
+    case activity(NearbyInfo)    // experimental: Nearby Info from the device's adverts
 }
 
 /// Engines only report. The controller's single loop calls `sample()` at `interval(for:)`.
@@ -14,6 +16,12 @@ nonisolated protocol ProximityEngine: AnyObject, Sendable {
     func setCadence(_ cadence: Cadence) async
     func sample() async
     func stop() async
+    /// Experimental Nearby Info: listen to the device's adverts even while connected.
+    func listenForActivity(_ on: Bool) async
+}
+
+extension ProximityEngine {
+    func listenForActivity(_ on: Bool) async {}
 }
 
 /// RSSI 127 means "not available"; anything ≥ 0 is junk.

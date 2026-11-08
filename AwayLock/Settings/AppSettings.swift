@@ -10,7 +10,8 @@ nonisolated enum SignalMode: String, CaseIterable, Identifiable, Sendable {
 @Observable
 final class AppSettings {
     typealias Key = UserDefaults.Key
-    static let awayChoices = [0, 5, 10, 30, 60]
+    nonisolated static let awayChoices = [0, 5, 10, 30, 60]
+    static let unlockWindowChoices = [5, 30, 120]
     nonisolated static let rssiRange: ClosedRange<Double> = -95 ... -50
 
     @ObservationIgnored private let defaults: UserDefaults
@@ -22,8 +23,13 @@ final class AppSettings {
     var awaySeconds: Int { didSet { defaults.set(awaySeconds, forKey: Key.awaySeconds) } }
     var lockOnSignalLost: Bool { didSet { defaults.set(lockOnSignalLost, forKey: Key.lockOnSignalLost) } }
     var keepAwakeWhileNear: Bool { didSet { defaults.set(keepAwakeWhileNear, forKey: Key.keepAwakeWhileNear) } }
-    /// The password itself lives in the Keychain (UnlockService), never here.
-    var autoUnlock: Bool { didSet { defaults.set(autoUnlock, forKey: Key.autoUnlock) } }
+    var activityGuard: Bool { didSet { defaults.set(activityGuard, forKey: Key.activityGuard) } }
+    /// For `password`, the password itself lives in the Keychain (UnlockService), never here.
+    var unlockMode: UnlockMode { didSet { defaults.set(unlockMode.rawValue, forKey: Key.unlockMode) } }
+    var unlockWindowMinutes: Int { didSet { defaults.set(unlockWindowMinutes, forKey: Key.unlockWindowMinutes) } }
+    var suggestionDismissedAt: Date? { didSet { defaults.set(suggestionDismissedAt, forKey: Key.suggestionDismissedAt) } }
+    /// Hidden flag, no UI. Read at launch.
+    let experimentalNearbyInfo: Bool
     var isAutoStart: Bool { didSet { defaults.set(isAutoStart, forKey: Key.isAutoStart) } }
     var signalMode: SignalMode { didSet { defaults.set(signalMode.rawValue, forKey: Key.signalMode) } }
     var untrackableUUIDs: Set<UUID> {
@@ -33,8 +39,8 @@ final class AppSettings {
     init(defaults: UserDefaults = .standard) {
         defaults.register(defaults: [
             Key.lockRSSI: -75.0, Key.awaySeconds: 10, Key.lockOnSignalLost: true,
-            Key.keepAwakeWhileNear: true, Key.autoUnlock: false, Key.isAutoStart: true,
-            Key.signalMode: SignalMode.auto.rawValue,
+            Key.keepAwakeWhileNear: true, Key.isAutoStart: true,
+            Key.signalMode: SignalMode.auto.rawValue, Key.activityGuard: true, Key.unlockWindowMinutes: 30,
         ])
         self.defaults = defaults
         deviceUUID = defaults.string(forKey: Key.deviceUUID).flatMap(UUID.init(uuidString:))
@@ -44,7 +50,16 @@ final class AppSettings {
         awaySeconds = defaults.integer(forKey: Key.awaySeconds)
         lockOnSignalLost = defaults.bool(forKey: Key.lockOnSignalLost)
         keepAwakeWhileNear = defaults.bool(forKey: Key.keepAwakeWhileNear)
-        autoUnlock = defaults.bool(forKey: Key.autoUnlock)
+        activityGuard = defaults.bool(forKey: Key.activityGuard)
+        // No default registered for unlockMode, so "absent" means "not migrated yet".
+        // ponytail: drop the autoUnlock read once 1.0.x installs have had a release to migrate.
+        let mode = defaults.string(forKey: Key.unlockMode).flatMap(UnlockMode.init(rawValue:))
+            ?? (defaults.bool(forKey: Key.autoUnlock) ? .password : .off)
+        defaults.set(mode.rawValue, forKey: Key.unlockMode)
+        unlockMode = mode
+        unlockWindowMinutes = defaults.integer(forKey: Key.unlockWindowMinutes)
+        suggestionDismissedAt = defaults.object(forKey: Key.suggestionDismissedAt) as? Date
+        experimentalNearbyInfo = defaults.bool(forKey: Key.experimentalNearbyInfo)
         isAutoStart = defaults.bool(forKey: Key.isAutoStart)
         signalMode = SignalMode(rawValue: defaults.string(forKey: Key.signalMode) ?? "") ?? .auto
         untrackableUUIDs = Set((defaults.stringArray(forKey: Key.untrackableUUIDs) ?? []).compactMap(UUID.init(uuidString:)))
@@ -52,7 +67,8 @@ final class AppSettings {
 
     var proximity: ProximitySettings {
         ProximitySettings(lockRSSI: lockRSSI, awaySeconds: awaySeconds, lockOnSignalLost: lockOnSignalLost,
-                          keepAwakeWhileNear: keepAwakeWhileNear, autoUnlock: autoUnlock)
+                          keepAwakeWhileNear: keepAwakeWhileNear, activityGuard: activityGuard, unlockMode: unlockMode,
+                          unlockWindow: .seconds(unlockWindowMinutes * 60), nearbyInfoGate: experimentalNearbyInfo)
     }
 }
 

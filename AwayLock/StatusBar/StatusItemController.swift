@@ -32,7 +32,11 @@ final class StatusItemController: NSObject, NSMenuDelegate {
         buildBadge()
         Task { [weak self, model, settings, updater] in
             let icons = observing { IconState(model: model, settings: settings, updateAvailable: updater.availableVersion != nil) }
-            for await icon in icons { self?.apply(icon) }
+            var last: IconState?
+            for await icon in icons where icon != last {   // the stream fires on any read change, not only icon ones
+                last = icon
+                self?.apply(icon)
+            }
         }
     }
 
@@ -140,6 +144,8 @@ private nonisolated struct IconState: Equatable, Sendable {
             switch model.state {
             case .leaving:
                 (symbol, label) = (.statusLeaving, String(localized: "AwayLock: device leaving, locking soon"))
+            case .held:
+                (symbol, label) = (.statusLeaving, String(localized: "AwayLock: device away, holding while you're active"))
             case .locked(byApp: true):
                 (symbol, label) = (.statusLocked, String(localized: "AwayLock: locked"))
             case .idle:
@@ -168,10 +174,19 @@ struct MenuHeaderView: View {
             } else if model.bluetoothOff {
                 row(Icon(name: .antennaOff, size: 20), title: Text(settings.deviceName),
                     detail: Text("Bluetooth is off"), color: .secondary)
+            } else if case .held = model.state {
+                row(Icon(name: .keyboard, size: 20), title: Text("\(settings.deviceName) · away"),
+                    detail: Text("Not locking while you're using this Mac"), color: .orange)
+                caption(Text("Locks 5 seconds after you stop typing or using the mouse."))
+            } else if case .leaving = model.state, model.radioStalled, model.leaveReason != .belowLevel {
+                row(Icon(name: .antennaOff, size: 20), title: Text("Bluetooth isn't responding"),
+                    detail: Text("Countdown paused · restarting Bluetooth"), color: .orange)
+                caption(Text("If it stays down for 60 s, AwayLock locks anyway."))
             } else if case .leaving = model.state, let left = model.remaining {
+                let abrupt = model.leaveReason == .abrupt
                 HStack(spacing: 10) {
                     tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
-                    titles(Text(settings.deviceName), Text("Away, \(dbm)"), .orange)
+                    titles(abrupt ? Text("Signal vanished suddenly") : Text(settings.deviceName), Text("Away, \(dbm)"), .orange)
                     Spacer()
                     Text("\(left) s").font(.system(size: 20, weight: .semibold)).monospacedDigit().foregroundStyle(.orange)
                 }
@@ -180,13 +195,13 @@ struct MenuHeaderView: View {
                     ZStack(alignment: .leading) {
                         Capsule().fill(.quaternary)
                         Capsule().fill(.orange)
-                            .frame(width: geo.size.width * Double(left) / Double(max(1, settings.awaySeconds)))
+                            .frame(width: geo.size.width * min(1, Double(left) / Double(max(1, model.countdownTotal ?? settings.awaySeconds))))
                     }
                 }
                 .frame(height: 4)
                 .accessibilityHidden(true)
-                Text("Locking in \(left) seconds. Come back to cancel.")
-                    .font(.system(size: 12)).foregroundStyle(.secondary)
+                caption(abrupt ? Text("Looks like a Bluetooth hiccup, so AwayLock is waiting 15 s longer than usual.")
+                               : Text("Locking in \(left) seconds. Come back to cancel."))
             } else {
                 HStack(spacing: 10) {
                     tile(Icon(name: deviceIcon(for: settings.deviceName), size: 20))
@@ -220,6 +235,10 @@ struct MenuHeaderView: View {
 
     private var statusColor: Color {
         model.state == .near(armed: true) ? .green : .secondary
+    }
+
+    private func caption(_ text: Text) -> some View {
+        text.font(.system(size: 12)).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
     }
 
     private func row(_ icon: some View, title: Text, detail: Text, color: Color) -> some View {
