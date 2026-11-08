@@ -5,7 +5,9 @@ Locks your Mac when you walk away and keeps it unlocked while you're nearby.
 AwayLock is a menu bar app. Pick one Bluetooth device you carry: an Apple Watch, an iPhone, or a band that advertises with a fixed address. While it's near, your Mac won't idle lock or put the display to sleep. When it has been out of range for a few seconds, or the signal is lost, the Mac locks.
 
 - No companion iPhone app and no account.
-- Opt-in auto-unlock when you come back (off by default, see [Security](#security)).
+- Doesn't lock while you're typing or using the mouse, even if your phone is in a bag.
+- Opt-in unlock when you come back: wake the screen for your Apple Watch, or type your password (off by default, see [Security](#security)).
+- A local lock history shows why each lock happened and flags the ones that were probably wrong.
 - Low power: it samples fast only when a decision is close.
 
 Requires macOS 14 Sonoma or later. Available in English, Chinese (Simplified and Traditional), French, German, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish and Vietnamese.
@@ -16,7 +18,7 @@ Requires macOS 14 Sonoma or later. Available in English, Chinese (Simplified and
 2. Open it and drag **AwayLock** to **Applications**.
 3. Launch AwayLock and allow Bluetooth when asked.
 4. In Settings, press **Choose…** and pick the device you carry. A device shows up after it has been detected for 10 seconds.
-5. Set the lock distance: sit at your desk and press **Use current signal**, or drag the slider. Then pick how long the device must be away before the Mac locks: immediately, or after 5 to 60 seconds.
+5. Set the lock distance: press **Calibrate…** and sit as you normally work (optionally walk to where it should lock), or drag the slider. Then pick how long the device must be away before the Mac locks: immediately, or after 5 to 60 seconds.
 
 The app is signed with Developer ID and notarized by Apple.
 
@@ -38,14 +40,15 @@ AwayLock checks for updates once a day using [Sparkle](https://sparkle-project.o
 
 ## Privacy
 
-Your data stays on this Mac. Settings live in `UserDefaults`. The login password, used only if you turn on auto-unlock, lives in your Keychain.
+Your data stays on this Mac. Settings live in `UserDefaults`. The login password, used only if you choose **Type my password**, lives in your Keychain. The lock history is a small file in `~/Library/Application Support/AwayLock/`.
 
 The only network request is the daily update check: one HTTPS GET of `https://awaylock.app/appcast.xml`, which redirects to this repository's latest release. Full details: [PRIVACY.md](PRIVACY.md).
 
 ## Security
 
 - **No signal counts as away**, if you turn on Lock when signal is lost.
-- **Auto-unlock is off by default.** It enters your login password on the lock screen after your device has been back in range for 3 seconds. It requires Accessibility access. Someone could relay your device's Bluetooth signal to make it seem near, so don't turn it on for shared Macs or Macs with sensitive data.
+- **Unlock on return is off by default.** **Wake the screen** only wakes the display, so an Apple Watch set to unlock your Mac does the unlocking with macOS's own distance check. It needs no permission. **Type my password** enters your login password on the lock screen after your device has been back in range for 3 seconds. Only that mode needs Accessibility access. Either way, AwayLock only unlocks a lock it made, within 5 minutes to 2 hours of it (30 by default), and tries the password at most once per lock. Someone could relay your device's Bluetooth signal to make it seem near, so don't use Type my password on shared Macs or Macs with sensitive data.
+- **Not locking while you type has a limit.** AwayLock holds the lock only if you kept using the Mac without a 5-second break since the device started leaving. Someone who sits down in that moment could hold it open; in Passive signal mode the window can be up to 10 seconds longer.
 - **A lock you start yourself (Control-Command-Q) is never auto unlocked.**
 - Locking uses `SACLockScreenImmediate`, the same private call BLEUnlock uses. If a future macOS removes it, AwayLock sleeps the display instead, which locks only when Require password is set to Immediately in Lock Screen settings. Because it relies on a private API and Accessibility, AwayLock can't be sandboxed and isn't on the Mac App Store.
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+- Doesn't lock while you're typing or using the mouse. It locks 5 seconds after you stop, if your device is still away.
+- A signal that vanishes straight out of a strong, steady reading gets 15 seconds more, since that's usually a Bluetooth hiccup, not you leaving.
+- When the Mac's own Bluetooth stops hearing anything, a "signal lost" countdown pauses (up to 60 seconds) and AwayLock restarts Bluetooth. A connection that stops answering is reconnected.
+- "When I come back" now has three choices: Off, Wake the screen (lets your Apple Watch unlock, no password or Accessibility needed), and Type my password. Unlocking only happens within 30 minutes of the lock (5 minutes to 2 hours) and tries the password once per lock. Your 1.0 auto-unlock setting carries over as Type my password.
+- New History tab: why each lock happened, which ones were probably wrong, and how long AwayLock held off while you worked. Kept on this Mac only.
+- Calibrate: measure where you sit, and optionally where it should lock, to set the lock level. Replaces "Use current signal".
+- Suggests a better lock level or away delay after several probably-wrong locks in a week. Never applied without you.
+- The About window no longer opens cut off at the top and bottom.
+
 ## 1.0.2 (2026-11-07)
 
 - Make it runable on macOS 14 Sonoma and macOS 15 Sequoia.
