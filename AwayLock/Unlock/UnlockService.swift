@@ -83,9 +83,21 @@ final class UnlockService {
         Self.wakeDisplay()
         try? await Task.sleep(for: .milliseconds(800))
 
+        // The user may already be typing: let them finish a keystroke so ours don't interleave.
+        for _ in 0..<15 where CGEventSource.secondsSinceLastEventType(.hidSystemState, eventType: .keyDown) < 0.5 {
+            try? await Task.sleep(for: .milliseconds(200))
+        }
+
         // Verified lock screen immediately before typing, so the password never lands in another app.
         guard screen.isLocked else { return true }
         let source = CGEventSource(stateID: .hidSystemState)
+        // Replace whatever is already in the field. Backspace, not Cmd+A: a key code is a physical
+        // position (A is Q on AZERTY), and select-all in the lock screen's field is unverified.
+        for _ in 0..<64 {
+            for down in [true, false] {
+                CGEvent(keyboardEventSource: source, virtualKey: 51, keyDown: down)?.post(tap: .cghidEventTap) // Delete
+            }
+        }
         for character in password {
             let units = Array(String(character).utf16)
             for down in [true, false] {
