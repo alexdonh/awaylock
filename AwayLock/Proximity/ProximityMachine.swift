@@ -151,6 +151,7 @@ nonisolated struct ProximityMachine: Sendable {
 
         case .lost:
             lastRaw = nil
+            aboveSince = nil   // a gap in readings isn't a sustained return
             // Countdown from detection, not the last reading: detection already lags 2× cadence,
             // and backdating would turn a short dropout into an instant lock.
             if s.lockOnSignalLost, state == .near(armed: true) {
@@ -223,16 +224,16 @@ nonisolated struct ProximityMachine: Sendable {
                 state = .near(armed: true)
                 deadline = nil
             case .locked(byApp: true) where s.unlockMode != .off:
+                // The hold starts at the first raw reading back (filter lag doesn't add to it, like
+                // leaving's backdating); any raw dip restarts it. Smoothing still has to confirm.
+                aboveSince = (lastRaw ?? -.infinity) >= s.backRSSI ? (aboveSince ?? now) : nil
                 if v >= s.backRSSI {
-                    let since = aboveSince ?? now
-                    aboveSince = since
-                    if !unlockSent, now - since >= Self.returnHold, unlockAllowed(now, s) {
+                    if !unlockSent, let since = aboveSince, now - since >= Self.returnHold, unlockAllowed(now, s) {
                         unlockSent = true
                         if s.unlockMode == .password { unlockAttempts += 1 }
                         effects.append(.unlock)
                     }
                 } else {
-                    aboveSince = nil
                     unlockSent = false   // hysteresis only; `unlockAttempts` is the hard cap
                 }
             default: break
@@ -340,8 +341,9 @@ nonisolated struct ProximityMachine: Sendable {
             let low = min(lastRaw ?? .infinity, smoothed ?? .infinity)
             return low < s.stableRSSI ? .fast : .stable
         case .locked(byApp: true) where s.unlockMode != .off && inUnlockWindow(now, s):
-            // Keep sampling: the link may never drop, so a return only shows up in readings.
-            return (lastRaw ?? -.infinity) >= s.lockRSSI ? .fast : .stable
+            // Keep sampling fast: the link may never drop, so a return only shows up in readings,
+            // and a slow first sample after the return is most of the wait. Bounded by the window.
+            return .fast
         case .locked:
             return .away
         }

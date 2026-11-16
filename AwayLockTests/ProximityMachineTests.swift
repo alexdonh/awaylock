@@ -190,10 +190,10 @@ struct ProximityMachineTests {
         }, engine: engine)
         let lock = try #require(sim.lockTimes.first)
         let unlock = try #require(sim.first(.unlock))
-        let stable = try #require(engine.table[.stable])
         #expect(lock < 60)
         #expect(unlock >= 60 + 3)
-        #expect(unlock <= 60 + stable + 10)
+        // Sampled fast throughout the window: first reading back within 1 s, then the 3 s hold.
+        #expect(unlock <= 60 + 5)
     }
 
     @Test func briefDropoutThatRecoversNeverLocks() {
