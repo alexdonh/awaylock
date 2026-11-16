@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2 (2026-11-16)
+
+### Fixed
+
+- Clear the password field before typing
+- Detect return to unlock within seconds
+
 ## 1.1.1 (2026-11-08)
 
 - Maintenance release.
