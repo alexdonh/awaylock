@@ -62,6 +62,10 @@ IDENTITY=$(codesign -dvv "$APP" 2>&1 | sed -n 's/^Authority=\(Developer ID Appli
 DMG="$OUT/updates/AwayLock-$VERSION.dmg"
 ditto "$APP" "$OUT/dmg/AwayLock.app"
 ln -s /Applications "$OUT/dmg/Applications"
+# Window layout from scripts/dmg/layout.sh; it finds the background by volume name, so keep AwayLock.
+mkdir "$OUT/dmg/.background"
+cp scripts/dmg/background.tiff "$OUT/dmg/.background/"
+cp scripts/dmg/DS_Store "$OUT/dmg/.DS_Store"
 hdiutil create -volname AwayLock -srcfolder "$OUT/dmg" -format UDZO -ov "$DMG"
 codesign --sign "$IDENTITY" --timestamp "$DMG"
 notarize "$DMG"
